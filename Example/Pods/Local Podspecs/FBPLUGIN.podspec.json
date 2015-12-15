@@ -1,15 +1,15 @@
 {
   "name": "FBPLUGIN",
   "version": "0.1.0",
-  "summary": "A short description of FBPLUGIN.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/FBPLUGIN",
+  "summary": "Plugin for Facebook FBPLUGIN.",
+  "description": "Useful plugin for Facebook login and request information",
+  "homepage": "https://github.com/tthufo/FBPLUGIN",
   "license": "MIT",
   "authors": {
     "thanhhaitran": "tthufo@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/FBPLUGIN.git",
+    "git": "https://github.com/tthufo/FBPLUGIN.git",
     "tag": "0.1.0"
   },
   "platforms": {
