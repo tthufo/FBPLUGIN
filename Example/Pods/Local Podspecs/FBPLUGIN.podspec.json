@@ -1,0 +1,25 @@
+{
+  "name": "FBPLUGIN",
+  "version": "0.1.0",
+  "summary": "A short description of FBPLUGIN.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/FBPLUGIN",
+  "license": "MIT",
+  "authors": {
+    "thanhhaitran": "tthufo@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/FBPLUGIN.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "FBPLUGIN": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

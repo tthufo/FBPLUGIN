@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
   s.version          = "0.1.0"
-  s.summary          = "A short description of FBPLUGIN."
+  s.summary          = "Plugin for Facebook FBPLUGIN."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,14 +17,15 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+                    Useful plugin for Facebook login and request information
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/FBPLUGIN"
+  s.homepage         = "https://github.com/tthufo/FBPLUGIN"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "thanhhaitran" => "tthufo@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/FBPLUGIN.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/tthufo/FBPLUGIN.git", :tag => s.version.to_s }
+  # s.social_media_url = 'https://twitter.com/tthufo'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
@@ -37,4 +38,5 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+
 end
