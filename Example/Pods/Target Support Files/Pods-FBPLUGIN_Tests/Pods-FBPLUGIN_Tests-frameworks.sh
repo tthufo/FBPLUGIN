@@ -84,8 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-FBPLUGIN_Tests/Bolts.framework"
   install_framework "Pods-FBPLUGIN_Tests/FBPLUGIN.framework"
+  install_framework "Pods-FBPLUGIN_Tests/Facebook_iOS_SDK.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-FBPLUGIN_Tests/Bolts.framework"
   install_framework "Pods-FBPLUGIN_Tests/FBPLUGIN.framework"
+  install_framework "Pods-FBPLUGIN_Tests/Facebook_iOS_SDK.framework"
 fi

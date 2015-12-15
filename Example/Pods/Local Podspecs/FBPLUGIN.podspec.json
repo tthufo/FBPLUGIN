@@ -21,5 +21,10 @@
     "FBPLUGIN": [
       "Pod/Assets/*.png"
     ]
+  },
+  "dependencies": {
+    "Facebook-iOS-SDK": [
+      "~> 4.0"
+    ]
   }
 }
