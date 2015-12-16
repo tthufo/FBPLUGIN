@@ -8,6 +8,8 @@
 
 #import "FBViewController.h"
 
+#import "FB.h"
+
 @interface FBViewController ()
 
 @end
@@ -17,13 +19,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)didPressButton:(id)sender
+{
+    FB * fb = [FB shareInstance];
+    [fb startLoginFacebookWithCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+        
+        NSLog(@"%@",object);
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

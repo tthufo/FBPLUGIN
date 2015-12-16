@@ -86,10 +86,14 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FBPLUGIN_Example/Bolts.framework"
   install_framework "Pods-FBPLUGIN_Example/FBPLUGIN.framework"
-  install_framework "Pods-FBPLUGIN_Example/Facebook_iOS_SDK.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKCoreKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKLoginKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FBPLUGIN_Example/Bolts.framework"
   install_framework "Pods-FBPLUGIN_Example/FBPLUGIN.framework"
-  install_framework "Pods-FBPLUGIN_Example/Facebook_iOS_SDK.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKCoreKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKLoginKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
 fi

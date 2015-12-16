@@ -38,6 +38,10 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency 'Facebook-iOS-SDK', '~> 4.0'
+  #s.dependency 'Facebook-iOS-SDK', '~> 4.0.1'
+
+s.dependency 'FBSDKCoreKit', '~> 4.4'
+s.dependency 'FBSDKLoginKit', '~> 4.4'
+s.dependency 'FBSDKShareKit', '~> 4.4'
 
 end

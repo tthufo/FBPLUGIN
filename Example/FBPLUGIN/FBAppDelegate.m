@@ -10,11 +10,13 @@
 
 #import "FB.h"
 
+
 @implementation FBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[FB shareInstance] setFacebookAppID:@"755157941279588"];
+    
     return YES;
 }
 
@@ -43,6 +45,14 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [[FB shareInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 @end

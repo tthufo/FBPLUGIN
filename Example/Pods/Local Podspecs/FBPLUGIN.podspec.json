@@ -23,8 +23,14 @@
     ]
   },
   "dependencies": {
-    "Facebook-iOS-SDK": [
-      "~> 4.0"
+    "FBSDKCoreKit": [
+      "~> 4.4"
+    ],
+    "FBSDKLoginKit": [
+      "~> 4.4"
+    ],
+    "FBSDKShareKit": [
+      "~> 4.4"
     ]
   }
 }
