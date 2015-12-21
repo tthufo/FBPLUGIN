@@ -84,16 +84,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-FBPLUGIN_Example/AVHexColor.framework"
   install_framework "Pods-FBPLUGIN_Example/Bolts.framework"
   install_framework "Pods-FBPLUGIN_Example/FBPLUGIN.framework"
   install_framework "Pods-FBPLUGIN_Example/FBSDKCoreKit.framework"
   install_framework "Pods-FBPLUGIN_Example/FBSDKLoginKit.framework"
   install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/SVProgressHUD.framework"
+  install_framework "Pods-FBPLUGIN_Example/Toast.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-FBPLUGIN_Example/AVHexColor.framework"
   install_framework "Pods-FBPLUGIN_Example/Bolts.framework"
   install_framework "Pods-FBPLUGIN_Example/FBPLUGIN.framework"
   install_framework "Pods-FBPLUGIN_Example/FBSDKCoreKit.framework"
   install_framework "Pods-FBPLUGIN_Example/FBSDKLoginKit.framework"
   install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/SVProgressHUD.framework"
+  install_framework "Pods-FBPLUGIN_Example/Toast.framework"
 fi

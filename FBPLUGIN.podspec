@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
   s.version          = "0.1.0"
-  s.summary          = "Plugin for Facebook FBPLUGIN."
+  s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,10 +17,10 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-                    Useful plugin for Facebook login and request information
+                    Useful plugin for Facebook login and request information with fews line of code
                        DESC
 
-  s.homepage         = "https://github.com/tthufo/FBPLUGIN"
+  s.homepage         = "https://github.com/tthufo"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "thanhhaitran" => "tthufo@gmail.com" }
@@ -43,5 +43,8 @@ Pod::Spec.new do |s|
 s.dependency 'FBSDKCoreKit', '~> 4.4'
 s.dependency 'FBSDKLoginKit', '~> 4.4'
 s.dependency 'FBSDKShareKit', '~> 4.4'
+s.dependency 'AVHexColor', '~> 2.0'
+s.dependency 'SVProgressHUD'
+s.dependency 'Toast', '~> 2.4'
 
 end

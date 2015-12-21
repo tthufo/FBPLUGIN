@@ -15,8 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[FB shareInstance] setFacebookAppID:@"755157941279588"];
-    
+    [[FB shareInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 

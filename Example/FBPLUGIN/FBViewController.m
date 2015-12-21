@@ -31,6 +31,13 @@
     }];
 }
 
+- (IBAction)didPressLogout:(id)sender
+{
+    FB * fb = [FB shareInstance];
+    
+    [fb signoutFacebook];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
