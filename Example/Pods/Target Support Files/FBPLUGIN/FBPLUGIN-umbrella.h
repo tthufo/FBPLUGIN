@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FB.h"
+#import "LTRequest.h"
 #import "NSObject+Category.h"
 
 FOUNDATION_EXPORT double FBPLUGINVersionNumber;

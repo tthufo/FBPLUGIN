@@ -10,12 +10,16 @@
 
 #import "FB.h"
 
+#import "LTRequest.h"
 
 @implementation FBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[FB shareInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
+    [[LTRequest sharedInstance] initRequest];
+    
     return YES;
 }
 

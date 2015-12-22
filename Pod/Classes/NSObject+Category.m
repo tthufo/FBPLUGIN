@@ -7,8 +7,11 @@
 //
 
 #import "NSObject+Category.h"
+
 #import "AVHexColor.h"
+
 #import "SVProgressHUD.h"
+
 #import "UIView+Toast.h"
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
