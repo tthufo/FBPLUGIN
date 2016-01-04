@@ -30,15 +30,18 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'Pod/Classes'
   s.resource_bundles = {
-    'FBPLUGIN' => ['Pod/Assets/*.png']
+    'FBPLUGIN' => ['Pod/Assets/*']
   }
+
+  #s.resources = ['Pod/Assets/*']
+
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  #s.dependency 'Facebook-iOS-SDK', '~> 4.0.1'
+  # s.dependency 'Facebook-iOS-SDK', '~> 4.0.1'
 
 s.dependency 'FBSDKCoreKit', '~> 4.4'
 s.dependency 'FBSDKLoginKit', '~> 4.4'

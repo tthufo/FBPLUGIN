@@ -295,7 +295,7 @@ CLLocationManager * locationManager;
     return NO;
 }
 
--(NSString*) bv_jsonStringWithPrettyPrint:(BOOL) prettyPrint
+- (NSString*) bv_jsonStringWithPrettyPrint:(BOOL) prettyPrint
 {
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self

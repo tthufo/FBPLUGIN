@@ -23,6 +23,10 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9891F0E095806D9E7AA0A596 /* Pods_FBPLUGIN_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC94F8145220C3E40F4D854 /* Pods_FBPLUGIN_Example.framework */; };
 		E76180495E1261C42F9DDB88 /* Pods_FBPLUGIN_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97ED8B6319B07181BE8A0086 /* Pods_FBPLUGIN_Tests.framework */; };
+		FC5E16D11C293C9800A5C5A0 /* Whathehell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E16CF1C293C9800A5C5A0 /* Whathehell.swift */; };
+		FC5E16D21C293C9800A5C5A0 /* Whathehell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5E16D01C293C9800A5C5A0 /* Whathehell.xib */; };
+		FC5E16D51C29411600A5C5A0 /* FBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5E16D41C29411600A5C5A0 /* FBViewController.xib */; };
+		FC9BF5381C34D29D00B1DB53 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC9BF5361C34D29D00B1DB53 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,11 @@
 		97ED8B6319B07181BE8A0086 /* Pods_FBPLUGIN_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBPLUGIN_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADC09FE5C126FDBC9E11940 /* Pods-FBPLUGIN_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBPLUGIN_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBPLUGIN_Example/Pods-FBPLUGIN_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D0D04C41BCC6B6FA8D6D5835 /* Pods-FBPLUGIN_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBPLUGIN_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBPLUGIN_Tests/Pods-FBPLUGIN_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FC5E16CF1C293C9800A5C5A0 /* Whathehell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Whathehell.swift; sourceTree = "<group>"; };
+		FC5E16D01C293C9800A5C5A0 /* Whathehell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Whathehell.xib; sourceTree = "<group>"; };
+		FC5E16D31C293F3600A5C5A0 /* FBPLUGIN_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBPLUGIN_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		FC5E16D41C29411600A5C5A0 /* FBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBViewController.xib; sourceTree = "<group>"; };
+		FC9BF5371C34D29D00B1DB53 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +155,13 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* FBViewController.h */,
 				6003F5A6195388D20070C39A /* FBViewController.m */,
+				FC5E16D41C29411600A5C5A0 /* FBViewController.xib */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				FC5E16CF1C293C9800A5C5A0 /* Whathehell.swift */,
+				FC5E16D01C293C9800A5C5A0 /* Whathehell.xib */,
+				FC5E16D31C293F3600A5C5A0 /* FBPLUGIN_Example-Bridging-Header.h */,
+				FC9BF5361C34D29D00B1DB53 /* Model.xcdatamodeld */,
 			);
 			name = "Example for FBPLUGIN";
 			path = FBPLUGIN;
@@ -244,6 +258,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FB;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = thanhhaitran;
 				TargetAttributes = {
@@ -277,7 +292,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				FC5E16D21C293C9800A5C5A0 /* Whathehell.xib in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				FC5E16D51C29411600A5C5A0 /* FBViewController.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +408,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* FBAppDelegate.m in Sources */,
+				FC5E16D11C293C9800A5C5A0 /* Whathehell.swift in Sources */,
+				FC9BF5381C34D29D00B1DB53 /* Model.xcdatamodeld in Sources */,
 				6003F5A7195388D20070C39A /* FBViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
@@ -450,7 +469,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuong Mai (T68ST29XCF)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -468,6 +488,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "2a092e29-973c-4ea2-9d86-e9991837bf21";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -489,7 +510,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuong Mai (T68ST29XCF)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -500,6 +522,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "2a092e29-973c-4ea2-9d86-e9991837bf21";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -513,15 +536,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: VMG Media JSC (X2QMKZN75D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FBPLUGIN/FBPLUGIN-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FBPLUGIN/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = vn.vmg.thethaoso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4fd136ea-27ff-4458-bbd6-7fd620410d23";
+				PROVISIONING_PROFILE = "2a092e29-973c-4ea2-9d86-e9991837bf21";
+				SWIFT_OBJC_BRIDGING_HEADER = "FBPLUGIN/FBPLUGIN_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -533,15 +561,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: VMG Media JSC (X2QMKZN75D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FBPLUGIN/FBPLUGIN-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FBPLUGIN/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = vn.vmg.thethaoso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4fd136ea-27ff-4458-bbd6-7fd620410d23";
+				PROVISIONING_PROFILE = "2a092e29-973c-4ea2-9d86-e9991837bf21";
+				SWIFT_OBJC_BRIDGING_HEADER = "FBPLUGIN/FBPLUGIN_Example-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -619,6 +651,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FC9BF5361C34D29D00B1DB53 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FC9BF5371C34D29D00B1DB53 /* Model.xcdatamodel */,
+			);
+			currentVersion = FC9BF5371C34D29D00B1DB53 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6003F582195388D10070C39A /* Project object */;
 }

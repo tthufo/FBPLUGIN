@@ -1,19 +1,15 @@
 //
-//  FBAppDelegate.h
-//  FBPLUGIN
+//  Storage.h
+//  Pods
 //
-//  Created by thanhhaitran on 12/15/2015.
-//  Copyright (c) 2015 thanhhaitran. All rights reserved.
+//  Created by thanhhaitran on 12/27/15.
 //
-
-@import UIKit;
+//
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface FBAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface Storage : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
@@ -22,5 +18,8 @@
 - (void)saveContext;
 
 - (NSURL *)applicationDocumentsDirectory;
+
++ (Storage*)shareInstance;
+
 
 @end

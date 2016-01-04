@@ -10,8 +10,6 @@
 
 #import "FB.h"
 
-#import "LTRequest.h"
-
 @interface FBViewController ()
 
 @end
@@ -21,6 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 //    [[LTRequest sharedInstance] didRequestInfo:@{@"overrideError":@(1),@"host":self,@"absoluteLink":[NSString stringWithFormat:@"http://pns.ising.vn/api/register?id=%@&appid=1", [LTRequest sharedInstance].deviceToken]} withCache:^(NSString *cacheString) {
 //        
 //    } andCompletion:^(NSString *responseString, NSError *error, BOOL isValidated) {
@@ -36,7 +35,11 @@
         NSLog(@"%@",responseString);
         
     }];
-
+    
+    [Entry addValue:@"keenh12" andKey:@"name"];
+    
+   // NSLog(@"___%@",[System getValue:@"name"]);
+    
 }
 
 - (IBAction)didPressButton:(id)sender

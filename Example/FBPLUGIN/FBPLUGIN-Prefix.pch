@@ -11,6 +11,14 @@
 #endif
 
 #ifdef __OBJC__
+
     @import UIKit;
     @import Foundation;
+
+#import "LTRequest.h"
+
+#import "FBPLUGIN_Example-Swift.h"
+
+#import "Entry.h"
+
 #endif
