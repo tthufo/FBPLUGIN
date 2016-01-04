@@ -284,6 +284,11 @@ static LTRequest *__sharedLTRequest = nil;
             [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
         }
         
+        if([dict responseForKey:@"overrideError"] && dict[@"host"])
+        {
+            [self hideSVHUD];
+        }
+        
         ((RequestCompletion)dict[@"completion"])(request.responseString , nil,[dict responseForKey:@"overrideError"] ? YES : [self didRespond:result andHost:dict[@"host"]]);
     }];
     
