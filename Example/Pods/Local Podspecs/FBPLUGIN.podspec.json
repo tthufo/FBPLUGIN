@@ -22,9 +22,8 @@
       "Pod/Assets/*"
     ]
   },
-  "resources": [
-    "Pod/Assets/*"
-  ],
+  "resources": "Pod/Assets/*.xcdatamodeld",
+  "frameworks": "CoreData",
   "dependencies": {
     "FBSDKCoreKit": [
       "~> 4.4"

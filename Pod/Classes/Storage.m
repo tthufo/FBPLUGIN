@@ -28,7 +28,6 @@ static Storage * __instance = nil;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (NSURL *)applicationDocumentsDirectory {
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "com.vmg.dgfsd" in the application's documents directory.
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
@@ -38,17 +37,17 @@ static Storage * __instance = nil;
         return _managedObjectModel;
     }
     
-    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"model" ofType:@"bundle"]];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         
     NSURL *modelURL = [bundle URLForResource:@"model" withExtension:@"momd"];
     
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    
+
     return _managedObjectModel;
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it.
+    
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }

@@ -8,8 +8,6 @@
 
 #import "FBAppDelegate.h"
 
-#import "FB.h"
-
 #import "FBViewController.h"
 
 @implementation FBAppDelegate
@@ -81,6 +79,9 @@
         return _managedObjectModel;
     }
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+    
+    NSLog(@"%@",modelURL);
+    
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }

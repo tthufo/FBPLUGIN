@@ -52,7 +52,8 @@
 + (id)getValue:(NSString*)key
 {
     System * s = [[self getFormat:@"key=%@" argument:[NSArray arrayWithObjects:key, nil]] lastObject];
-    return  s.value;
+    id result = [NSKeyedUnarchiver unarchiveObjectWithData:s.value];
+    return  result;
 }
 
 + (NSArray *)getFormat:(NSString *)format argument:(NSArray *)argument

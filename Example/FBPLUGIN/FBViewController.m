@@ -8,8 +8,6 @@
 
 #import "FBViewController.h"
 
-#import "FB.h"
-
 @interface FBViewController ()
 
 @end
@@ -36,10 +34,19 @@
         
     }];
     
-    [Entry addValue:@"keenh12" andKey:@"name"];
+    [System addValue:@"keenh12" andKey:@"name1"];
     
-   // NSLog(@"___%@",[System getValue:@"name"]);
+    [System addValue:@"keenh11" andKey:@"name2"];
+
+    [System addValue:@"keenh10" andKey:@"name3"];
     
+    [System addValue:@"49449" andKey:@"name33"];
+
+    
+    for(System * s in [System getFormat:@"key contains[cd] %@" argument:@[@"3"]])
+    {
+        NSLog(@"%@",[System getValue:s.key]);
+    }
 }
 
 - (IBAction)didPressButton:(id)sender
