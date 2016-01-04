@@ -9,7 +9,7 @@
 
 #import "Reachability.h"
 
-#import <ASIHTTPRequest/ASIFormDataRequest.h>
+#import "ASIFormDataRequest.h"
 
 #import "JSONKit.h"
 
@@ -43,9 +43,9 @@ static LTRequest *__sharedLTRequest = nil;
          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
     
-    #if TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
     deviceToken = @"fake-device-token";
-    #endif
+#endif
 }
 
 - (void)didReceiveToken:(NSData *)_deviceToken
@@ -135,11 +135,11 @@ static LTRequest *__sharedLTRequest = nil;
         }
         return YES;
     }
-
+    
     if([dict responseForKey:@"checkmark"] && host)
     {
         dict[@"status"] = @(0);
-
+        
         [self didAddCheckMark:dict andHost:host];
     }
     else
@@ -153,12 +153,13 @@ static LTRequest *__sharedLTRequest = nil;
 - (RequestCompletion)initRequest:(NSMutableDictionary*)dict
 {
     NSMutableDictionary * post = nil;
-
+    
     ASIFormDataRequest * request;
+    
+    NSString * url;
     
     if([dict responseForKey:@"method"])
     {
-        NSString * url;
         
         if([dict responseForKey:@"absoluteLink"])
         {
@@ -167,15 +168,15 @@ static LTRequest *__sharedLTRequest = nil;
         else
         {
             url = [NSString stringWithFormat:@"%@?%@",dict[@"CMD_CODE"],[self returnGetUrl:dict]];
-       
+            
             request = [self SERVICE:url];
         }
         
         [request setRequestMethod:dict[@"method"]];
         
-        if([self getValue:[post bv_jsonStringWithPrettyPrint:NO]])
+        if([self getValue: [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : url])
         {
-            ((RequestCache)dict[@"cache"])([self getValue:[post bv_jsonStringWithPrettyPrint:NO]]);
+            ((RequestCache)dict[@"cache"])([self getValue: [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : url]);
         }
         else
         {
@@ -215,9 +216,9 @@ static LTRequest *__sharedLTRequest = nil;
         
         [request setPostBody:(NSMutableData*)[[post bv_jsonStringWithPrettyPrint:NO] dataUsingEncoding:NSUTF8StringEncoding]];
         
-        if([self getValue:[post bv_jsonStringWithPrettyPrint:NO]])
+        if([self getValue: [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [post bv_jsonStringWithPrettyPrint:NO]])
         {
-            ((RequestCache)dict[@"cache"])([self getValue:[post bv_jsonStringWithPrettyPrint:NO]]);
+            ((RequestCache)dict[@"cache"])([self getValue:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [post bv_jsonStringWithPrettyPrint:NO]]);
         }
         else
         {
@@ -234,7 +235,7 @@ static LTRequest *__sharedLTRequest = nil;
             }
         }
     }
-
+    
     __block ASIFormDataRequest *_request = request;
     
     [_request setFailedBlock:^{
@@ -252,7 +253,7 @@ static LTRequest *__sharedLTRequest = nil;
         else
         {
             NSMutableDictionary * result = [NSMutableDictionary dictionaryWithDictionary:[request.responseString objectFromJSONString]];
-
+            
             if([dict responseForKey:@"checkmark"])
             {
                 [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
@@ -267,11 +268,17 @@ static LTRequest *__sharedLTRequest = nil;
         
         NSMutableDictionary * result = [NSMutableDictionary dictionaryWithDictionary:[request.responseString objectFromJSONString]];
         
-        if([result responseForKindOfClass:@"ERR_CODE" andTarget:@"0"] && [[request.responseString objectFromJSONString] responseForKey:@"RESULT"])
+        if([dict responseForKey:@"method"])
         {
-            [self addValue:request.responseString andKey:[post bv_jsonStringWithPrettyPrint:NO]];
+            [self addValue:request.responseString andKey:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : url];
         }
-        
+        else
+        {
+            if([result responseForKindOfClass:@"ERR_CODE" andTarget:@"0"] && [[request.responseString objectFromJSONString] responseForKey:@"RESULT"])
+            {
+                [self addValue:request.responseString andKey:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [post bv_jsonStringWithPrettyPrint:NO]];
+            }
+        }
         if([dict responseForKey:@"checkmark"])
         {
             [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
@@ -281,7 +288,7 @@ static LTRequest *__sharedLTRequest = nil;
     }];
     
     [request startAsynchronous];
-   
+    
     return nil;
 }
 
@@ -296,7 +303,7 @@ static LTRequest *__sharedLTRequest = nil;
         }
         getUrl = [NSString stringWithFormat:@"%@%@=%@&",getUrl,key,dict[key]];
     }
-
+    
     return [getUrl substringToIndex:getUrl.length-(getUrl.length>0)];
 }
 
