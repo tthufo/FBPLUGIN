@@ -79,4 +79,19 @@
     [db saveContext];
 }
 
++ (NSArray *)getAll
+{
+    Storage *db = [Storage shareInstance];
+    NSEntityDescription *ed = [NSEntityDescription entityForName:@"System" inManagedObjectContext:[db managedObjectContext]];
+    NSFetchRequest *fr = [[NSFetchRequest alloc] init];
+    [fr setEntity:ed];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
+    
+    [fr setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    NSArray *result = [[db managedObjectContext] executeFetchRequest:fr error:nil];
+    return result;
+}
+
 @end

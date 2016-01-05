@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray *)getFormat:(NSString *)format argument:(NSArray *)argument;
 
++ (NSArray*)getAll;
+
 @end
 
 NS_ASSUME_NONNULL_END

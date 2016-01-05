@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NSObject (Extension_Category) <CLLocationManagerDelegate>
+
 - (NSString *)deviceUUID;
 
 - (NSInteger)currentDateInt;
