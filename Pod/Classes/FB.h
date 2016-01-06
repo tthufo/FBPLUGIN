@@ -10,7 +10,7 @@
 
 typedef void (^FBCompletion)(NSString * responseString, id object, int errorCode, NSString *description, NSError * error);
 
-@interface FB : NSObject
+@interface FB : NSObject <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 + (FB*)shareInstance;
 
@@ -20,6 +20,9 @@ typedef void (^FBCompletion)(NSString * responseString, id object, int errorCode
 
 - (void)signoutFacebook;
 - (void)startLoginFacebookWithCompletion:(FBCompletion)completion;
+
+- (void)startShareWithInfo:(NSArray*)items andBase:(UIView*)baseView andRoot:(UIViewController*)base andCompletion:(FBCompletion)completion;
+- (void)startPickImageWithOption:(BOOL)isCamera andBase:(UIView*)baseView andRoot:(UIViewController*)base andCompletion:(FBCompletion)completion;
 
 @property (nonatomic, retain) NSString * facebookAppID;
 

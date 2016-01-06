@@ -65,6 +65,11 @@
     NSPredicate *p1 = [NSPredicate predicateWithFormat:format argumentArray:argument];
     [fr setPredicate:p1];
     NSArray *result = [[db managedObjectContext] executeFetchRequest:fr error:nil];
+//    NSMutableArray * arr = [NSMutableArray new];
+//    for(System * s in result)
+//    {
+//        [arr addObject:[NSKeyedUnarchiver unarchiveObjectWithData:s.value]];
+//    }
     return result;
 }
 
@@ -91,6 +96,11 @@
     [fr setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
     NSArray *result = [[db managedObjectContext] executeFetchRequest:fr error:nil];
+//    NSMutableArray * arr = [NSMutableArray new];
+//    for(System * s in result)
+//    {
+//        [arr addObject:[NSKeyedUnarchiver unarchiveObjectWithData:s.value]];
+//    }
     return result;
 }
 
