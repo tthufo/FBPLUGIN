@@ -41,12 +41,42 @@
     [System addValue:@"keenh10" andKey:@"name3"];
     
     [System addValue:@"49449" andKey:@"name33"];
-
     
     for(System * s in [System getFormat:@"key contains[cd] %@" argument:@[@"3"]])
     {
         NSLog(@"%@",[System getValue:s.key]);
     }
+    
+    NSLog(@"%@",[System getValue:((System*)[System getFormat:@"key contains[cd] %@" argument:@[@"3"]][0]).key]);
+}
+
+- (IBAction)didPressCamera:(id)sender
+{
+    [[FB shareInstance] startPickImageWithOption:YES andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+        
+        NSLog(@"%@",object);
+        
+    }];
+}
+
+- (IBAction)didPressGallery:(id)sender
+{
+    [[FB shareInstance] startPickImageWithOption:NO andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+        
+        NSLog(@"%@",object);
+        
+    }];
+}
+
+- (IBAction)didPressShare:(id)sender
+{
+    
+    [[FB shareInstance] startShareWithInfo:@[@"share this",@""] andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+        
+        NSLog(@"%i",errorCode);
+        
+    }];
+
 }
 
 - (IBAction)didPressButton:(id)sender
