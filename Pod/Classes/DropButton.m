@@ -12,6 +12,8 @@
 
 #import "UIImageView+WebCache.h"
 
+#import "AVHexColor.h"
+
 #define screenHeight [UIScreen mainScreen].bounds.size.height
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
@@ -123,9 +125,13 @@ static DropButton * shareButton = nil;
 {
     rect = _rect;
     
-    if(!cellHeight)
+    if(![_template responseForKey:@"cellheight"])
     {
         cellHeight = 40;
+    }
+    else
+    {
+        cellHeight = [_template[@"cellheight"] floatValue];
     }
 
     direction = _direction;
@@ -151,6 +157,11 @@ static DropButton * shareButton = nil;
         tableView.showsVerticalScrollIndicator = NO;
         tableView.delegate = self;
         tableView.dataSource = self;
+        
+        if([_template responseForKey:@"background"] && ((NSString*)_template[@"background"]).length != 0)
+        {
+            tableView.backgroundColor = [AVHexColor colorWithHexString:_template[@"background"]];
+        }
         
         float heightTemp = data.count < 5 ? data.count * cellHeight : *height;
         
@@ -252,7 +263,7 @@ static DropButton * shareButton = nil;
     
     if (cell == nil)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:_template[@"nib"] owner:self options:nil][1];
+        cell = [[NSBundle mainBundle] loadNibNamed:_template[@"nib"] owner:self options:nil][0];
     }
     
     if([_template responseForKey:@"items"])
@@ -262,11 +273,11 @@ static DropButton * shareButton = nil;
             ((UILabel*)[self withView:cell tag:[tag intValue]]).text = self.datalist[indexPath.row][_template[@"items"][tag]];
         }
     }
+    
     if([_template responseForKey:@"images"])
     {
         for(NSString * tag in ((NSDictionary*)_template[@"images"]).allKeys)
         {
-            
             if([self.datalist[indexPath.row][_template[@"images"][tag]] myContainsString:@"http"])
             {
                 [((UIImageView*)[self withView:cell tag:[tag intValue]]) sd_setImageWithURL:[NSURL URLWithString:self.datalist[indexPath.row][_template[@"images"][tag]]] placeholderImage:nil];
@@ -277,6 +288,12 @@ static DropButton * shareButton = nil;
             }
         }
     }
+    
+    if([_template responseForKey:@"cellbackground"] && ((NSArray*)_template[@"cellbackground"]).count > 1)
+    {
+        cell.backgroundColor = [AVHexColor colorWithHexString:((NSString*)_template[@"cellbackground"][indexPath.row % 2 == 0 ? 0 : 1]).length == 0 ? @"#FFFFFF" : _template[@"cellbackground"][indexPath.row % 2 == 0 ? 0 : 1]];
+    }
+    
     return cell;
 }
 

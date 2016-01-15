@@ -75,7 +75,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="111" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kn0-Bf-Vdd" customClass="DropButton">
-                    <rect key="frame" x="228" y="165" width="84" height="30"/>
+                    <rect key="frame" x="8" y="329" width="304" height="30"/>
                     <state key="normal" title="Drop"/>
                 </button>
             </subviews>

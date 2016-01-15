@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>cellbackground</key>
+	<array>
+		<string>#FF0000</string>
+		<string>#008000</string>
+	</array>
+	<key>background</key>
+	<string>#9900ff</string>
 	<key>images</key>
 	<dict>
 		<key>104</key>

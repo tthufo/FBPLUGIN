@@ -40,6 +40,8 @@
     
     drop.pList = @"format";
     
+//    drop.
+    
     [drop addTarget:self action:@selector(didPressButtonAt:) forControlEvents:UIControlEventTouchUpInside];
     
 //    [drop didDropDownWithCompletion:^(id object) {

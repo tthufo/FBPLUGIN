@@ -45,7 +45,7 @@
     
     if(!cell)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"Cells" owner:self options:nil][0];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"Cells" owner:self options:nil][1];
     }
   
     DropButton * drop = (DropButton*)[self withView:self.view tag:1];
