@@ -48,6 +48,12 @@
     ],
     "JSONKit-NoWarning": [
       "~> 1.2"
+    ],
+    "hpple": [
+      "~> 0.2"
+    ],
+    "SDWebImage": [
+      "~> 3.7"
     ]
   }
 }

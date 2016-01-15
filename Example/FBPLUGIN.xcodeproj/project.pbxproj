@@ -23,9 +23,15 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9891F0E095806D9E7AA0A596 /* Pods_FBPLUGIN_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC94F8145220C3E40F4D854 /* Pods_FBPLUGIN_Example.framework */; };
 		E76180495E1261C42F9DDB88 /* Pods_FBPLUGIN_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97ED8B6319B07181BE8A0086 /* Pods_FBPLUGIN_Tests.framework */; };
+		FC123D881C45E6F600CD8AB3 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC123D861C45E6F600CD8AB3 /* SecondViewController.m */; };
+		FC123D891C45E6F600CD8AB3 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC123D871C45E6F600CD8AB3 /* SecondViewController.xib */; };
+		FC123D8B1C45E8B200CD8AB3 /* Cells.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC123D8A1C45E8B200CD8AB3 /* Cells.xib */; };
+		FC123D931C47811E00CD8AB3 /* format.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC123D921C47811E00CD8AB3 /* format.plist */; };
+		FC123D951C48B0B600CD8AB3 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = FC123D941C48B0B600CD8AB3 /* test.png */; };
 		FC5E16D11C293C9800A5C5A0 /* Whathehell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E16CF1C293C9800A5C5A0 /* Whathehell.swift */; };
 		FC5E16D21C293C9800A5C5A0 /* Whathehell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5E16D01C293C9800A5C5A0 /* Whathehell.xib */; };
 		FC5E16D51C29411600A5C5A0 /* FBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5E16D41C29411600A5C5A0 /* FBViewController.xib */; };
+		FC69DE451C3FC01900FF6F2B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = FC69DE441C3FC01900FF6F2B /* index.html */; };
 		FC9BF5381C34D29D00B1DB53 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC9BF5361C34D29D00B1DB53 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -69,10 +75,17 @@
 		97ED8B6319B07181BE8A0086 /* Pods_FBPLUGIN_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBPLUGIN_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADC09FE5C126FDBC9E11940 /* Pods-FBPLUGIN_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBPLUGIN_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBPLUGIN_Example/Pods-FBPLUGIN_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D0D04C41BCC6B6FA8D6D5835 /* Pods-FBPLUGIN_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBPLUGIN_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBPLUGIN_Tests/Pods-FBPLUGIN_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FC123D851C45E6F600CD8AB3 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		FC123D861C45E6F600CD8AB3 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		FC123D871C45E6F600CD8AB3 /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
+		FC123D8A1C45E8B200CD8AB3 /* Cells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cells.xib; sourceTree = "<group>"; };
+		FC123D921C47811E00CD8AB3 /* format.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = format.plist; sourceTree = "<group>"; };
+		FC123D941C48B0B600CD8AB3 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		FC5E16CF1C293C9800A5C5A0 /* Whathehell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Whathehell.swift; sourceTree = "<group>"; };
 		FC5E16D01C293C9800A5C5A0 /* Whathehell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Whathehell.xib; sourceTree = "<group>"; };
 		FC5E16D31C293F3600A5C5A0 /* FBPLUGIN_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBPLUGIN_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		FC5E16D41C29411600A5C5A0 /* FBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBViewController.xib; sourceTree = "<group>"; };
+		FC69DE441C3FC01900FF6F2B /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		FC9BF5371C34D29D00B1DB53 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,18 +163,25 @@
 		6003F593195388D20070C39A /* Example for FBPLUGIN */ = {
 			isa = PBXGroup;
 			children = (
+				FC123D941C48B0B600CD8AB3 /* test.png */,
+				FC69DE441C3FC01900FF6F2B /* index.html */,
 				6003F59C195388D20070C39A /* FBAppDelegate.h */,
 				6003F59D195388D20070C39A /* FBAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* FBViewController.h */,
 				6003F5A6195388D20070C39A /* FBViewController.m */,
 				FC5E16D41C29411600A5C5A0 /* FBViewController.xib */,
+				FC123D851C45E6F600CD8AB3 /* SecondViewController.h */,
+				FC123D861C45E6F600CD8AB3 /* SecondViewController.m */,
+				FC123D871C45E6F600CD8AB3 /* SecondViewController.xib */,
+				FC123D8A1C45E8B200CD8AB3 /* Cells.xib */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				FC5E16CF1C293C9800A5C5A0 /* Whathehell.swift */,
 				FC5E16D01C293C9800A5C5A0 /* Whathehell.xib */,
 				FC5E16D31C293F3600A5C5A0 /* FBPLUGIN_Example-Bridging-Header.h */,
 				FC9BF5361C34D29D00B1DB53 /* Model.xcdatamodeld */,
+				FC123D921C47811E00CD8AB3 /* format.plist */,
 			);
 			name = "Example for FBPLUGIN";
 			path = FBPLUGIN;
@@ -292,10 +312,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				FC123D951C48B0B600CD8AB3 /* test.png in Resources */,
+				FC123D891C45E6F600CD8AB3 /* SecondViewController.xib in Resources */,
 				FC5E16D21C293C9800A5C5A0 /* Whathehell.xib in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				FC69DE451C3FC01900FF6F2B /* index.html in Resources */,
+				FC123D8B1C45E8B200CD8AB3 /* Cells.xib in Resources */,
 				FC5E16D51C29411600A5C5A0 /* FBViewController.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				FC123D931C47811E00CD8AB3 /* format.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC123D881C45E6F600CD8AB3 /* SecondViewController.m in Sources */,
 				6003F59E195388D20070C39A /* FBAppDelegate.m in Sources */,
 				FC5E16D11C293C9800A5C5A0 /* Whathehell.swift in Sources */,
 				FC9BF5381C34D29D00B1DB53 /* Model.xcdatamodeld in Sources */,

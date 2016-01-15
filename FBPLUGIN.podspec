@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
-  s.version          = "0.1.7"
+  s.version          = "0.1.8"
   s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.
@@ -52,5 +52,6 @@ s.dependency 'SVProgressHUD'
 s.dependency 'Toast', '~> 2.4'
 s.dependency 'ASIHTTPRequest', '~> 1.8'
 s.dependency 'JSONKit-NoWarning', '~> 1.2'
+s.dependency 'SDWebImage', '~> 3.7'
 
 end

@@ -93,8 +93,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
   install_framework "Pods-FBPLUGIN_Example/JSONKit_NoWarning.framework"
   install_framework "Pods-FBPLUGIN_Example/Reachability.framework"
+  install_framework "Pods-FBPLUGIN_Example/SDWebImage.framework"
   install_framework "Pods-FBPLUGIN_Example/SVProgressHUD.framework"
   install_framework "Pods-FBPLUGIN_Example/Toast.framework"
+  install_framework "Pods-FBPLUGIN_Example/hpple.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FBPLUGIN_Example/ASIHTTPRequest.framework"
@@ -106,6 +108,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
   install_framework "Pods-FBPLUGIN_Example/JSONKit_NoWarning.framework"
   install_framework "Pods-FBPLUGIN_Example/Reachability.framework"
+  install_framework "Pods-FBPLUGIN_Example/SDWebImage.framework"
   install_framework "Pods-FBPLUGIN_Example/SVProgressHUD.framework"
   install_framework "Pods-FBPLUGIN_Example/Toast.framework"
+  install_framework "Pods-FBPLUGIN_Example/hpple.framework"
 fi
