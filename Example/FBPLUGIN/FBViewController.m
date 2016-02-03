@@ -8,8 +8,6 @@
 
 #import "FBViewController.h"
 
-#import "TFHpple.h"
-
 #import "JSONKit.h"
 
 #import "SecondViewController.h"
@@ -18,7 +16,6 @@
 
 @interface FBViewController ()
 {
-    
     IBOutlet UIWebView * webView;
 }
 @end
@@ -29,6 +26,9 @@
 {
     [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andCompletion:^(id object) {
         NSLog(@"%@",object);
+        
+//        1027585495403-nbfgkhsdh9mjh1jfdsviiiu90shp7t7d.apps.googleusercontent.com
+        
     }];
 }
 
@@ -48,8 +48,7 @@
 //        
 //    }];
     
-    //[button did
-    
+
 //    [drop addTarget:drop action:@selector(didDropDownWithCompletion:) forControlEvents:UIControlEventTouchUpInside];
     
     

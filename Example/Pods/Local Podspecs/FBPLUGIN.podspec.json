@@ -1,6 +1,6 @@
 {
   "name": "FBPLUGIN",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "summary": "Plugin for Facebook intergration",
   "description": "Useful plugin for Facebook login and request information with fews line of code",
   "homepage": "https://github.com/tthufo",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/tthufo/FBPLUGIN.git",
-    "tag": "0.1.7"
+    "tag": "0.1.9"
   },
   "platforms": {
     "ios": "7.0"
@@ -48,9 +48,6 @@
     ],
     "JSONKit-NoWarning": [
       "~> 1.2"
-    ],
-    "hpple": [
-      "~> 0.2"
     ],
     "SDWebImage": [
       "~> 3.7"
