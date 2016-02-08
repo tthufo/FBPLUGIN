@@ -13,6 +13,8 @@
 
 static FB * instance = nil;
 
+@import GoogleMobileAds;
+
 @implementation FB 
 {
     FBCompletion completionBlock;

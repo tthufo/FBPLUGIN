@@ -1,0 +1,1 @@
+../../../../../../Pod/Assets/GoogleMobileAds.framework/Versions/A/Headers/GADBannerViewDelegate.h

@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-                    Useful plugin for Facebook login and request information with fews line of code
+                           Useful plugin for Facebook login and request information with fews line of code
                        DESC
 
   s.homepage         = "https://github.com/tthufo"
@@ -35,9 +35,11 @@ Pod::Spec.new do |s|
     'FBPLUGIN' => ['Pod/Assets/*']
   }
 
-  s.resources = 'Pod/Assets/*.xcdatamodeld'
+  s.resources = 'Pod/Assets/*.*'
 
   s.frameworks = 'CoreData'
+
+  s.vendored_frameworks = 'Pod/Assets/*.framework'
 
   #s.public_header_files = 'Pod/Classes/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
@@ -53,5 +55,6 @@ s.dependency 'Toast', '~> 2.4'
 s.dependency 'ASIHTTPRequest', '~> 1.8'
 s.dependency 'JSONKit-NoWarning', '~> 1.2'
 s.dependency 'SDWebImage', '~> 3.7'
+s.dependency 'Pinterest-iOS', '~> 2.3'
 
 end

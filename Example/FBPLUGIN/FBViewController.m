@@ -14,10 +14,15 @@
 
 #import "DropButton.h"
 
+#define bannerAPI @"ca-app-pub-9549102114287819/3623332283"
+
+#define fullBannerAPI @"ca-app-pub-9549102114287819/8164609882"
+
 @interface FBViewController ()
 {
     IBOutlet UIWebView * webView;
 }
+
 @end
 
 @implementation FBViewController
@@ -39,6 +44,10 @@
     DropButton * drop = (DropButton*)[self withView:self.view tag:111];
     
     drop.pList = @"format";
+    
+    [System addValue:@"d" andKey:@"dd"];
+    
+    NSLog(@"%@",[System getValue:@"dd"]);
     
 //    drop.
     
@@ -106,35 +115,39 @@
 //    
 //    NSLog(@"%@",[System getValue:((System*)[System getFormat:@"key contains[cd] %@" argument:@[@"3"]][0]).key]);
     
-//    NSData  * data      = [NSData dataWithContentsOfFile:@"index.html"];
-    
-//    NSLog(@"%@",data);
-    
-//    [webView loadData:data MIMEType: @"text/html" textEncodingName: @"UTF-8" baseURL:nil];
-
-    //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"] isDirectory:NO]]];
-
-    
-//    TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
-//    
-//    NSArray * elements  = [doc searchWithXPathQuery:@"//a[@class='sponsor']"];
-//    
-//    TFHppleElement * element = [elements objectAtIndex:0];
-//    
-//    NSLog(@"%@",[element tagName]);
-    
-//    [e text];                       // The text inside the HTML element (the content of the first text node)
-    
-//    [e tagName];                    // "a"
-    
-//    [e attributes];                 // NSDictionary of href, class, id, etc.
-//    [e objectForKey:@"href"];       // Easy access to single attribute
-//    [e firstChildWithTagName:@"b"]; // The first "b" child node
+//    [[Ads sharedInstance] didShowBannerAdsWithInfor:@{@"host":self,@"X":@(320),@"Y":@(300),@"adsId":bannerAPI,@"device":@""} andCompletion:^(BannerEvent event, NSError *error, id banner) {
+//                
+//        switch (event)
+//        {
+//            case AdsDone:
+//                
+//                break;
+//            case AdsFailed:
+//                
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
 }
 
 - (void)didPressSecond
 {
-    [self.navigationController pushViewController:[SecondViewController new] animated:YES];
+    //[self.navigationController pushViewController:[SecondViewController new] animated:YES];
+//    [[Ads sharedInstance] didShowFullAdsWithInfor:@{@"host":self,@"adsId":fullBannerAPI,@"device":@""} andCompletion:^(BannerEvent event, NSError *error, id banner) {
+//        
+//        switch (event)
+//        {
+//            case AdsDone:
+//                
+//                break;
+//            case AdsFailed:
+//                
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
 }
 
 - (IBAction)didPressCamera:(id)sender

@@ -131,7 +131,6 @@
 			children = (
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for FBPLUGIN */,
-				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				11FCD6401BC3731F5F214E2D /* Pods */,
@@ -181,6 +180,7 @@
 				FC5E16D01C293C9800A5C5A0 /* Whathehell.xib */,
 				FC5E16D31C293F3600A5C5A0 /* FBPLUGIN_Example-Bridging-Header.h */,
 				FC9BF5361C34D29D00B1DB53 /* Model.xcdatamodeld */,
+				6003F5B5195388D20070C39A /* Tests */,
 				FC123D921C47811E00CD8AB3 /* format.plist */,
 			);
 			name = "Example for FBPLUGIN";
@@ -204,7 +204,8 @@
 				6003F5BB195388D20070C39A /* Tests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
-			path = Tests;
+			name = Tests;
+			path = ../Tests;
 			sourceTree = "<group>";
 		};
 		6003F5B6195388D20070C39A /* Supporting Files */ = {
@@ -498,6 +499,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuong Mai (T68ST29XCF)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -539,6 +541,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuong Mai (T68ST29XCF)";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -565,12 +568,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FBPLUGIN/FBPLUGIN-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FBPLUGIN/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				MODULE_NAME = ExampleApp;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = vn.vmg.thethaoso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2a092e29-973c-4ea2-9d86-e9991837bf21";
@@ -590,12 +596,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FBPLUGIN/FBPLUGIN-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FBPLUGIN/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				MODULE_NAME = ExampleApp;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = vn.vmg.thethaoso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2a092e29-973c-4ea2-9d86-e9991837bf21";
