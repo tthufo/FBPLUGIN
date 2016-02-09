@@ -24,8 +24,8 @@ typedef void (^AdsCompletion)(BannerEvent event, NSError * error, id bannerAd);
 
 + (Ads *)sharedInstance;
 
-//- (void)didShowBannerAdsWithInfor:(NSDictionary*)infor andCompletion:(AdsCompletion)completion;
-//
-//- (void)didShowFullAdsWithInfor:(NSDictionary*)infor andCompletion:(AdsCompletion)completion;
+- (void)didShowBannerAdsWithInfor:(NSDictionary*)infor andCompletion:(AdsCompletion)completion;
+
+- (void)didShowFullAdsWithInfor:(NSDictionary*)infor andCompletion:(AdsCompletion)completion;
 
 @end
