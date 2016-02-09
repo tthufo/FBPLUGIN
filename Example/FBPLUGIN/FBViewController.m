@@ -14,7 +14,10 @@
 
 #import "DropButton.h"
 
-#define bannerAPI @"ca-app-pub-9549102114287819/3623332283"
+//#define bannerAPI @"ca-app-pub-9549102114287819/3623332283"
+
+#define bannerAPI @"ca-app-pub-9549102114287819/6687876689"
+
 
 #define fullBannerAPI @"ca-app-pub-9549102114287819/8164609882"
 
@@ -124,6 +127,8 @@
 //                break;
 //            case AdsFailed:
 //                
+//                NSLog(@"%@",error);
+//                
 //                break;
 //            default:
 //                break;
@@ -148,6 +153,13 @@
 //                break;
 //        }
 //    }];
+    
+    [[FB shareInstance] didShareFacebook:@{@"host":self,@"content":@"https://www.google.com"} andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+        
+        NSLog(@"%@",object);
+        
+    }];
+    
 }
 
 - (IBAction)didPressCamera:(id)sender

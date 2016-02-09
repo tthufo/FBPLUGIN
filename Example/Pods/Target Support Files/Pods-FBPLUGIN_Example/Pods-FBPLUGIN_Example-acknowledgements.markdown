@@ -381,10 +381,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-## Pinterest-iOS
-
-EULA for Pinterest is located at http://developers.pinterest.com/terms/
-
 ## Reachability
 
 Copyright (c) 2011, Tony Million.

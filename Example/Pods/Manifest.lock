@@ -19,14 +19,13 @@ PODS:
   - Bolts/AppLinks (1.6.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.6.0)
-  - FBPLUGIN (0.2.0):
+  - FBPLUGIN (0.2.1):
     - ASIHTTPRequest (~> 1.8)
     - AVHexColor (~> 2.0)
     - FBSDKCoreKit (~> 4.4)
     - FBSDKLoginKit (~> 4.4)
     - FBSDKShareKit (~> 4.4)
     - JSONKit-NoWarning (~> 1.2)
-    - Pinterest-iOS (~> 2.3)
     - SDWebImage (~> 3.7)
     - SVProgressHUD
     - Toast (~> 2.4)
@@ -37,7 +36,6 @@ PODS:
   - FBSDKShareKit (4.9.1):
     - FBSDKCoreKit
   - JSONKit-NoWarning (1.2)
-  - Pinterest-iOS (2.3)
   - Reachability (3.2)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
@@ -56,12 +54,11 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   AVHexColor: 33e5e102f3b6f3acd002779183ee226e21870c28
   Bolts: f52a250053bb517ca874523c3913776359ab3def
-  FBPLUGIN: ca1271c428cbc75cf2c87bb701ba57d2e9c44e70
+  FBPLUGIN: a5491a27008c018ebed47eec28706d975dd9e880
   FBSDKCoreKit: aee20b6d9855f15b618d4fddd1a5ad45f5a4a59d
   FBSDKLoginKit: ec22dc49bd372b064e93d6773df4ffefb3a552a2
   FBSDKShareKit: b8c8ef0ed173f9fc1b3c8df384a0202ce53008d4
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
-  Pinterest-iOS: e79d1536a7a275e3340cdeb678e85b350f798562
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
