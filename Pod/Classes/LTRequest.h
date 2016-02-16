@@ -21,6 +21,7 @@ typedef void (^RequestCache)(NSString * cacheString);
 
 @property (nonatomic, retain) NSString * address;
 
+@property (nonatomic, readwrite) BOOL lang;
 
 + (LTRequest*)sharedInstance;
 

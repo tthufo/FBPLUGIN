@@ -229,7 +229,7 @@ static DropButton * shareButton = nil;
         
         [self addSubview:tableView];
 
-        cover = [UIButton buttonWithType:UIButtonTypeSystem];
+        cover = [UIButton buttonWithType:UIButtonTypeCustom];
         
         cover.backgroundColor = [UIColor blackColor];
         
