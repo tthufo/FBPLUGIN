@@ -18,7 +18,6 @@
 
 #define bannerAPI @"ca-app-pub-9549102114287819/6687876689"
 
-
 #define fullBannerAPI @"ca-app-pub-9549102114287819/8164609882"
 
 @interface FBViewController ()
@@ -32,12 +31,12 @@
 
 - (void)didPressButtonAt:(DropButton*)sender
 {
-    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andCompletion:^(id object) {
-        NSLog(@"%@",object);
-        
-//        1027585495403-nbfgkhsdh9mjh1jfdsviiiu90shp7t7d.apps.googleusercontent.com
-        
-    }];
+//    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andCompletion:^(id object) {
+//        NSLog(@"%@",object);
+//        
+////        1027585495403-nbfgkhsdh9mjh1jfdsviiiu90shp7t7d.apps.googleusercontent.com
+//        
+//    }];
 }
 
 - (void)viewDidLoad
@@ -48,9 +47,9 @@
     
     drop.pList = @"format";
     
-    [System addValue:@"d" andKey:@"dd"];
-    
-    NSLog(@"%@",[System getValue:@"dd"]);
+//    [System addValue:@"d" andKey:@"dd"];
+//    
+//    NSLog(@"%@",[System getValue:@"dd"]);
     
 //    drop.
     
@@ -134,6 +133,22 @@
 //                break;
 //        }
 //    }];
+    
+    UIBarButtonItem * menuB = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStylePlain target:self action:@selector(didPressMenu)];
+    self.navigationItem.leftBarButtonItem = menuB;
+}
+
+- (void)didPressMenu
+{
+    DropButton * sender = [DropButton shareInstance];
+    
+    sender.pList = @"format";
+    
+    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andInfo:@{@"rect":[NSValue valueWithCGRect:CGRectMake(0,-44,100,100)]} andCompletion:^(id object) {
+        
+        NSLog(@"%@",object);
+
+    }];
 }
 
 - (void)didPressSecond

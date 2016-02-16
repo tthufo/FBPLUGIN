@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
-  s.version          = "0.2.3"
+  s.version          = "0.2.4"
   s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/tthufo/FBPLUGIN.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/tthufo'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '6.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes'
@@ -39,7 +39,8 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'CoreData'
 
-  s.vendored_frameworks = 'Pod/Assets/*.framework'
+#s.vendored_frameworks = 'Pod/Private/*.framework'
+#s.preserve_paths = 'Pod/Private/*.framework'
 
   #s.public_header_files = 'Pod/Classes/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

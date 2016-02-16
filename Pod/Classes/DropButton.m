@@ -45,6 +45,41 @@ static DropButton * shareButton = nil;
     return shareButton;
 }
 
+- (void)didDropDownWithData:(NSArray*)dataList andInfo:(NSDictionary*)dict andCompletion:(DropButtonCompletion)completion
+{
+    completionBlock = completion;
+    
+    if(dropDown == nil)
+    {
+        template = nil;
+        
+        template = [[NSDictionary new] dictionaryWithPlist:self.pList];
+        
+        if(!template)
+        {
+            return;
+        }
+        
+        CGFloat f = [template[@"height"] floatValue];
+        
+        CGRect windowRect = [dict[@"rect"] CGRectValue];
+        
+        dropDown = [NIDropDown new];
+        
+        dropDown._template = template;
+        
+        dropDown.delegate = self;
+        
+        [dropDown showDropDownWithRect:windowRect andHeight:&f andData:dataList andDirection:template[@"direction"]];
+    }
+    else
+    {
+        [dropDown hideDropDown];
+        
+        dropDown = nil;
+    }
+}
+
 - (void)didDropDownWithData:(NSArray*)dataList andCompletion:(DropButtonCompletion)completion
 {
     completionBlock = completion;

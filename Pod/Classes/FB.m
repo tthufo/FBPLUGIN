@@ -14,8 +14,6 @@
 
 static FB * instance = nil;
 
-@import GoogleMobileAds;
-
 @interface FB ()<FBSDKSharingDelegate>
 {
     

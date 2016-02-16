@@ -24,6 +24,6 @@
 
 #import "FB.h"
 
-#import "Ads.h"
+//#import "Ads.h"
 
 //#endif /* FBPlugInHeader_h */

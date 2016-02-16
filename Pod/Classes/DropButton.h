@@ -18,6 +18,8 @@ typedef void (^DropButtonCompletion)(id object);
 
 - (void)didDropDownWithData:(NSArray*)dataList andCompletion:(DropButtonCompletion)completion;
 
+- (void)didDropDownWithData:(NSArray*)dataList andInfo:(NSDictionary*)dict andCompletion:(DropButtonCompletion)completion;
+
 @property (nonatomic, retain) NSString * pList;
 
 @end
