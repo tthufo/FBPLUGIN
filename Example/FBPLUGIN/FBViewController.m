@@ -144,7 +144,7 @@
     
     sender.pList = @"format";
     
-    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andInfo:@{@"rect":[NSValue valueWithCGRect:CGRectMake(0,-44,100,100)]} andCompletion:^(id object) {
+    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andInfo:@{@"rect":[NSValue valueWithCGRect:CGRectMake(0,-40,100,100)]} andCompletion:^(id object) {
         
         NSLog(@"%@",object);
 
