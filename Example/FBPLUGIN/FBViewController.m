@@ -31,12 +31,9 @@
 
 - (void)didPressButtonAt:(DropButton*)sender
 {
-//    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andCompletion:^(id object) {
-//        NSLog(@"%@",object);
-//        
-////        1027585495403-nbfgkhsdh9mjh1jfdsviiiu90shp7t7d.apps.googleusercontent.com
-//        
-//    }];
+    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andCompletion:^(id object) {
+        NSLog(@"%@",object);
+    }];
 }
 
 - (void)viewDidLoad
@@ -45,13 +42,11 @@
     
     DropButton * drop = (DropButton*)[self withView:self.view tag:111];
     
-    drop.pList = @"format";
+//    drop.pList = @"format";
     
 //    [System addValue:@"d" andKey:@"dd"];
 //    
 //    NSLog(@"%@",[System getValue:@"dd"]);
-    
-//    drop.
     
     [drop addTarget:self action:@selector(didPressButtonAt:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -59,9 +54,7 @@
 //        
 //    }];
     
-
 //    [drop addTarget:drop action:@selector(didDropDownWithCompletion:) forControlEvents:UIControlEventTouchUpInside];
-    
     
 //    [[LTRequest sharedInstance] didRequestInfo:@{@"overrideError":@(1),@"host":self,@"absoluteLink":[NSString stringWithFormat:@"http://pns.ising.vn/api/register?id=%@&appid=1", [LTRequest sharedInstance].deviceToken]} withCache:^(NSString *cacheString) {
 //        

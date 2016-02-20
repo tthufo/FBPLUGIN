@@ -69,5 +69,7 @@
 	</array>
 	<key>host</key>
 	<string>http://apps.thethaoso.vn//ProcessRequest</string>
+	<key>lang</key>
+	<string></string>
 </dict>
 </plist>
