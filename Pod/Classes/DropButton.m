@@ -335,7 +335,7 @@ static DropButton * shareButton = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self hideDropDown];
-    selectedDetails = @{@"data":self.datalist[indexPath.row]};
+    selectedDetails = @{@"data":self.datalist[indexPath.row],@"index":@(indexPath.row)};
     [self myDelegate];
 }
 
@@ -345,5 +345,20 @@ static DropButton * shareButton = nil;
     [cover removeFromSuperview];
 }
 
+
+@end
+
+
+@implementation DropButton (pList)
+
+- (void)setPListName:(NSString *)pListName
+{
+    self.pList = pListName;
+}
+
+- (NSString*)pListName
+{
+    return self.pList;
+}
 
 @end

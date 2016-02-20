@@ -12,6 +12,8 @@
 
 @interface NSObject (Extension_Category) <CLLocationManagerDelegate>
 
+- (NSDictionary*)infoPlist;
+
 - (NSString *)deviceUUID;
 
 - (NSInteger)currentDateInt;
@@ -195,5 +197,17 @@
 @interface CALayer(XibConfiguration)
 
 @property(nonatomic, assign) UIColor* borderUIColor;
+
+@end
+
+@interface NSString (RemoveEmoji)
+
+- (NSString*)encodeUrl;
+
+- (BOOL)isIncludingEmoji;
+
+- (instancetype)stringByRemovingEmoji;
+
+- (instancetype)removedEmojiString __attribute__((deprecated));
 
 @end
