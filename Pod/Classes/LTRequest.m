@@ -105,31 +105,22 @@ static LTRequest *__sharedLTRequest = nil;
     
     NSURL * requestUrl = [NSURL URLWithString:dict[@"absoluteLink"]];
 
-    dispatch_queue_t imageQueue = dispatch_queue_create([[self uuidString] UTF8String],NULL);
+    NSError* error = nil;
 
-    dispatch_async(imageQueue, ^{
+    NSData* htmlData = [NSData dataWithContentsOfURL:requestUrl options:NSDataReadingUncached error:&error];
 
-        NSError* error = nil;
+    if(error)
+    {
+        completion(nil,error,NO);
+    }
+    else
+    {
+        completion([NSString stringWithUTF8String:[htmlData bytes]],nil,YES);
+        
+        [self addValue:[NSString stringWithUTF8String:[htmlData bytes]] andKey:dict[@"absoluteLink"]];
+    }
 
-        NSData* htmlData = [NSData dataWithContentsOfURL:requestUrl options:NSDataReadingUncached error:&error];
-
-        if(error)
-        {
-            completion(nil,error,NO);
-        }
-        else
-        {
-            completion([NSString stringWithUTF8String:[htmlData bytes]],nil,YES);
-            
-            [self addValue:[NSString stringWithUTF8String:[htmlData bytes]] andKey:dict[@"absoluteLink"]];
-        }
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-
-            [self hideSVHUD];
- 
-        });
-    });
+    [self hideSVHUD];
 }
 
 - (ASIFormDataRequest*)REQUEST
