@@ -82,6 +82,56 @@ static LTRequest *__sharedLTRequest = nil;
     self.lang = [dictionary responseForKey:@"lang"];
 }
 
+- (void)didInitWithUrl:(NSDictionary*)dict withCache:(RequestCache)cache andCompletion:(RequestCompletion)completion
+{
+    if([self getValue:dict[@"absoluteLink"]])
+    {
+        cache([self getValue:dict[@"absoluteLink"]]);
+    }
+    else
+    {
+        if([dict responseForKey:@"host"])
+        {
+            [(UIViewController*)dict[@"host"] showSVHUD: self.lang ? @"Loading" : @"Đang tải" andOption:0];
+        }
+    }
+    if([dict responseForKey:@"overrideLoading"])
+    {
+        if([dict responseForKey:@"host"])
+        {
+            [(UIViewController*)dict[@"host"] showSVHUD: self.lang ? @"Loading" : @"Đang tải" andOption:0];
+        }
+    }
+    
+    NSURL * requestUrl = [NSURL URLWithString:dict[@"absoluteLink"]];
+
+    dispatch_queue_t imageQueue = dispatch_queue_create([[self uuidString] UTF8String],NULL);
+
+    dispatch_async(imageQueue, ^{
+
+        NSError* error = nil;
+
+        NSData* htmlData = [NSData dataWithContentsOfURL:requestUrl options:NSDataReadingUncached error:&error];
+
+        if(error)
+        {
+            completion(nil,error,NO);
+        }
+        else
+        {
+            completion([NSString stringWithUTF8String:[htmlData bytes]],nil,YES);
+            
+            [self addValue:[NSString stringWithUTF8String:[htmlData bytes]] andKey:dict[@"absoluteLink"]];
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            [self hideSVHUD];
+ 
+        });
+    });
+}
+
 - (ASIFormDataRequest*)REQUEST
 {
     return [ASIFormDataRequest requestWithURL:[NSURL URLWithString:self.address]];

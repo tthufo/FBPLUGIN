@@ -31,6 +31,8 @@ typedef void (^RequestCache)(NSString * cacheString);
 
 - (ASIFormDataRequest*)didRequestInfo:(NSDictionary*)dict withCache:(RequestCache)cache andCompletion:(RequestCompletion)completion;
 
+- (void)didInitWithUrl:(NSDictionary*)dict withCache:(RequestCache)cache andCompletion:(RequestCompletion)completion;
+
 - (void)registerPush;
 
 - (void)didReceiveToken:(NSData *)deviceToken;
@@ -38,5 +40,7 @@ typedef void (^RequestCache)(NSString * cacheString);
 - (void)didFailToRegisterForRemoteNotification:(NSError *)error;
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo;
+
+- (BOOL)isConnectionAvailable;
 
 @end

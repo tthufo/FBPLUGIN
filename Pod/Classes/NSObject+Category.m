@@ -14,6 +14,8 @@
 
 #import "UIView+Toast.h"
 
+#import "Reachability.h"
+
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -29,6 +31,29 @@
 @implementation NSObject (Extension_Category)
 
 CLLocationManager * locationManager;
+
+- (BOOL)isConnectionAvailable
+{
+    SCNetworkReachabilityFlags flags;
+    SCNetworkReachabilityRef add;
+    add = SCNetworkReachabilityCreateWithName(NULL, "www.apple.com" );
+    Boolean success = SCNetworkReachabilityGetFlags(add, &flags);
+    CFRelease(add);
+    
+    bool canReach = success
+    && !(flags & kSCNetworkReachabilityFlagsConnectionRequired)
+    && (flags & kSCNetworkReachabilityFlagsReachable);
+    
+    return canReach;
+}
+
+- (NSString *)uuidString
+{
+    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+    NSString *uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
+    CFRelease(uuid);
+    return uuidString;
+}
 
 - (NSDictionary*)infoPlist
 {

@@ -12,6 +12,10 @@
 
 @interface NSObject (Extension_Category) <CLLocationManagerDelegate>
 
+- (BOOL)isConnectionAvailable;
+
+- (NSString *)uuidString;
+
 - (NSDictionary*)infoPlist;
 
 - (NSString *)deviceUUID;

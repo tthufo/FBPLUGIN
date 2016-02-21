@@ -72,22 +72,22 @@
 //        
 //    }];
     
-    [[LTRequest sharedInstance] didRequestInfo:@{@"CMD_CODE":@"getnewsdetail",@"id":@"335820",@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
-        
-    } andCompletion:^(NSString *responseString, NSError *error, BOOL isValidated) {
-        
-//        NSString * head = @"<style type=\"text/css\">body { background-color: transparent; text-align: justify!important;color: #111111;} img { display: block; margin: 0 auto; height: auto;max-width: 100%;}</style>";
+//    [[LTRequest sharedInstance] didRequestInfo:@{@"CMD_CODE":@"getnewsdetail",@"id":@"335820",@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
 //        
-//        NSString *htmlCode = @"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">%@</head><body>%@</body></html>";
+//    } andCompletion:^(NSString *responseString, NSError *error, BOOL isValidated) {
 //        
-//        NSString * final = [NSString stringWithFormat:htmlCode,head,[[responseString objectFromJSONString][@"RESULT"][@"content"] stringByReplacingOccurrencesOfString:@"style=\"width" withString:@""]];
-        
-//        NSLog(@"%@", final);
-//
+////        NSString * head = @"<style type=\"text/css\">body { background-color: transparent; text-align: justify!important;color: #111111;} img { display: block; margin: 0 auto; height: auto;max-width: 100%;}</style>";
+////        
+////        NSString *htmlCode = @"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">%@</head><body>%@</body></html>";
+////        
+////        NSString * final = [NSString stringWithFormat:htmlCode,head,[[responseString objectFromJSONString][@"RESULT"][@"content"] stringByReplacingOccurrencesOfString:@"style=\"width" withString:@""]];
 //        
-//        [webView loadHTMLString:final  baseURL:nil];
-        
-    }];
+////        NSLog(@"%@", final);
+////
+////        
+////        [webView loadHTMLString:final  baseURL:nil];
+//        
+//    }];
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:@"Second" forState:UIControlStateNormal];
@@ -129,6 +129,17 @@
     
     UIBarButtonItem * menuB = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStylePlain target:self action:@selector(didPressMenu)];
     self.navigationItem.leftBarButtonItem = menuB;
+    
+    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":@"https://store.line.me/stickershop/showcase/new_creators/en?page=1",@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
+        
+        NSLog(@"%@",cacheString);
+        
+    } andCompletion:^(NSString *responseString, NSError *error, BOOL isValidated) {
+        
+        NSLog(@"%@",responseString);
+        
+    }];
+    
 }
 
 - (void)didPressMenu
