@@ -14,6 +14,8 @@
 
 #import "DropButton.h"
 
+#import "TFHpple.h"
+
 //#define bannerAPI @"ca-app-pub-9549102114287819/3623332283"
 
 #define bannerAPI @"ca-app-pub-9549102114287819/6687876689"
@@ -130,17 +132,103 @@
     UIBarButtonItem * menuB = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStylePlain target:self action:@selector(didPressMenu)];
     self.navigationItem.leftBarButtonItem = menuB;
     
-    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":@"https://store.line.me/stickershop/showcase/new_creators/en?page=1",@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
+    NSString * url = @"http://www.symbols-n-emoticons.com/p/facebook-emoji-art.html";
+    
+    NSString * url1 = @"http://emojipedia.org/google/android-6.0.1/";
+    
+    NSString * url2 = @"http://emojipedia.org/mozilla/";
+    
+    NSString * url3 = @"http://megaemoji.com/emoticons/";
+    
+    NSString * url4 = @"http://emojipedia.org/emojipedia/sample-images/";
+    
+    //http://emojipedia.org/emoji-one/
+    
+    //http://emojipedia.org/twitter/
+    
+    //http://emojipedia.org/lg/
+    
+    //http://emojipedia.org/samsung/
+    
+    //http://emojipedia.org/microsoft/
+    
+    //http://emojipedia.org/apple/
+    
+    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":url4,@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
         
-        NSLog(@"%@",cacheString);
+//        NSLog(@"%@",cacheString);
         
     } andCompletion:^(NSString *responseString, NSError *error, BOOL isValidated) {
         
-        NSLog(@"%@",responseString);
+        //NSLog(@"%@",responseString);
         
+        TFHpple *parser = [TFHpple hppleWithHTMLData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];
+        
+//        NSString *pathQuery = @"//img[@class='imgemoji']";
+        //NSLog(@"%@",[element objectForKey:@"src"]);
+
+        NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
+        
+        //NSString *pathQuery1 = @"//div[@class='emote fr']";
+
+        NSArray *nodes = [parser searchWithXPathQuery:pathQuery1];
+        
+        for (TFHppleElement *element in nodes)
+        {
+            //NSLog(@"%@",((TFHppleElement*)[element.children firstObject]).content);
+            for(TFHppleElement *first in element.children)
+            {
+                for(TFHppleElement *second in first.children)
+                {
+                    for(TFHppleElement *third in second.children)
+                    {
+                        if([third objectForKey:@"src"])
+                            NSLog(@"%@",[third objectForKey:@"src"]);
+                    }
+                }
+            }
+        }
     }];
     
+//    [[DropAlert shareInstance] alertWithInfor:@{/*@"option":@(0),@"text":@"wwww",*/@"cancel":@"Close",@"buttons":@[@"Download now"],@"title":@"Attention",@"message":dict[@"update_message"]} andCompletion:^(int indexButton, id object) {
+//        switch (indexButton)
+//        {
+//            case 0:
+//            {
+//                if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:dict[@"url"]]])
+//                {
+//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:dict[@"url"]]];
+//                }
+//            }
+//                break;
+//            case 1:
+//                
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
 }
+
+//NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
+//
+//NSArray *nodes = [parser searchWithXPathQuery:pathQuery1];
+//
+//for (TFHppleElement *element in nodes)
+//{
+//    for(TFHppleElement *first in element.children)
+//    {
+//        for(TFHppleElement *second in first.children)
+//        {
+//            for(TFHppleElement *third in second.children)
+//            {
+//                if([third objectForKey:@"src"])
+//                    NSLog(@"%@",[third objectForKey:@"src"]);
+//            }
+//        }
+//    }
+//}
+
 
 - (void)didPressMenu
 {

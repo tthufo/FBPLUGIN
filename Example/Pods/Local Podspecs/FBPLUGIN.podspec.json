@@ -1,6 +1,6 @@
 {
   "name": "FBPLUGIN",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "summary": "Plugin for Facebook intergration",
   "description": "Useful plugin for Facebook login and request information with fews line of code",
   "homepage": "https://github.com/tthufo",
@@ -10,10 +10,10 @@
   },
   "source": {
     "git": "https://github.com/tthufo/FBPLUGIN.git",
-    "tag": "0.2.4"
+    "tag": "0.3.0"
   },
   "platforms": {
-    "ios": "6.0"
+    "ios": "7.0"
   },
   "requires_arc": true,
   "source_files": "Pod/Classes",
@@ -24,6 +24,7 @@
   },
   "resources": "Pod/Assets/*.*",
   "frameworks": "CoreData",
+  "public_header_files": "Pod/Classes/*.h",
   "dependencies": {
     "FBSDKCoreKit": [
       "~> 4.4"
@@ -51,6 +52,9 @@
     ],
     "SDWebImage": [
       "~> 3.7"
+    ],
+    "hpple": [
+      "~> 0.2"
     ]
   }
 }

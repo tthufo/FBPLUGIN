@@ -19,12 +19,13 @@ PODS:
   - Bolts/AppLinks (1.6.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.6.0)
-  - FBPLUGIN (0.2.4):
+  - FBPLUGIN (0.3.0):
     - ASIHTTPRequest (~> 1.8)
     - AVHexColor (~> 2.0)
     - FBSDKCoreKit (~> 4.4)
     - FBSDKLoginKit (~> 4.4)
     - FBSDKShareKit (~> 4.4)
+    - hpple (~> 0.2)
     - JSONKit-NoWarning (~> 1.2)
     - SDWebImage (~> 3.7)
     - SVProgressHUD
@@ -35,6 +36,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.10.0):
     - FBSDKCoreKit
+  - hpple (0.2.0)
   - JSONKit-NoWarning (1.2)
   - Reachability (3.2)
   - SDWebImage (3.7.5):
@@ -54,10 +56,11 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   AVHexColor: 33e5e102f3b6f3acd002779183ee226e21870c28
   Bolts: f52a250053bb517ca874523c3913776359ab3def
-  FBPLUGIN: 8fcc431f3cf17df9a8fecbdf8dfdb39d712132e4
+  FBPLUGIN: 211a37717a4ef1100ffc96a6aa465b33b14db23a
   FBSDKCoreKit: 13bec8373fb3af94d44daf2aa1e0958687897fbd
   FBSDKLoginKit: d3d4a2e9d31954deb00bfea964167a05ca1ea976
   FBSDKShareKit: 54587b4624706ace1e810cf83412a918141f807a
+  hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461

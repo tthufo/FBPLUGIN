@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
-  s.version          = "0.2.9"
+  s.version          = "0.3.0"
   s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.
@@ -42,7 +42,7 @@ Pod::Spec.new do |s|
 #s.vendored_frameworks = 'Pod/Private/*.framework'
 #s.preserve_paths = 'Pod/Private/*.framework'
 
-  #s.public_header_files = 'Pod/Classes/*.h'
+s.public_header_files = 'Pod/Classes/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   # s.dependency 'Facebook-iOS-SDK', '~> 4.0.1'
@@ -57,5 +57,6 @@ s.dependency 'ASIHTTPRequest', '~> 1.8'
 s.dependency 'JSONKit-NoWarning', '~> 1.2'
 s.dependency 'SDWebImage', '~> 3.7'
 #s.dependency 'Pinterest-iOS', '~> 2.3'
+s.dependency 'hpple', '~> 0.2'
 
 end
