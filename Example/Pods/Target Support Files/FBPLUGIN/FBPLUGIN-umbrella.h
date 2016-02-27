@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+#import "DropAlert.h"
 #import "DropButton.h"
 #import "FB.h"
 #import "FBPlugInHeader.h"
@@ -11,6 +12,7 @@
 #import "UIBarButtonItem+Badge.h"
 #import "UIButton+Badge.h"
 #import "UIScrollView+DXRefresh.h"
+#import "XMLReader.h"
 
 FOUNDATION_EXPORT double FBPLUGINVersionNumber;
 FOUNDATION_EXPORT const unsigned char FBPLUGINVersionString[];

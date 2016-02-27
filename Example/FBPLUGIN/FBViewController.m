@@ -142,6 +142,9 @@
     
     NSString * url4 = @"http://emojipedia.org/emojipedia/sample-images/";
     
+    NSString * url5 = @"http://emojipedia.org/unicode-6.0/";
+
+    
     //http://emojipedia.org/emoji-one/
     
     //http://emojipedia.org/twitter/
@@ -154,30 +157,39 @@
     
     //http://emojipedia.org/apple/
     
-    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":url4,@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
+    //http://emojipedia.org/unicode-6.0/
+    
+    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":url3,@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
         
 //        NSLog(@"%@",cacheString);
         
     } andCompletion:^(NSString *responseString, NSError *error, BOOL isValidated) {
         
-        //NSLog(@"%@",responseString);
+//        NSLog(@"%@",responseString);
         
         TFHpple *parser = [TFHpple hppleWithHTMLData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];
         
 //        NSString *pathQuery = @"//img[@class='imgemoji']";
         //NSLog(@"%@",[element objectForKey:@"src"]);
 
-        NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
+//        NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
         
-        //NSString *pathQuery1 = @"//div[@class='emote fr']";
+        NSString *pathQuery1 = @"//div[@class='emote fl']";
 
+        
         NSArray *nodes = [parser searchWithXPathQuery:pathQuery1];
+        
+        NSMutableArray * arr = [NSMutableArray new];
         
         for (TFHppleElement *element in nodes)
         {
-            //NSLog(@"%@",((TFHppleElement*)[element.children firstObject]).content);
+//            NSLog(@"%@",element);
+
             for(TFHppleElement *first in element.children)
             {
+                if(first.content)
+                    [arr addObject:first.content];
+                
                 for(TFHppleElement *second in first.children)
                 {
                     for(TFHppleElement *third in second.children)
@@ -188,26 +200,34 @@
                 }
             }
         }
+        
+        NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentFolder = [path objectAtIndex:0];
+        NSString *filePath = [documentFolder stringByAppendingFormat:@"myfile.plist"];
+        
+        [arr writeToFile:filePath atomically:YES];
+        
+        NSLog(@"file Stored at %@",filePath);
     }];
     
-//    [[DropAlert shareInstance] alertWithInfor:@{/*@"option":@(0),@"text":@"wwww",*/@"cancel":@"Close",@"buttons":@[@"Download now"],@"title":@"Attention",@"message":dict[@"update_message"]} andCompletion:^(int indexButton, id object) {
-//        switch (indexButton)
-//        {
-//            case 0:
-//            {
+    [[DropAlert shareInstance] alertWithInfor:@{/*@"option":@(0),@"text":@"wwww",*/@"cancel":@"Close",@"buttons":@[@"Download now"],@"title":@"Attention",@"message":@"sdfsddsf"} andCompletion:^(int indexButton, id object) {
+        switch (indexButton)
+        {
+            case 0:
+            {
 //                if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:dict[@"url"]]])
 //                {
 //                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:dict[@"url"]]];
 //                }
-//            }
-//                break;
-//            case 1:
-//                
-//                break;
-//            default:
-//                break;
-//        }
-//    }];
+            }
+                break;
+            case 1:
+                
+                break;
+            default:
+                break;
+        }
+    }];
 }
 
 //NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
