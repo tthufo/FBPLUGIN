@@ -12,6 +12,9 @@
 #import "CustomIOS7AlertView.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define screenHeight [UIScreen mainScreen].bounds.size.height
+#define screenWidth [UIScreen mainScreen].bounds.size.width
+
 const static CGFloat kCustomIOS7AlertViewDefaultButtonHeight       = 50;
 const static CGFloat kCustomIOS7AlertViewDefaultButtonSpacerHeight = 1;
 const static CGFloat kCustomIOS7AlertViewCornerRadius              =12;
@@ -182,7 +185,7 @@ CGFloat buttonSpacerHeight = 0;
     but.backgroundColor = [UIColor clearColor];
     but.frame = CGRectMake(0, 0, screenSize.width, screenHeight) ;
     [self addSubview:but];
-    [but addTapTarget:self action:@selector(close)];
+    [but addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
         
     // This is the dialog's container; we attach the custom content and the buttons to this one
     UIView *dialogContainer = [[UIView alloc] initWithFrame:CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height)];
