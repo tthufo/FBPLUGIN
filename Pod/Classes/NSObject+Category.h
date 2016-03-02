@@ -56,6 +56,8 @@
 
 - (int)inDexOf:(UIView*)view andTable:(UITableView*)tableView;
 
+- (int)inDexOf:(UIView*)view andCollection:(UICollectionView*)collectionView;
+
 @end
 
 @interface NSDictionary (name)
@@ -213,5 +215,11 @@
 - (instancetype)stringByRemovingEmoji;
 
 - (instancetype)removedEmojiString __attribute__((deprecated));
+
+@end
+
+@interface UIViewController (keyboard)
+
+- (void)registerForKeyboardNotifications:(BOOL)isRegister andSelector:(NSArray*)selectors;
 
 @end

@@ -243,6 +243,14 @@ CLLocationManager * locationManager;
     return (int)indexPath.row;
 }
 
+- (int)inDexOf:(UIView*)view andCollection:(UICollectionView*)collectionView
+{
+    CGPoint center = view.center;
+    CGPoint rootViewPoint = [view.superview convertPoint:center toView:collectionView];
+    NSIndexPath *indexPath = [collectionView indexPathForItemAtPoint:rootViewPoint];
+    return (int)indexPath.row;
+}
+
 @end
 
 @implementation NSDictionary (name)
@@ -1029,6 +1037,24 @@ static NSCharacterSet* VariationSelectors = nil;
 
 - (instancetype)removedEmojiString {
     return [self stringByRemovingEmoji];
+}
+
+@end
+
+@implementation UIViewController (keyboard)
+
+- (void)registerForKeyboardNotifications:(BOOL)isRegister andSelector:(NSArray*)selectors
+{
+    if(isRegister)
+    {
+        [[NSNotificationCenter defaultCenter] addUniqueObserver:self selector:NSSelectorFromString(selectors[0]) name:UIKeyboardDidShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addUniqueObserver:self selector:NSSelectorFromString(selectors[1]) name:UIKeyboardWillHideNotification object:nil];
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    }
 }
 
 @end

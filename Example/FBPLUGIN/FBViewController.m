@@ -159,13 +159,15 @@
     
     //http://emojipedia.org/unicode-6.0/
     
-    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":url3,@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
+    NSString * url6 = @"http://www.vatgia.com/home/quicksearch.php?keyword=iphone";
+    
+    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":url6,@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
         
 //        NSLog(@"%@",cacheString);
         
     } andCompletion:^(NSString *responseString, NSError *error, BOOL isValidated) {
         
-//        NSLog(@"%@",responseString);
+       // NSLog(@"%@",responseString);
         
         TFHpple *parser = [TFHpple hppleWithHTMLData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];
         
@@ -174,7 +176,9 @@
 
 //        NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
         
-        NSString *pathQuery1 = @"//div[@class='emote fl']";
+//        NSString *pathQuery1 = @"//div[@class='emote fl']";
+
+        NSString *pathQuery1 = @"//div[@class='block']";
 
         
         NSArray *nodes = [parser searchWithXPathQuery:pathQuery1];
@@ -183,7 +187,7 @@
         
         for (TFHppleElement *element in nodes)
         {
-//            NSLog(@"%@",element);
+            NSLog(@"%@",element);
 
             for(TFHppleElement *first in element.children)
             {
@@ -201,13 +205,13 @@
             }
         }
         
-        NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentFolder = [path objectAtIndex:0];
-        NSString *filePath = [documentFolder stringByAppendingFormat:@"myfile.plist"];
-        
-        [arr writeToFile:filePath atomically:YES];
-        
-        NSLog(@"file Stored at %@",filePath);
+//        NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentFolder = [path objectAtIndex:0];
+//        NSString *filePath = [documentFolder stringByAppendingFormat:@"myfile.plist"];
+//        
+//        [arr writeToFile:filePath atomically:YES];
+//        
+//        NSLog(@"file Stored at %@",filePath);
     }];
     
     [[DropAlert shareInstance] alertWithInfor:@{/*@"option":@(0),@"text":@"wwww",*/@"cancel":@"Close",@"buttons":@[@"Download now"],@"title":@"Attention",@"message":@"sdfsddsf"} andCompletion:^(int indexButton, id object) {
