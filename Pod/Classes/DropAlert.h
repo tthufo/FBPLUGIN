@@ -16,4 +16,6 @@ typedef void (^DropAlertCompletion)(int indexButton, id object);
 
 - (void)alertWithInfor:(NSDictionary*)dict andCompletion:(DropAlertCompletion)completion;
 
+- (void)actionSheetWithInfo:(NSDictionary*)dict andCompletion:(DropAlertCompletion)completion;
+
 @end

@@ -14,7 +14,7 @@
 
 static DropAlert * __shareInstance = nil;
 
-@interface DropAlert () <UIAlertViewDelegate>
+@interface DropAlert () <UIAlertViewDelegate, UIActionSheetDelegate>
 {
     DropAlertCompletion completionBlock;
 }
@@ -31,6 +31,28 @@ static DropAlert * __shareInstance = nil;
     }
     
     return __shareInstance;
+}
+
+- (void)actionSheetWithInfo:(NSDictionary*)dict andCompletion:(DropAlertCompletion)completion
+{
+    completionBlock = completion;
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:dict[@"title"]
+                                                             delegate:self
+                                                    cancelButtonTitle:dict[@"cancel"]
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    for( NSString *title in dict[@"buttons"])
+    {
+        [actionSheet addButtonWithTitle:title];
+    }
+    
+    [actionSheet showInView:((UIViewController*)dict[@"host"]).view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    completionBlock(buttonIndex, nil);
 }
 
 - (void)alertWithInfor:(NSDictionary*)dict andCompletion:(DropAlertCompletion)completion

@@ -22,9 +22,12 @@
 
 #define fullBannerAPI @"ca-app-pub-9549102114287819/8164609882"
 
-@interface FBViewController ()
+@interface FBViewController ()<PopUpMenuDelegate>
 {
     IBOutlet UIWebView * webView;
+    
+    PopUpMenu * popUpWithDelegate;
+
 }
 
 @end
@@ -36,12 +39,23 @@
     [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andCompletion:^(id object) {
         NSLog(@"%@",object);
     }];
+    
+    [popUpWithDelegate show:BTPopUPAnimateNone];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    popUpWithDelegate = [[PopUpMenu alloc] initWithItemImage:@[[UIImage imageNamed:@"menu"],
+                                                               [UIImage imageNamed:@"menu"]]
+                                                       andTitles:@[@"Facebook", @"Messenger"]
+                                                  andActionArray:nil addToViewController:self];
+    popUpWithDelegate.delegate = self;
+    [self.view addSubview:popUpWithDelegate];
+    [popUpWithDelegate setPopUpStyle:BTPopUpStyleDefault];
+    [popUpWithDelegate setPopUpBorderStyle:BTPopUpBorderStyleDefaultNone];
+
     DropButton * drop = (DropButton*)[self withView:self.view tag:111];
     
 //    drop.pList = @"format";
@@ -144,7 +158,6 @@
     
     NSString * url5 = @"http://emojipedia.org/unicode-6.0/";
 
-    
     //http://emojipedia.org/emoji-one/
     
     //http://emojipedia.org/twitter/
@@ -256,13 +269,19 @@
 
 - (void)didPressMenu
 {
-    DropButton * sender = [DropButton shareInstance];
+//    DropButton * sender = [DropButton shareInstance];
+//    
+//    sender.pList = @"format";
+//    
+//    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andInfo:@{@"rect":[NSValue valueWithCGRect:CGRectMake(0,-40,100,100)]} andCompletion:^(id object) {
+//        
+//        NSLog(@"%@",object);
+//
+//    }];
     
-    sender.pList = @"format";
-    
-    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andInfo:@{@"rect":[NSValue valueWithCGRect:CGRectMake(0,-40,100,100)]} andCompletion:^(id object) {
+    [[DropAlert shareInstance] actionSheetWithInfo:@{@"title":@"Thong Bao",@"cancel":@"Close",@"buttons":@[@"a",@"b",@"c",@"d"],@"host":self} andCompletion:^(int indexButton, id object) {
         
-        NSLog(@"%@",object);
+        NSLog(@"%i",indexButton);
 
     }];
 }
