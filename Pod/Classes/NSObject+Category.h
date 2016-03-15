@@ -135,6 +135,8 @@
 
 @interface UIImage (Scale)
 
+- (UIImage *)tintedImage:(NSString*)color;
+
 - (UIImage *)imageScaledToQuarter;
 
 - (UIImage *)imageScaledToHalf;

@@ -31,6 +31,8 @@ typedef NS_ENUM(NSInteger, BTPopUpBorderStyle) {
 
 typedef void (^completion)(BOOL success);
 
+typedef void (^PopUpCompletion)(int indexButton, id object);
+
 @protocol PopUpMenuDelegate <NSObject>
 
 @optional
@@ -38,8 +40,7 @@ typedef void (^completion)(BOOL success);
 - (void)PopUpMenu:(PopUpMenu *)popUp didSelectItemAtIndex:(NSInteger)index;
 
 - (void)PopUpMenu:(PopUpMenu *)popUp;
-
-
+;
 @end
 
 @interface PopUpMenu : UIView <UIScrollViewDelegate>{
@@ -51,6 +52,7 @@ typedef void (^completion)(BOOL success);
     NSArray *popItems;
     UIScrollView *scrollView;
     UIPageControl * pageControl;
+    PopUpCompletion completionBlock;
 }
 @property (nonatomic, assign) BTPopUpStyle popUpStyle;
 @property (nonatomic, assign) BTPopUpBorderStyle popUpBorderStyle;
@@ -58,6 +60,10 @@ typedef void (^completion)(BOOL success);
 @property (nonatomic, assign) BTPopUpAnimation animationStyle;
 @property(nonatomic, weak) id <PopUpMenuDelegate> delegate;
 @property (nonatomic) BOOL setShowRipples;
+
++ (PopUpMenu*)shareInstance;
+
+- (PopUpMenu*)didPopUpWithInfo:(NSDictionary*)dict andCompletion:(PopUpCompletion)completion;
 
 -(instancetype)initWithItemImage:(NSArray *)items andActionArray:(NSArray *)actionArray addToViewController:(UIViewController*)sender;
 -(instancetype)initWithItemImage:(NSArray *)items andTitles:(NSArray *)titleArray andActionArray:(NSArray *)actionArray addToViewController:(UIViewController*)sender;

@@ -193,7 +193,6 @@
 
         NSString *pathQuery1 = @"//div[@class='block']";
 
-        
         NSArray *nodes = [parser searchWithXPathQuery:pathQuery1];
         
         NSMutableArray * arr = [NSMutableArray new];
@@ -279,11 +278,30 @@
 //
 //    }];
     
-    [[DropAlert shareInstance] actionSheetWithInfo:@{@"title":@"Thong Bao",@"cancel":@"Close",@"buttons":@[@"a",@"b",@"c",@"d"],@"host":self} andCompletion:^(int indexButton, id object) {
-        
-        NSLog(@"%i",indexButton);
+//    [[DropAlert shareInstance] actionSheetWithInfo:@{@"title":@"Thong Bao",@"cancel":@"Close",@"buttons":@[@"a",@"b",@"c",@"d"],@"host":self} andCompletion:^(int indexButton, id object) {
+//        
+//        NSLog(@"%i",indexButton);
+//
+//    }];
+    
+    [[[PopUpMenu shareInstance] didPopUpWithInfo:@{@"images":@[@"info",@"menu"],@"titles":@[@"a",@"b"],@"color":@"#FFFFFF",@"host":self} andCompletion:^(int indexButton, id object) {
+        switch (indexButton)
+        {
+            case 0:
+            {
+                NSLog(@"%@",@"0sdfdsfdsfdsfdsf");
+            }
+                break;
+            case 1:
+                NSLog(@"%@",@"1");
+                break;
+            default:
+                
+                NSLog(@"default");
 
-    }];
+                break;
+        }
+    }] show:BTPopUPAnimateWithFade];
 }
 
 - (void)didPressSecond

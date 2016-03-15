@@ -644,6 +644,26 @@ CLLocationManager * locationManager;
 
 @implementation UIImage (Scale)
 
+- (UIImage *)tintedImage:(NSString*)color
+{
+    UIGraphicsBeginImageContext(self.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+    
+    CGContextSetBlendMode(context, kCGBlendModeNormal);
+    CGContextDrawImage(context, rect, self.CGImage);
+    
+    CGContextSetBlendMode(context, kCGBlendModeSourceIn);
+    [[AVHexColor colorWithHexString:color] setFill];
+    CGContextFillRect(context, rect);
+    
+    UIImage *coloredImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return coloredImage;
+}
+
 - (UIImage *)imageScaledToQuarter
 {
     return [self imageScaledToScale:0.25f withInterpolationQuality:kCGInterpolationHigh];

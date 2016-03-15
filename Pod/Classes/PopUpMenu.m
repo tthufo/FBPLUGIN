@@ -14,7 +14,7 @@
 
 #import "PopUpMenu.h"
 
-//#import "AVHexColor.h"
+#import "NSObject+Category.h"
 
 #pragma mark - BTPopUpItemView
 
@@ -45,35 +45,13 @@
     return self;
 }
 
-- (UIImage *)tintedImage:(UIImage *)image WithColor:(UIColor *)color
-{
-    UIGraphicsBeginImageContext(image.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-    
-    // draw alpha-mask
-    CGContextSetBlendMode(context, kCGBlendModeNormal);
-    CGContextDrawImage(context, rect, image.CGImage);
-    
-    // draw tint color, preserving alpha values of original image
-    CGContextSetBlendMode(context, kCGBlendModeSourceIn);
-    [color setFill];
-    CGContextFillRect(context, rect);
-    
-    UIImage *coloredImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return coloredImage;
-}
-
 - (instancetype)initWithImage:(UIImage *)image title:(NSString *)title action:(dispatch_block_t)action {
     if ((self = [super init])) {
         _title = [title copy];
 //        image = [self tintedImage:image WithColor:[AVHexColor colorWithHexString:@"#3B87F8"]];
-        image = [UIImage imageWithCGImage:image.CGImage
-                            scale:image.scale
-                      orientation:UIImageOrientationDownMirrored];
+//        image = [UIImage imageWithCGImage:image.CGImage
+//                            scale:image.scale
+//                      orientation:UIImageOrientationDownMirrored];
         _imageView = [[UIImageView alloc]initWithImage:image];
 
         if(action)
@@ -297,7 +275,57 @@
 #pragma mark - PopUpMenu
 #pragma mark - @implementation
 
+static PopUpMenu * __shareInstance = nil;
+
 @implementation PopUpMenu
+
++ (PopUpMenu*)shareInstance
+{
+    if(!__shareInstance)
+    {
+        __shareInstance = [PopUpMenu new];
+    }
+    
+    return __shareInstance;
+}
+
+- (PopUpMenu*)didPopUpWithInfo:(NSDictionary*)dict andCompletion:(PopUpCompletion)completion
+{
+    completionBlock = completion;
+    
+    [self setPopUpStyle:BTPopUpStyleDefault];
+    
+    [self setPopUpBorderStyle:BTPopUpBorderStyleDefaultNone];
+    
+    NSMutableArray * images = [NSMutableArray new];
+    
+    for(NSString * image in dict[@"images"])
+    {
+        UIImage * temp = nil;
+        
+        if(dict[@"color"])
+        {
+            UIImage * img = [[UIImage imageNamed:image] tintedImage:dict[@"color"]];
+            
+            img = [UIImage imageWithCGImage:img.CGImage
+                                      scale:img.scale
+                                orientation:UIImageOrientationDownMirrored];
+            temp = img;
+        }
+        [images addObject:dict[@"color"] ? temp : [UIImage imageNamed:image]];
+    }
+    
+    NSMutableArray * titles = [NSMutableArray new];
+    
+    for(NSString * title in dict[@"titles"])
+    {
+        [titles addObject:title];
+    }
+    
+    [((UIViewController*)dict[@"host"]).view addSubview:self];
+    
+    return [self initWithItemImage:images andTitles:titles andActionArray:nil addToViewController:dict[@"host"]];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -540,6 +568,18 @@
     [self dismiss:nil];
     
     [self.delegate PopUpMenu:nil];
+    
+    completionBlock(-1, nil);
+}
+
+-(void)didDisMissIndex:(int)index
+{
+    if(completionBlock)
+    {
+        completionBlock(index, nil);
+    }
+    
+    completionBlock = nil;
 }
 
 -(void)dismiss:(NSNotification *)message
@@ -557,8 +597,12 @@
                                  if([self.delegate respondsToSelector:@selector(PopUpMenu:didSelectItemAtIndex:)]){
                                      [self.delegate PopUpMenu:self didSelectItemAtIndex:rippleButton.index];
                                  }
+                                 
+                                 [[PopUpMenu shareInstance] didDisMissIndex:rippleButton.index];
+                                 
                                  contentView.frame = CGRectMake(self.frame.size.width/2-150, SCREEN_SIZE.size.height, POPUP_WIDTH, POP_HEIGHT);
                              }];
+
         }else {
             
             // pop out animation
@@ -575,7 +619,8 @@
                                  if([self.delegate respondsToSelector:@selector(PopUpMenu:didSelectItemAtIndex:)]){
                                      [self.delegate PopUpMenu:self didSelectItemAtIndex:rippleButton.index];
                                  }
-                                 
+                                 completionBlock(rippleButton.index, self);
+
                              }];
         }
         
