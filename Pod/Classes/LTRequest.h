@@ -41,6 +41,8 @@ typedef void (^RequestCache)(NSString * cacheString);
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo;
 
+- (void)didClearBadge;
+
 - (BOOL)isConnectionAvailable;
 
 @end

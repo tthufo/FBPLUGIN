@@ -27,7 +27,6 @@
     IBOutlet UIWebView * webView;
     
     PopUpMenu * popUpWithDelegate;
-
 }
 
 @end
@@ -199,7 +198,7 @@
         
         for (TFHppleElement *element in nodes)
         {
-            NSLog(@"%@",element);
+            //NSLog(@"%@",element);
 
             for(TFHppleElement *first in element.children)
             {
@@ -210,8 +209,8 @@
                 {
                     for(TFHppleElement *third in second.children)
                     {
-                        if([third objectForKey:@"src"])
-                            NSLog(@"%@",[third objectForKey:@"src"]);
+                        //if([third objectForKey:@"src"])
+                            //NSLog(@"%@",[third objectForKey:@"src"]);
                     }
                 }
             }
@@ -244,6 +243,22 @@
                 break;
         }
     }];
+    
+    if(![IAPShare sharedHelper].iap)
+    {
+        
+        NSSet* dataSet = [[NSSet alloc] initWithObjects:@"vn.vmgmedia.TubePro", nil];
+        
+        [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
+        
+    }
+    
+    [IAPShare sharedHelper].iap.production = NO;
+    
+    [[IAPShare sharedHelper].iap requestProductsWithCompletion:^(SKProductsRequest* request,SKProductsResponse* response)
+     {
+         NSLog(@"%@",response.products);
+     }];
 }
 
 //NSString *pathQuery1 = @"//ul[@class='emoji-grid']";

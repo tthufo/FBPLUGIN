@@ -32,6 +32,27 @@
 
 CLLocationManager * locationManager;
 
+- (BOOL)checkForNotification
+{
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    {
+        UIUserNotificationType type = [[[UIApplication sharedApplication] currentUserNotificationSettings] types];
+        if (type == UIUserNotificationTypeNone)
+        {
+            return NO;
+        }
+    }
+    else
+    {
+        UIRemoteNotificationType types = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+        if (types == UIRemoteNotificationTypeNone)
+        {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (BOOL)isConnectionAvailable
 {
     SCNetworkReachabilityFlags flags;

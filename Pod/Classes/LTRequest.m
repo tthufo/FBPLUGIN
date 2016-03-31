@@ -390,6 +390,11 @@ static LTRequest *__sharedLTRequest = nil;
     return [getUrl substringToIndex:getUrl.length-(getUrl.length>0)];
 }
 
+- (void)didClearBadge
+{
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+}
+
 - (void)didAddCheckMark:(NSDictionary*)dict andHost:(UIViewController*)host
 {
     [host showSVHUD:[dict[@"status"] boolValue] ? self.lang ? @"Success" :  @"Thành công" : self.lang ? @"Error" : @"Xảy ra lỗi" andOption:[dict[@"status"] boolValue] ? 1 : 2];

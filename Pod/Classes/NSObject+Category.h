@@ -12,6 +12,8 @@
 
 @interface NSObject (Extension_Category) <CLLocationManagerDelegate>
 
+- (BOOL)checkForNotification;
+
 - (BOOL)isConnectionAvailable;
 
 - (NSString *)uuidString;
