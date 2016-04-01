@@ -1,6 +1,6 @@
 {
   "name": "FBPLUGIN",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "summary": "Plugin for Facebook intergration",
   "description": "Useful plugin for Facebook login and request information with fews line of code",
   "homepage": "https://github.com/tthufo",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/tthufo/FBPLUGIN.git",
-    "tag": "0.3.7"
+    "tag": "0.3.8"
   },
   "platforms": {
     "ios": "7.0"
@@ -58,6 +58,9 @@
     ],
     "IAPHelper": [
 
+    ],
+    "JCNotificationBannerPresenter": [
+      "~> 1.1"
     ]
   }
 }

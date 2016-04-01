@@ -16,6 +16,14 @@
 
 #import "TFHpple.h"
 
+#import "JCNotificationCenter.h"
+
+#import "JCNotificationBannerPresenterSmokeStyle.h"
+
+#import "JCNotificationBannerPresenterIOSStyle.h"
+
+#import "JCNotificationBannerPresenterIOS7Style.h"
+
 //#define bannerAPI @"ca-app-pub-9549102114287819/3623332283"
 
 #define bannerAPI @"ca-app-pub-9549102114287819/6687876689"
@@ -246,7 +254,6 @@
     
     if(![IAPShare sharedHelper].iap)
     {
-        
         NSSet* dataSet = [[NSSet alloc] initWithObjects:@"vn.vmgmedia.TubePro", nil];
         
         [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
@@ -259,6 +266,11 @@
      {
          NSLog(@"%@",response.products);
      }];
+    
+    [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterIOS7Style new];
+    [JCNotificationCenter enqueueNotificationWithTitle:@"Thể Thao Số" message:@"kkkkkk" tapHandler:^{
+        
+    }];
 }
 
 //NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
