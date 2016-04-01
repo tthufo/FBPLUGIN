@@ -567,9 +567,16 @@ static PopUpMenu * __shareInstance = nil;
 {
     [self dismiss:nil];
     
-    [self.delegate PopUpMenu:nil];
-    
-    completionBlock(-1, nil);
+    if(self.delegate && [self.delegate respondsToSelector:@selector(PopUpMenu:)])
+    {
+        [self.delegate PopUpMenu:nil];
+    }
+
+    if(completionBlock)
+    {
+        completionBlock(-1, nil);
+        completionBlock = nil;
+    }
 }
 
 -(void)didDisMissIndex:(int)index
@@ -577,9 +584,8 @@ static PopUpMenu * __shareInstance = nil;
     if(completionBlock)
     {
         completionBlock(index, nil);
+        completionBlock = nil;
     }
-    
-    completionBlock = nil;
 }
 
 -(void)dismiss:(NSNotification *)message
@@ -619,7 +625,7 @@ static PopUpMenu * __shareInstance = nil;
                                  if([self.delegate respondsToSelector:@selector(PopUpMenu:didSelectItemAtIndex:)]){
                                      [self.delegate PopUpMenu:self didSelectItemAtIndex:rippleButton.index];
                                  }
-                                 completionBlock(rippleButton.index, self);
+                                 [[PopUpMenu shareInstance] didDisMissIndex:rippleButton.index];
 
                              }];
         }
