@@ -10,4 +10,6 @@
 
 @interface FBViewController : UIViewController
 
+@property(nonatomic, retain) NSString * kk;
+
 @end

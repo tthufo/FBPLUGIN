@@ -54,6 +54,8 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"%@",_kk);
+    
     popUpWithDelegate = [[PopUpMenu alloc] initWithItemImage:@[[UIImage imageNamed:@"menu"],
                                                                [UIImage imageNamed:@"menu"]]
                                                        andTitles:@[@"Facebook", @"Messenger"]
@@ -254,7 +256,7 @@
     
     if(![IAPShare sharedHelper].iap)
     {
-        NSSet* dataSet = [[NSSet alloc] initWithObjects:@"vn.vmgmedia.TubePro", nil];
+        NSSet* dataSet = [[NSSet alloc] initWithObjects:@"am.casino.barahatayo", nil];
         
         [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
         
@@ -264,10 +266,15 @@
     
     [[IAPShare sharedHelper].iap requestProductsWithCompletion:^(SKProductsRequest* request,SKProductsResponse* response)
      {
-         NSLog(@"%@",response.products);
+         
+         
+         NSLog(@"__%@",response.products);
+         
+         
      }];
     
     [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterIOS7Style new];
+    
     [JCNotificationCenter enqueueNotificationWithTitle:@"Thể Thao Số" message:@"kkkkkk" tapHandler:^{
         
     }];
@@ -349,11 +356,15 @@
 //        }
 //    }];
     
-    [[FB shareInstance] didShareFacebook:@{@"host":self,@"content":@"https://www.google.com"} andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
-        
-        NSLog(@"%@",object);
-        
-    }];
+//    [[FB shareInstance] didShareFacebook:@{@"host":self,@"content":@"https://www.google.com"} andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+//        
+//        NSLog(@"%@",object);
+//        
+//    }];
+    
+    Whathehell * wat = [Whathehell new];
+    
+    [self.navigationController pushViewController:wat animated:YES];
     
 }
 

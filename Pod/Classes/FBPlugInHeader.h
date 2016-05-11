@@ -30,5 +30,9 @@
 
 #import "PopUpMenu.h"
 
+#import "DropButton.h"
+
+#import "CustomIOS7AlertView.h"
+
 
 //#endif /* FBPlugInHeader_h */

@@ -28,6 +28,8 @@
 		FC123D8B1C45E8B200CD8AB3 /* Cells.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC123D8A1C45E8B200CD8AB3 /* Cells.xib */; };
 		FC123D931C47811E00CD8AB3 /* format.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC123D921C47811E00CD8AB3 /* format.plist */; };
 		FC123D951C48B0B600CD8AB3 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = FC123D941C48B0B600CD8AB3 /* test.png */; };
+		FC13057D1CD4EE78008A4DE9 /* Whathehell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC13057B1CD4EE78008A4DE9 /* Whathehell.swift */; };
+		FC13057E1CD4EE78008A4DE9 /* Whathehell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC13057C1CD4EE78008A4DE9 /* Whathehell.xib */; };
 		FC5E16D51C29411600A5C5A0 /* FBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5E16D41C29411600A5C5A0 /* FBViewController.xib */; };
 		FC69DE451C3FC01900FF6F2B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = FC69DE441C3FC01900FF6F2B /* index.html */; };
 		FC9BF5381C34D29D00B1DB53 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC9BF5361C34D29D00B1DB53 /* Model.xcdatamodeld */; };
@@ -79,6 +81,9 @@
 		FC123D8A1C45E8B200CD8AB3 /* Cells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cells.xib; sourceTree = "<group>"; };
 		FC123D921C47811E00CD8AB3 /* format.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = format.plist; sourceTree = "<group>"; };
 		FC123D941C48B0B600CD8AB3 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		FC13057B1CD4EE78008A4DE9 /* Whathehell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Whathehell.swift; sourceTree = "<group>"; };
+		FC13057C1CD4EE78008A4DE9 /* Whathehell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Whathehell.xib; sourceTree = "<group>"; };
+		FC13057F1CD4EF6A008A4DE9 /* FBPLUGIN_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBPLUGIN_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		FC5E16D41C29411600A5C5A0 /* FBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBViewController.xib; sourceTree = "<group>"; };
 		FC69DE441C3FC01900FF6F2B /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		FC9BF5371C34D29D00B1DB53 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -172,6 +177,8 @@
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				FC9BF5361C34D29D00B1DB53 /* Model.xcdatamodeld */,
+				FC13057B1CD4EE78008A4DE9 /* Whathehell.swift */,
+				FC13057C1CD4EE78008A4DE9 /* Whathehell.xib */,
 				6003F5B5195388D20070C39A /* Tests */,
 				FC123D921C47811E00CD8AB3 /* format.plist */,
 			);
@@ -186,6 +193,7 @@
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
 				6003F59B195388D20070C39A /* FBPLUGIN-Prefix.pch */,
+				FC13057F1CD4EF6A008A4DE9 /* FBPLUGIN_Example-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				FC123D891C45E6F600CD8AB3 /* SecondViewController.xib in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				FC69DE451C3FC01900FF6F2B /* index.html in Resources */,
+				FC13057E1CD4EE78008A4DE9 /* Whathehell.xib in Resources */,
 				FC123D8B1C45E8B200CD8AB3 /* Cells.xib in Resources */,
 				FC5E16D51C29411600A5C5A0 /* FBViewController.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
@@ -425,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC123D881C45E6F600CD8AB3 /* SecondViewController.m in Sources */,
+				FC13057D1CD4EE78008A4DE9 /* Whathehell.swift in Sources */,
 				6003F59E195388D20070C39A /* FBAppDelegate.m in Sources */,
 				FC9BF5381C34D29D00B1DB53 /* Model.xcdatamodeld in Sources */,
 				6003F5A7195388D20070C39A /* FBViewController.m in Sources */,
@@ -486,8 +496,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuong Mai (T68ST29XCF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hong Bae Lee (GKL679J7LJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hong Bae Lee (GKL679J7LJ)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -506,7 +516,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2a092e29-973c-4ea2-9d86-e9991837bf21";
+				PROVISIONING_PROFILE = "3065051d-1295-480d-956f-5472c0b36ff7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -528,8 +538,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Phuong Mai (T68ST29XCF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuong Mai (T68ST29XCF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thanh Hai Tran (N3994DUH8M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thanh Hai Tran (N3994DUH8M)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -541,7 +551,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "2a092e29-973c-4ea2-9d86-e9991837bf21";
+				PROVISIONING_PROFILE = "421236c7-3a60-4f53-8a7f-b7fc84e08f31";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -555,7 +565,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Thanh Hai Tran (N3994DUH8M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hong Bae Lee (GKL679J7LJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hong Bae Lee (GKL679J7LJ)";
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
@@ -567,9 +578,9 @@
 				LIBRARY_SEARCH_PATHS = "";
 				MODULE_NAME = ExampleApp;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = vn.vmgmedia.TubePro;
+				PRODUCT_BUNDLE_IDENTIFIER = am.casino.barahatayo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "68fe52ef-b300-4166-8a47-90434d9e0e4a";
+				PROVISIONING_PROFILE = "3065051d-1295-480d-956f-5472c0b36ff7";
 				SWIFT_OBJC_BRIDGING_HEADER = "FBPLUGIN/FBPLUGIN_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -584,7 +595,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Thanh Hai Tran (N3994DUH8M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: VMG Media JSC (3C55E2QGJE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: VMG Media JSC (3C55E2QGJE)";
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
@@ -596,9 +608,9 @@
 				LIBRARY_SEARCH_PATHS = "";
 				MODULE_NAME = ExampleApp;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = vn.vmgmedia.TubePro;
+				PRODUCT_BUNDLE_IDENTIFIER = am.casino.barahatayo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "68fe52ef-b300-4166-8a47-90434d9e0e4a";
+				PROVISIONING_PROFILE = "2f38abf0-78db-4bbe-8abe-6a3ffcdac798";
 				SWIFT_OBJC_BRIDGING_HEADER = "FBPLUGIN/FBPLUGIN_Example-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

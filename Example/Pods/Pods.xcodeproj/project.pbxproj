@@ -550,6 +550,8 @@
 		F993FF4FA8595CD1C18F37C044522FCD /* FBSDKMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFAE2BA66F8417264446DA29B8BD613 /* FBSDKMath.m */; };
 		F9DC357E0BDB8201AD843C7AFBC74F9A /* ASIS3ServiceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EC3E197394C1BD74F013EB8E3A8E15C /* ASIS3ServiceRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAC59B110EE9F9040F91858B19DEDEA3 /* FBSDKLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 417A29ACECE29AEA0F3392D48F5211F2 /* FBSDKLikeButton.m */; };
+		FC17EE341CE3153200990F19 /* ViewPagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = FC17EE321CE3153200990F19 /* ViewPagerController.h */; };
+		FC17EE351CE3153200990F19 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC17EE331CE3153200990F19 /* ViewPagerController.m */; };
 		FCC6FE8C749BF9B0F2FC8C44D76D5542 /* FBSDKGraphErrorRecoveryProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A3822D63A8638E52F9BD151CD16D45D /* FBSDKGraphErrorRecoveryProcessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD8CFE7C499960C2B7E470E9C90336BF /* FBSDKAccessTokenCacheV3_17.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72FD8C84182E52512B7F26360C73E0 /* FBSDKAccessTokenCacheV3_17.m */; };
 		FE45A21CB57B70F9ACAB457F227ED303 /* FBSDKShareKit+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 22099BF0D6D0810B1805E796C77A7B69 /* FBSDKShareKit+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1505,6 +1507,8 @@
 		FB9A6EE578769203FB8F8CFE6EDAF3E5 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		FBFA6F3EBD57407E7D98591D16D01492 /* FBSDKShareDialogMode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKShareDialogMode.m; path = FBSDKShareKit/FBSDKShareKit/FBSDKShareDialogMode.m; sourceTree = "<group>"; };
 		FC12CFFAFF0ABA563A54A6F3B7A63436 /* hpple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = hpple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC17EE321CE3153200990F19 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
+		FC17EE331CE3153200990F19 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		FC7D2DC87D020A7A78C1C7A2468FF65E /* FBPLUGIN.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FBPLUGIN.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD51E906ECD533FCDA169FEC7A91173E /* TFHppleElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
 		FD6C9070F1C3E67928EA33B9CAE64684 /* FBSDKLikeControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLikeControl.h; path = FBSDKShareKit/FBSDKShareKit/FBSDKLikeControl.h; sourceTree = "<group>"; };
@@ -2009,6 +2013,7 @@
 		2558A51421874360CF0F8D5E01ED7B3C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8B5BF103599CBD9DDDF2B698DABB892C /* FBPlugInHeader.h */,
 				10013FC3934CCE5AFC4BAC46A1C1F4A9 /* CustomIOS7AlertView.h */,
 				A26F056C0CAC20EEE8A2325C65881819 /* CustomIOS7AlertView.m */,
 				A09878DBF39AAA64962BF609438BEC6D /* DropAlert.h */,
@@ -2017,7 +2022,8 @@
 				AD35C8DD7E57F5B78CB54FDA361820AF /* DropButton.m */,
 				2A707A841CECE0205EF5AE4E4B969704 /* FB.h */,
 				90841202AE2E99AB49344693E3FECD32 /* FB.m */,
-				8B5BF103599CBD9DDDF2B698DABB892C /* FBPlugInHeader.h */,
+				FC17EE321CE3153200990F19 /* ViewPagerController.h */,
+				FC17EE331CE3153200990F19 /* ViewPagerController.m */,
 				32D0F2257A4BC9BBC3D139BBFD8E8415 /* HPGrowingTextView.h */,
 				C6AED0A401942EDEBF837EA675A875CD /* HPGrowingTextView.m */,
 				C29CA6462F5095E046E99257C2B63D86 /* HPTextViewInternal.h */,
@@ -2906,6 +2912,7 @@
 				A94A514AD84B6204A7B5F85FBD22AE35 /* ASIProgressDelegate.h in Headers */,
 				04F89984A23DFC283760629ED71C20F8 /* ASIS3Bucket.h in Headers */,
 				A68C72AEA499D6FC20198B3B178CC973 /* ASIS3BucketObject.h in Headers */,
+				FC17EE341CE3153200990F19 /* ViewPagerController.h in Headers */,
 				C2EEB7014E1053B42BE90D391F7BE634 /* ASIS3BucketRequest.h in Headers */,
 				764F303CC68D98F62D55A870869D9E9B /* ASIS3ObjectRequest.h in Headers */,
 				F86D826A09EBE221D979E1C9C9839B92 /* ASIS3Request.h in Headers */,
@@ -3599,6 +3606,7 @@
 				F51AC3ABF6E41B9E63260709B8C5D650 /* ASIS3ObjectRequest.m in Sources */,
 				1D87F4599B56B80959378E04EEC3DEF2 /* ASIS3Request.m in Sources */,
 				A1F1329DC51508CE95C9BD1A180C63DE /* ASIS3ServiceRequest.m in Sources */,
+				FC17EE351CE3153200990F19 /* ViewPagerController.m in Sources */,
 				8FFCC460C6F38959A91E861744F7B69B /* ASIWebPageRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
