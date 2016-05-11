@@ -15,7 +15,7 @@
     @import UIKit;
     @import Foundation;
 
-#import "FBPLUGIN_Example-Swift.h"
+//#import "FBPLUGIN_Example-Swift.h"
 
 #import "IAPHelper.h"
 

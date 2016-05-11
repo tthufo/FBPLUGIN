@@ -8,10 +8,14 @@
 
 #import "ViewPagerController.h"
 
+#import "NSObject+Category.h"
+
 #pragma mark - Constants and macros
 #define kTabViewTag 38
 #define kContentViewTag 34
 #define IOS_VERSION_7 [[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending
+
+#define screenWidthSize [UIScreen mainScreen].bounds.size.width
 
 #define kTabHeight 44.0
 #define kTabOffset 56.0
@@ -217,7 +221,7 @@ BOOL isRemove;
     {
         self.view.backgroundColor = [UIColor blackColor];
         
-        UIImageView * next = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth - ([self.tabHeight floatValue] - 14), 7, [self.tabHeight floatValue] - 14, [self.tabHeight floatValue] - 14)];
+        UIImageView * next = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidthSize - ([self.tabHeight floatValue] - 14), 7, [self.tabHeight floatValue] - 14, [self.tabHeight floatValue] - 14)];
         next.image = [UIImage imageNamed:@"ic_next_photo"];
         next.tag = 69;
         [self.view addSubview:next];
@@ -947,12 +951,12 @@ BOOL isRemove;
     
     if(_isCustomBackGround)
     {
-        UIImageView * bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, self.tabsView.frame.size.height)];
+        UIImageView * bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidthSize, self.tabsView.frame.size.height)];
         bg.image = [UIImage imageNamed:@"background_tv"];
         [self.view addSubview:bg];
         [self.view sendSubviewToBack:bg];
         
-        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, self.tabsView.frame.size.height, screenWidth, 1)];
+        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, self.tabsView.frame.size.height, screenWidthSize, 1)];
         line.backgroundColor = [UIColor redColor];
         [bg addSubview:line];
     }
@@ -976,7 +980,7 @@ BOOL isRemove;
         UIView *tabView = [self tabViewAtIndex:i];
         CGRect frame = tabView.frame;
         frame.origin.x = contentSizeWidth;
-        frame.size.width = self.arr.count == 0 ? [self.tabWidth floatValue] : isFitScreen ? screenWidth / self.arr.count : [self.arr[i] floatValue] + 15;
+        frame.size.width = self.arr.count == 0 ? [self.tabWidth floatValue] : isFitScreen ? screenWidthSize / self.arr.count : [self.arr[i] floatValue] + 15;
         tabView.frame = frame;
         
         if(_isSeparator && i != 0)
