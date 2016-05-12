@@ -16,6 +16,7 @@
 #import "UIBarButtonItem+Badge.h"
 #import "UIButton+Badge.h"
 #import "UIScrollView+DXRefresh.h"
+#import "ViewPagerController.h"
 #import "XMLReader.h"
 
 FOUNDATION_EXPORT double FBPLUGINVersionNumber;
