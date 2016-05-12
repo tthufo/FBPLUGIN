@@ -9,12 +9,12 @@
 #import "FB.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <FBSDKShareKit/FBSDKShareKit.h>
+//#import <FBSDKShareKit/FBSDKShareKit.h>
 #import "NSObject+Category.h"
 
 static FB * instance = nil;
 
-@interface FB ()<FBSDKSharingDelegate>
+@interface FB ()//<FBSDKSharingDelegate>
 {
     
 }
@@ -219,35 +219,35 @@ static FB * instance = nil;
     instance = nil;
 }
 
-- (void)didShareFacebook:(NSDictionary*)dict andCompletion:(FBCompletion)completion
-{
-    completionBlock = completion;
-    
-    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    content.contentURL = [NSURL URLWithString:dict[@"content"]];    
-    
-    FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
-    dialog.delegate = self;
-    dialog.fromViewController = dict[@"host"];
-    dialog.shareContent = content;
-    dialog.mode = FBSDKShareDialogModeAutomatic;
-    [dialog show];
-}
-
-- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error
-{
-    completionBlock(nil, error, -1, error.localizedDescription, error);
-}
-
-- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results
-{
-    completionBlock(nil, results, 1, nil, nil);
-}
-
-- (void)sharerDidCancel:(id<FBSDKSharing>)sharer
-{
-    completionBlock(nil, nil, -1, nil, nil);
-}
+//- (void)didShareFacebook:(NSDictionary*)dict andCompletion:(FBCompletion)completion
+//{
+//    completionBlock = completion;
+//    
+//    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+//    content.contentURL = [NSURL URLWithString:dict[@"content"]];    
+//    
+//    FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+//    dialog.delegate = self;
+//    dialog.fromViewController = dict[@"host"];
+//    dialog.shareContent = content;
+//    dialog.mode = FBSDKShareDialogModeAutomatic;
+//    [dialog show];
+//}
+//
+//- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error
+//{
+//    completionBlock(nil, error, -1, error.localizedDescription, error);
+//}
+//
+//- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results
+//{
+//    completionBlock(nil, results, 1, nil, nil);
+//}
+//
+//- (void)sharerDidCancel:(id<FBSDKSharing>)sharer
+//{
+//    completionBlock(nil, nil, -1, nil, nil);
+//}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
