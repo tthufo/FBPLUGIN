@@ -1,6 +1,0 @@
-framework module FBPLUGIN {
-  umbrella header "FBPLUGIN-umbrella.h"
-
-  export *
-  module * { export * }
-}

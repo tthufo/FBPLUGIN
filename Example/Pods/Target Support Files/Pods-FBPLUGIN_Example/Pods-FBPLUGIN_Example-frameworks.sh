@@ -82,38 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-FBPLUGIN_Example/ASIHTTPRequest.framework"
-  install_framework "Pods-FBPLUGIN_Example/AVHexColor.framework"
-  install_framework "Pods-FBPLUGIN_Example/Bolts.framework"
-  install_framework "Pods-FBPLUGIN_Example/FBPLUGIN.framework"
-  install_framework "Pods-FBPLUGIN_Example/FBSDKCoreKit.framework"
-  install_framework "Pods-FBPLUGIN_Example/FBSDKLoginKit.framework"
-  install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
-  install_framework "Pods-FBPLUGIN_Example/IAPHelper.framework"
-  install_framework "Pods-FBPLUGIN_Example/JCNotificationBannerPresenter.framework"
-  install_framework "Pods-FBPLUGIN_Example/JSONKit_NoWarning.framework"
-  install_framework "Pods-FBPLUGIN_Example/Reachability.framework"
-  install_framework "Pods-FBPLUGIN_Example/SDWebImage.framework"
-  install_framework "Pods-FBPLUGIN_Example/SVProgressHUD.framework"
-  install_framework "Pods-FBPLUGIN_Example/Toast.framework"
-  install_framework "Pods-FBPLUGIN_Example/hpple.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-FBPLUGIN_Example/ASIHTTPRequest.framework"
-  install_framework "Pods-FBPLUGIN_Example/AVHexColor.framework"
-  install_framework "Pods-FBPLUGIN_Example/Bolts.framework"
-  install_framework "Pods-FBPLUGIN_Example/FBPLUGIN.framework"
-  install_framework "Pods-FBPLUGIN_Example/FBSDKCoreKit.framework"
-  install_framework "Pods-FBPLUGIN_Example/FBSDKLoginKit.framework"
-  install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
-  install_framework "Pods-FBPLUGIN_Example/IAPHelper.framework"
-  install_framework "Pods-FBPLUGIN_Example/JCNotificationBannerPresenter.framework"
-  install_framework "Pods-FBPLUGIN_Example/JSONKit_NoWarning.framework"
-  install_framework "Pods-FBPLUGIN_Example/Reachability.framework"
-  install_framework "Pods-FBPLUGIN_Example/SDWebImage.framework"
-  install_framework "Pods-FBPLUGIN_Example/SVProgressHUD.framework"
-  install_framework "Pods-FBPLUGIN_Example/Toast.framework"
-  install_framework "Pods-FBPLUGIN_Example/hpple.framework"
-fi

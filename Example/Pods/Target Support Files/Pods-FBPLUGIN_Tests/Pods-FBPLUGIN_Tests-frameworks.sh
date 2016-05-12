@@ -82,38 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-FBPLUGIN_Tests/ASIHTTPRequest.framework"
-  install_framework "Pods-FBPLUGIN_Tests/AVHexColor.framework"
-  install_framework "Pods-FBPLUGIN_Tests/Bolts.framework"
-  install_framework "Pods-FBPLUGIN_Tests/FBPLUGIN.framework"
-  install_framework "Pods-FBPLUGIN_Tests/FBSDKCoreKit.framework"
-  install_framework "Pods-FBPLUGIN_Tests/FBSDKLoginKit.framework"
-  install_framework "Pods-FBPLUGIN_Tests/FBSDKShareKit.framework"
-  install_framework "Pods-FBPLUGIN_Tests/IAPHelper.framework"
-  install_framework "Pods-FBPLUGIN_Tests/JCNotificationBannerPresenter.framework"
-  install_framework "Pods-FBPLUGIN_Tests/JSONKit_NoWarning.framework"
-  install_framework "Pods-FBPLUGIN_Tests/Reachability.framework"
-  install_framework "Pods-FBPLUGIN_Tests/SDWebImage.framework"
-  install_framework "Pods-FBPLUGIN_Tests/SVProgressHUD.framework"
-  install_framework "Pods-FBPLUGIN_Tests/Toast.framework"
-  install_framework "Pods-FBPLUGIN_Tests/hpple.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-FBPLUGIN_Tests/ASIHTTPRequest.framework"
-  install_framework "Pods-FBPLUGIN_Tests/AVHexColor.framework"
-  install_framework "Pods-FBPLUGIN_Tests/Bolts.framework"
-  install_framework "Pods-FBPLUGIN_Tests/FBPLUGIN.framework"
-  install_framework "Pods-FBPLUGIN_Tests/FBSDKCoreKit.framework"
-  install_framework "Pods-FBPLUGIN_Tests/FBSDKLoginKit.framework"
-  install_framework "Pods-FBPLUGIN_Tests/FBSDKShareKit.framework"
-  install_framework "Pods-FBPLUGIN_Tests/IAPHelper.framework"
-  install_framework "Pods-FBPLUGIN_Tests/JCNotificationBannerPresenter.framework"
-  install_framework "Pods-FBPLUGIN_Tests/JSONKit_NoWarning.framework"
-  install_framework "Pods-FBPLUGIN_Tests/Reachability.framework"
-  install_framework "Pods-FBPLUGIN_Tests/SDWebImage.framework"
-  install_framework "Pods-FBPLUGIN_Tests/SVProgressHUD.framework"
-  install_framework "Pods-FBPLUGIN_Tests/Toast.framework"
-  install_framework "Pods-FBPLUGIN_Tests/hpple.framework"
-fi
