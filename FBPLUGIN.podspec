@@ -49,7 +49,7 @@ s.public_header_files = 'Pod/Classes/*.h'
 
 s.dependency 'FBSDKCoreKit', '~> 4.4'
 s.dependency 'FBSDKLoginKit', '~> 4.4'
-s.dependency 'FBSDKShareKit', '~> 4.4'
+#s.dependency 'FBSDKShareKit', '~> 4.4'
 s.dependency 'AVHexColor', '~> 2.0'
 s.dependency 'SVProgressHUD'
 s.dependency 'Toast', '~> 2.4'
