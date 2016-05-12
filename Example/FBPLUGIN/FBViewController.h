@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 thanhhaitran. All rights reserved.
 //
 
-@import UIKit;
+//@import UIKit;
 
 @interface FBViewController : UIViewController
 

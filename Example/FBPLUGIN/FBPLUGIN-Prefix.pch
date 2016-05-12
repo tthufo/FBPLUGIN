@@ -12,8 +12,8 @@
 
 #ifdef __OBJC__
 
-    @import UIKit;
-    @import Foundation;
+//    @import UIKit;
+//    @import Foundation;
 
 //#import "FBPLUGIN_Example-Swift.h"
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 thanhhaitran. All rights reserved.
 //
 
-@import UIKit;
+//@import UIKit;
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>

@@ -8,7 +8,7 @@
 //  Copyright (c) 2015 thanhhaitran. All rights reserved.
 //
 
-@import UIKit;
+//@import UIKit;
 #import "FBAppDelegate.h"
 
 int main(int argc, char * argv[])
