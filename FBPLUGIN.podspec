@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
-  s.version          = "0.4.5"
+  s.version          = "0.4.6"
   s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.
@@ -28,6 +28,8 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/tthufo'
 
   s.platform     = :ios, '7.0'
+  s.watchos.deployment_target = '2.0'
+
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes'
