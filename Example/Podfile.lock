@@ -19,11 +19,12 @@ PODS:
   - Bolts/AppLinks (1.7.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
-  - FBPLUGIN (0.4.8):
+  - FBPLUGIN (0.4.9):
     - ASIHTTPRequest (~> 1.8)
     - AVHexColor (~> 2.0)
     - FBSDKCoreKit (~> 4.4)
     - FBSDKLoginKit (~> 4.4)
+    - FBSDKShareKit (~> 4.4)
     - hpple (~> 0.2)
     - IAPHelper
     - JCNotificationBannerPresenter (~> 1.1)
@@ -34,6 +35,8 @@ PODS:
   - FBSDKCoreKit (4.11.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.11.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.11.0):
     - FBSDKCoreKit
   - hpple (0.2.0)
   - IAPHelper (1.0.8.1)
@@ -57,9 +60,10 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   AVHexColor: 33e5e102f3b6f3acd002779183ee226e21870c28
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
-  FBPLUGIN: 8005bca2702f559c3aa3c0e68b33996b71f7a8bf
+  FBPLUGIN: bdddc6a992210e17e706e581a64b7b98c2ba7be2
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
+  FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
   hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57
   IAPHelper: fbed593436838c3d40753ded319062b68c00cc38
   JCNotificationBannerPresenter: f40150961943048ed3b1d2628d29dbf66a959e21
