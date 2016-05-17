@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
-  s.version          = "0.4.7"
+  s.version          = "0.4.8"
   s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.
@@ -27,16 +27,16 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/tthufo/FBPLUGIN.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/tthufo'
 
-#  s.platform     = :ios, '7.0'
-#  s.watchos.deployment_target = '2.0'
-s.ios.deployment_target = '7.0'
-#s.osx.deployment_target = '10.7'
-s.watchos.deployment_target = '2.0'
-#s.tvos.deployment_target = '9.0'
+  s.platform     = :ios, '7.0'
 
-s.requires_arc = true
+#  s.ios.deployment_target = '7.0'
+
+#  s.watchos.deployment_target = '2.0'
+
+  s.requires_arc = true
 
   s.source_files = 'Pod/Classes'
+
   s.resource_bundles = {
     'FBPLUGIN' => ['Pod/Assets/*']
   }
@@ -45,13 +45,7 @@ s.requires_arc = true
 
   s.frameworks = 'CoreData'
 
-#s.vendored_frameworks = 'Pod/Private/*.framework'
-#s.preserve_paths = 'Pod/Private/*.framework'
-
-s.public_header_files = 'Pod/Classes/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
-  # s.dependency 'Facebook-iOS-SDK', '~> 4.0.1'
+  s.public_header_files = 'Pod/Classes/*.h'
 
 s.dependency 'FBSDKCoreKit', '~> 4.4'
 s.dependency 'FBSDKLoginKit', '~> 4.4'
