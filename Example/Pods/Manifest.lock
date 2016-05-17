@@ -19,7 +19,7 @@ PODS:
   - Bolts/AppLinks (1.7.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
-  - FBPLUGIN (0.4.7):
+  - FBPLUGIN (0.4.8):
     - ASIHTTPRequest (~> 1.8)
     - AVHexColor (~> 2.0)
     - FBSDKCoreKit (~> 4.4)
@@ -57,7 +57,7 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   AVHexColor: 33e5e102f3b6f3acd002779183ee226e21870c28
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
-  FBPLUGIN: 95866b693dfb3da9c368989078ce01f8689597e0
+  FBPLUGIN: 8005bca2702f559c3aa3c0e68b33996b71f7a8bf
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57
@@ -69,6 +69,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
 
-PODFILE CHECKSUM: cb1663decdeafdaf30628c8673ee209dfc94e9fc
+PODFILE CHECKSUM: cb4e27e888257f9da6ba4c72cbf45fd7af8c3eda
 
 COCOAPODS: 1.0.0
