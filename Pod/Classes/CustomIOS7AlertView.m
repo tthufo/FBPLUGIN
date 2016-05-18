@@ -173,7 +173,7 @@ CGFloat buttonSpacerHeight = 0;
 }
 
 // Creates the container view here: create the dialog, then add the custom content and buttons
-- (UIView *)createContainerView:(BOOL)isInreactiove
+- (UIView *)createContainerView:(BOOL)isInreactive
 {
     if (containerView == NULL) {
         containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 150)];
@@ -189,6 +189,7 @@ CGFloat buttonSpacerHeight = 0;
     but.backgroundColor = [UIColor clearColor];
     but.frame = CGRectMake(0, 0, screenSize.width, screenSize.height) ;
     [self addSubview:but];
+    if(isInreactive)
     [but addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     
     // This is the dialog's container; we attach the custom content and the buttons to this one
