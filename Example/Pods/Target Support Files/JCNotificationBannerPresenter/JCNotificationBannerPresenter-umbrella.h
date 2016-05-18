@@ -2,10 +2,10 @@
 
 #import "JCNotificationBanner.h"
 #import "JCNotificationBannerPresenter.h"
+#import "JCNotificationBannerPresenter_Private.h"
 #import "JCNotificationBannerPresenterIOS7Style.h"
 #import "JCNotificationBannerPresenterIOSStyle.h"
 #import "JCNotificationBannerPresenterSmokeStyle.h"
-#import "JCNotificationBannerPresenter_Private.h"
 #import "JCNotificationBannerView.h"
 #import "JCNotificationBannerViewController.h"
 #import "JCNotificationBannerViewIOS7Style.h"

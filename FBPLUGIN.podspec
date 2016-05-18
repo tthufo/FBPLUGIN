@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
-  s.version          = "0.5.0"
+  s.version          = "0.5.1"
   s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.

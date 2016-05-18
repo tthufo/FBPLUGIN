@@ -1,13 +1,14 @@
-
+source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'FBPLUGIN_Example' do
-    pod 'FBPLUGIN', :path => '../'
+target 'FBPLUGIN_Example', :exclusive => true do
+    pod "FBPLUGIN", :path => "../"
+end
+
+target 'FBPLUGIN_Tests', :exclusive => true do
+    pod "FBPLUGIN", :path => "../"
     
-    target 'FBPLUGIN_Tests' do
-        inherit! :search_paths
-        
-    end
+    
 end
 
 post_install do |installer|

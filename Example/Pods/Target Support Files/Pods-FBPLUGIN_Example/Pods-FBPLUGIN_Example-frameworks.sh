@@ -16,7 +16,7 @@ install_framework()
     local source="$1"
   fi
 
-  local destination="${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+  local destination="${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
 
   if [ -L "${source}" ]; then
       echo "Symlinked..."
@@ -59,8 +59,8 @@ code_sign_if_enabled() {
   if [ -n "${EXPANDED_CODE_SIGN_IDENTITY}" -a "${CODE_SIGNING_REQUIRED}" != "NO" -a "${CODE_SIGNING_ALLOWED}" != "NO" ]; then
     # Use the current code_sign_identitiy
     echo "Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}"
-    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements \"$1\""
-    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements "$1"
+    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements \"$1\""
+    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements "$1"
   fi
 }
 
@@ -84,36 +84,36 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/ASIHTTPRequest/ASIHTTPRequest.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/AVHexColor/AVHexColor.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Bolts/Bolts.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FBPLUGIN/FBPLUGIN.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FBSDKCoreKit/FBSDKCoreKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FBSDKLoginKit/FBSDKLoginKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FBSDKShareKit/FBSDKShareKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/IAPHelper/IAPHelper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/JCNotificationBannerPresenter/JCNotificationBannerPresenter.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/JSONKit-NoWarning/JSONKit_NoWarning.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Reachability/Reachability.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Toast/Toast.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/hpple/hpple.framework"
+  install_framework "Pods-FBPLUGIN_Example/ASIHTTPRequest.framework"
+  install_framework "Pods-FBPLUGIN_Example/AVHexColor.framework"
+  install_framework "Pods-FBPLUGIN_Example/Bolts.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBPLUGIN.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKCoreKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKLoginKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/IAPHelper.framework"
+  install_framework "Pods-FBPLUGIN_Example/JCNotificationBannerPresenter.framework"
+  install_framework "Pods-FBPLUGIN_Example/JSONKit_NoWarning.framework"
+  install_framework "Pods-FBPLUGIN_Example/Reachability.framework"
+  install_framework "Pods-FBPLUGIN_Example/SDWebImage.framework"
+  install_framework "Pods-FBPLUGIN_Example/SVProgressHUD.framework"
+  install_framework "Pods-FBPLUGIN_Example/Toast.framework"
+  install_framework "Pods-FBPLUGIN_Example/hpple.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/ASIHTTPRequest/ASIHTTPRequest.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/AVHexColor/AVHexColor.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Bolts/Bolts.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FBPLUGIN/FBPLUGIN.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FBSDKCoreKit/FBSDKCoreKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FBSDKLoginKit/FBSDKLoginKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FBSDKShareKit/FBSDKShareKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/IAPHelper/IAPHelper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/JCNotificationBannerPresenter/JCNotificationBannerPresenter.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/JSONKit-NoWarning/JSONKit_NoWarning.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Reachability/Reachability.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Toast/Toast.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/hpple/hpple.framework"
+  install_framework "Pods-FBPLUGIN_Example/ASIHTTPRequest.framework"
+  install_framework "Pods-FBPLUGIN_Example/AVHexColor.framework"
+  install_framework "Pods-FBPLUGIN_Example/Bolts.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBPLUGIN.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKCoreKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKLoginKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/FBSDKShareKit.framework"
+  install_framework "Pods-FBPLUGIN_Example/IAPHelper.framework"
+  install_framework "Pods-FBPLUGIN_Example/JCNotificationBannerPresenter.framework"
+  install_framework "Pods-FBPLUGIN_Example/JSONKit_NoWarning.framework"
+  install_framework "Pods-FBPLUGIN_Example/Reachability.framework"
+  install_framework "Pods-FBPLUGIN_Example/SDWebImage.framework"
+  install_framework "Pods-FBPLUGIN_Example/SVProgressHUD.framework"
+  install_framework "Pods-FBPLUGIN_Example/Toast.framework"
+  install_framework "Pods-FBPLUGIN_Example/hpple.framework"
 fi

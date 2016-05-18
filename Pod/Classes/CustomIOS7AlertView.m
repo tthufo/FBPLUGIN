@@ -60,9 +60,9 @@ CGFloat buttonSpacerHeight = 0;
 }
 
 // Create the dialog view, and animate opening the dialog
-- (void)show
+- (void)show:(BOOL)isDisable
 {
-    dialogView = [self createContainerView];
+    dialogView = [self createContainerView:isDisable];
     
     dialogView.layer.shouldRasterize = YES;
     dialogView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
@@ -173,7 +173,7 @@ CGFloat buttonSpacerHeight = 0;
 }
 
 // Creates the container view here: create the dialog, then add the custom content and buttons
-- (UIView *)createContainerView
+- (UIView *)createContainerView:(BOOL)isInreactiove
 {
     if (containerView == NULL) {
         containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 150)];
