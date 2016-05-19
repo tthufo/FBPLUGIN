@@ -610,6 +610,18 @@ CLLocationManager * locationManager;
     return self;
 }
 
+- (void)setHeightUp:(CGFloat)height andDuration:(CGFloat)duration
+{
+    [UIView animateWithDuration:duration animations:^{
+        CGRect f = self.frame;
+        f.size.height = height;
+        f.origin.y += self.frame.size.height - height;
+        self.frame = f;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 - (void)setHeight:(CGFloat)height animated:(BOOL)animated
 {
     if (animated)

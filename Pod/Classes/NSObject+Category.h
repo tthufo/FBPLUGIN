@@ -129,6 +129,8 @@
 
 - (UIView*)withShadow:(UIColor*)hext;
 
+- (void)setHeightUp:(CGFloat)height andDuration:(CGFloat)duration;
+
 - (void)setHeight:(CGFloat)height animated:(BOOL)animate;
 
 - (void)bounce:(float)bounceFactor;
