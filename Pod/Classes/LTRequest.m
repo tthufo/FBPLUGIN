@@ -322,7 +322,9 @@ static LTRequest *__sharedLTRequest = nil;
         {
             if([dict responseForKey:@"host"])
             {
-                [self alert: self.lang ? @"Attention" : @"Thông báo" message: self.lang ? @"Please check your Internet connection" : @"Vui lòng kiểm tra lại kết nối Internet"];
+//                [self alert: self.lang ? @"Attention" : @"Thông báo" message: self.lang ? @"Please check your Internet connection" : @"Vui lòng kiểm tra lại kết nối Internet"];
+                [self showToast:self.lang ? @"Please check your Internet connection" : @"Vui lòng kiểm tra lại kết nối Internet" andPos:0];
+                
                 [dict[@"host"] hideSVHUD];
             }
             
