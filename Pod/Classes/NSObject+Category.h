@@ -22,6 +22,18 @@
 
 - (NSString *)deviceUUID;
 
+- (NSString*)currentDate:(NSString*)format;
+
+- (NSString*)yesterdayDate:(NSString*)format;
+
+- (NSString*)specificDate:(NSString*)format withDays:(int)days;
+
+- (BOOL)isPassTime:(NSString*)time;
+
+- (BOOL)isLiveRange:(NSString*)region;
+
+- (BOOL)isLiveScore:(NSString*)region;
+
 - (NSInteger)currentDateInt;
 
 - (NSDictionary *)appInfor;
@@ -121,15 +133,24 @@
 
 @interface UIView (Border)
 
+- (void)addTopBorderWithColor:(UIColor *)color andWidth:(CGFloat) borderWidth;
+
+- (void)addBottomBorderWithColor:(UIColor *)color andWidth:(CGFloat) borderWidth;
+
+- (void)addRightBorderWithColor:(UIColor *)color andWidth:(CGFloat) borderWidth;
+
+- (void)addLeftBorderWithColor:(UIColor *)color andWidth:(CGFloat) borderWidth;
+
+
 - (UIImage *)pb_takeSnapshot;
+
+- (CALayer *)prefix_addUpperBorder:(UIRectEdge)edge color:(UIColor *)color thickness:(CGFloat)thickness;
 
 - (UIView *)withBorder:(NSDictionary *)dict;
 
 - (UIView*)withShadow;
 
 - (UIView*)withShadow:(UIColor*)hext;
-
-- (void)setHeightUp:(CGFloat)height andDuration:(CGFloat)duration;
 
 - (void)setHeight:(CGFloat)height animated:(BOOL)animate;
 
@@ -158,6 +179,8 @@
 
 @interface NSString (Contains)
 
+- (NSString*)trim;
+
 - (CGFloat)didConfigHeight:(CGFloat)fontSize andDistance:(CGFloat)distance andExtra:(CGFloat)extra;
 
 - (BOOL)myContainsString:(NSString*)other;
@@ -173,6 +196,8 @@
 - (NSString*)dateFromTimeStamp:(NSString*)format;
 
 - (NSString*)normalizeDateTime:(int)position;
+
+- (NSDate*)dateWithFormat:(NSString*)format;
 
 @end
 

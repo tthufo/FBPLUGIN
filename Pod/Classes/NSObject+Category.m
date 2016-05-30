@@ -96,7 +96,7 @@ CLLocationManager * locationManager;
     return @{@"majorVersion":majorVersion,@"minorVersion":minorVersion};
 }
 
--(NSInteger)currentDateInt
+- (NSInteger)currentDateInt
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"ddMMyyyy"];
@@ -105,6 +105,101 @@ CLLocationManager * locationManager;
     CFTimeZoneRef tz = CFTimeZoneCopySystem();
     SInt32 WeekdayNumber = CFAbsoluteTimeGetDayOfWeek(at, tz);
     return WeekdayNumber;
+}
+
+- (NSString*)currentDate:(NSString*)format
+{
+    return  [[NSDate date] stringWithFormat:format];
+}
+
+- (NSString*)yesterdayDate:(NSString*)format
+{
+    NSDate *today = [NSDate date];
+    
+    NSDateComponents *components = [NSDateComponents new];
+    
+    [components setDay:-1];
+    
+    NSDate *yesterday = [[NSCalendar currentCalendar] dateByAddingComponents:components
+                                                                      toDate:today
+                                                                     options:kNilOptions];
+    
+    return [yesterday stringWithFormat:format];
+}
+
+- (NSString*)specificDate:(NSString*)format withDays:(int)days
+{
+    NSDate *today = [NSDate date];
+    
+    NSDateComponents *components = [NSDateComponents new];
+    
+    [components setDay:days];
+    
+    NSDate *yesterday = [[NSCalendar currentCalendar] dateByAddingComponents:components
+                                                                      toDate:today
+                                                                     options:kNilOptions];
+    
+    return [yesterday stringWithFormat:format];
+}
+
+- (BOOL)isPassTime:(NSString*)time
+{
+    //    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate:[NSDate date]];
+    //    NSInteger currentHour = [components hour];
+    //    NSInteger currentMinute = [components minute];
+    //    NSInteger currentSecond = [components second];
+    //
+    //    NSArray * tempTime = [time componentsSeparatedByString:@":"];
+    //
+    //    if(currentHour > [tempTime[0] intValue] || (currentHour == [tempTime[0] intValue] && currentMinute == [tempTime[1] intValue] && currentSecond > 0) || (currentHour == [tempTime[0] intValue] && currentMinute > [tempTime[1] intValue]))
+    //    {
+    //        return YES;
+    //    }
+    //    return NO;
+    
+    NSDate * limitDate = [[NSString stringWithFormat:@"%@ %@", [[NSDate date] stringWithFormat:@"dd/MM/yyyy"], time] dateWithFormat:@"dd/MM/yyyy HH:mm:ss"];
+    
+    return ([[NSDate date] timeIntervalSince1970] > [limitDate timeIntervalSince1970]) ? YES : NO;
+}
+
+- (BOOL)isLiveRange:(NSString*)region
+{
+    NSDictionary * dict = [[NSDictionary new] dictionaryWithPlist:@"LiveRange"];
+    
+    NSDictionary * ranges = dict[region];
+    
+    NSDate * start = [[NSString stringWithFormat:@"%@ %@",[[[NSDate date] stringWithFormat:@"dd/MM/yyyy HH:mm:ss"] componentsSeparatedByString:@" "][0], ranges[@"end"]] dateWithFormat:@"dd/MM/yyyy HH:mm:ss"];
+    
+    NSDate * end = [[NSString stringWithFormat:@"%@ %@",[[[NSDate date] stringWithFormat:@"dd/MM/yyyy HH:mm:ss"] componentsSeparatedByString:@" "][0], ranges[@"live"]] dateWithFormat:@"dd/MM/yyyy HH:mm:ss"];
+    
+    if([[NSDate date] timeIntervalSince1970] > [start timeIntervalSince1970] && [[NSDate date] timeIntervalSince1970] < [end timeIntervalSince1970])
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)isLiveScore:(NSString*)region
+{
+    NSDictionary * dict = [[NSDictionary new] dictionaryWithPlist:@"LiveRange"];
+    
+    NSDictionary * ranges = dict[region];
+    
+    NSDate * start = [[NSString stringWithFormat:@"%@ %@",[[[NSDate date] stringWithFormat:@"dd/MM/yyyy HH:mm:ss"] componentsSeparatedByString:@" "][0], ranges[@"start"]] dateWithFormat:@"dd/MM/yyyy HH:mm:ss"];
+    
+    NSDate * end = [[NSString stringWithFormat:@"%@ %@",[[[NSDate date] stringWithFormat:@"dd/MM/yyyy HH:mm:ss"] componentsSeparatedByString:@" "][0], ranges[@"end"]] dateWithFormat:@"dd/MM/yyyy HH:mm:ss"];
+    
+    //    NSLog(@"%@",start);
+    //
+    //    NSLog(@"%@",end);
+    
+    if([[NSDate date] timeIntervalSince1970] > [start timeIntervalSince1970] && [[NSDate date] timeIntervalSince1970] < [end timeIntervalSince1970])
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)initLocation
@@ -576,6 +671,86 @@ CLLocationManager * locationManager;
     return image;
 }
 
+- (void)addTopBorderWithColor:(UIColor *)color andWidth:(CGFloat) borderWidth {
+    if([self.subviews containsObject:(UIView*)[self withView:self tag:1]])
+    {
+        [(UIView*)[self withView:self tag:1] removeFromSuperview];
+    }
+    UIView *border = [UIView new];
+    border.tag = 1;
+    border.backgroundColor = color;
+    [border setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin];
+    border.frame = CGRectMake(0, 0, self.frame.size.width, borderWidth);
+    [self addSubview:border];
+}
+
+- (void)addBottomBorderWithColor:(UIColor *)color andWidth:(CGFloat) borderWidth {
+    if([self.subviews containsObject:(UIView*)[self withView:self tag:2]])
+    {
+        [(UIView*)[self withView:self tag:2] removeFromSuperview];
+    }
+    UIView *border = [UIView new];
+    border.tag = 2;
+    border.backgroundColor = color;
+    [border setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
+    border.frame = CGRectMake(0, self.frame.size.height - borderWidth, self.frame.size.width, borderWidth);
+    [self addSubview:border];
+}
+
+- (void)addLeftBorderWithColor:(UIColor *)color andWidth:(CGFloat) borderWidth {
+    if([self.subviews containsObject:(UIView*)[self withView:self tag:3]])
+    {
+        [(UIView*)[self withView:self tag:3] removeFromSuperview];
+    }
+    UIView *border = [UIView new];
+    border.tag = 3;
+    border.backgroundColor = color;
+    border.frame = CGRectMake(0, 1, borderWidth, self.frame.size.height);
+    [border setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin];
+    [self addSubview:border];
+}
+
+- (void)addRightBorderWithColor:(UIColor *)color andWidth:(CGFloat) borderWidth {
+    if([self.subviews containsObject:(UIView*)[self withView:self tag:4]])
+    {
+        [(UIView*)[self withView:self tag:4] removeFromSuperview];
+    }
+    UIView *border = [UIView new];
+    border.tag = 4;
+    border.backgroundColor = color;
+    [border setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin];
+    border.frame = CGRectMake(self.frame.size.width - borderWidth, 1, borderWidth, self.frame.size.height);
+    [self addSubview:border];
+}
+
+- (CALayer *)prefix_addUpperBorder:(UIRectEdge)edge color:(UIColor *)color thickness:(CGFloat)thickness
+{
+    CALayer *border = [CALayer layer];
+    
+    switch (edge) {
+        case UIRectEdgeTop:
+            border.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), thickness);
+            break;
+        case UIRectEdgeBottom:
+            border.frame = CGRectMake(0, CGRectGetHeight(self.frame) - thickness, CGRectGetWidth(self.frame), thickness);
+            break;
+        case UIRectEdgeLeft:
+            border.frame = CGRectMake(0, 0, thickness, CGRectGetHeight(self.frame));
+            break;
+        case UIRectEdgeRight:
+            border.frame = CGRectMake(CGRectGetWidth(self.frame) - thickness, 0, thickness, CGRectGetHeight(self.frame));
+            break;
+        default:
+            break;
+    }
+    
+    border.backgroundColor = color.CGColor;
+    
+    [self.layer addSublayer:border];
+    
+    return border;
+}
+
 - (UIView *)withBorder:(NSDictionary *)dict
 {
     self.layer.borderColor =  ![dict responseForKey:@"Bcolor"] ? [dict responseForKey:@"Bhex"] ? [AVHexColor colorWithHexString:dict[@"Bhex"]].CGColor : [UIColor clearColor].CGColor : ((UIColor*)dict[@"Bcolor"]).CGColor;
@@ -593,7 +768,7 @@ CLLocationManager * locationManager;
 -(UIView*)withShadow
 {
     self.layer.masksToBounds = NO;
-    self.layer.shadowOffset = CGSizeMake(1.0f,3.0f);
+    self.layer.shadowOffset = CGSizeMake(10.0f,3.0f);
     self.layer.shadowRadius = 2;
     self.layer.shadowOpacity = .8f;
     self.layer.shadowColor = [AVHexColor colorWithHexString:@"#2B292A"].CGColor;
@@ -608,18 +783,6 @@ CLLocationManager * locationManager;
     self.layer.shadowOpacity = .8f;
     self.layer.shadowColor = hext.CGColor;
     return self;
-}
-
-- (void)setHeightUp:(CGFloat)height andDuration:(CGFloat)duration
-{
-    [UIView animateWithDuration:duration animations:^{
-        CGRect f = self.frame;
-        f.size.height = height;
-        f.origin.y += self.frame.size.height - height;
-        self.frame = f;
-    } completion:^(BOOL finished) {
-        
-    }];
 }
 
 - (void)setHeight:(CGFloat)height animated:(BOOL)animated
@@ -794,6 +957,11 @@ CLLocationManager * locationManager;
 
 @implementation NSString (Contains)
 
+- (NSString*)trim
+{
+    return [[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
 - (CGFloat)didConfigHeight:(CGFloat)fontSize andDistance:(CGFloat)distance andExtra:(CGFloat)extra
 {
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
@@ -837,7 +1005,7 @@ CLLocationManager * locationManager;
     return [self myContainsString:str];
 }
 
--(NSString*)specialDateFromTimeStamp
+- (NSString*)specialDateFromTimeStamp
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
@@ -848,7 +1016,7 @@ CLLocationManager * locationManager;
     return [dateFormatter stringFromDate:dateFromString];
 }
 
--(NSString*)specialDateAndTimeFromTimeStamp
+- (NSString*)specialDateAndTimeFromTimeStamp
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
@@ -859,7 +1027,7 @@ CLLocationManager * locationManager;
     return [dateFormatter stringFromDate:dateFromString];
 }
 
--(NSString*)dateAndTimeFromTimeStamp
+- (NSString*)dateAndTimeFromTimeStamp
 {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self doubleValue]];
     
@@ -870,7 +1038,7 @@ CLLocationManager * locationManager;
     return [dateFormatter stringFromDate:date];
 }
 
--(NSString*)dateFromTimeStamp
+- (NSString*)dateFromTimeStamp
 {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self doubleValue]];
     
@@ -881,7 +1049,7 @@ CLLocationManager * locationManager;
     return [dateFormatter stringFromDate:date];
 }
 
--(NSString*)dateFromTimeStamp:(NSString*)format
+- (NSString*)dateFromTimeStamp:(NSString*)format
 {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self doubleValue]];
     
@@ -892,7 +1060,7 @@ CLLocationManager * locationManager;
     return [dateFormatter stringFromDate:date];
 }
 
--(NSString*)normalizeDateTime:(int)position//:(NSString*)dateTime
+- (NSString*)normalizeDateTime:(int)position//:(NSString*)dateTime
 {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     
@@ -908,6 +1076,13 @@ CLLocationManager * locationManager;
     NSString * final = [result componentsSeparatedByString:@" "][position];
     
     return final;
+}
+
+- (NSDate*)dateWithFormat:(NSString*)format
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:format];
+    return [dateFormatter dateFromString:self];;
 }
 
 @end
