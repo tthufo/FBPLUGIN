@@ -62,7 +62,7 @@ typedef NS_ENUM(NSUInteger, ViewPagerComponent) {
 
 @property (nonatomic, retain) NSArray* arr;
 
-@property (nonatomic, retain) NSString* indexSelected;
+@property (nonatomic, retain) NSString * indexSelected, * topHeight;
 
 @property (nonatomic, readwrite) BOOL isMultiColor, isCustomBackGround, isSeparator, isNavigation, isFitScreen, isHasNavigation;
 

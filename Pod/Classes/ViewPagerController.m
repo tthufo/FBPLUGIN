@@ -154,7 +154,7 @@
 
 @implementation ViewPagerController
 
-@synthesize arr;
+@synthesize arr, topHeight;
 @synthesize tabHeight = _tabHeight;
 @synthesize tabOffset = _tabOffset;
 @synthesize tabWidth = _tabWidth;
@@ -209,6 +209,9 @@ BOOL isRemove;
 - (void)layoutSubviews {
     
     CGFloat topLayoutGuide = _isHasNavigation ? 64 : 0;
+    
+    if(topHeight)
+        topLayoutGuide = topHeight.floatValue;
     
 //    if (IOS_VERSION_7) {
 //        topLayoutGuide = 20.0;
