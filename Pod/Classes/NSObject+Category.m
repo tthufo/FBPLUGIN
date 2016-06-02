@@ -144,19 +144,6 @@ CLLocationManager * locationManager;
 
 - (BOOL)isPassTime:(NSString*)time
 {
-    //    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate:[NSDate date]];
-    //    NSInteger currentHour = [components hour];
-    //    NSInteger currentMinute = [components minute];
-    //    NSInteger currentSecond = [components second];
-    //
-    //    NSArray * tempTime = [time componentsSeparatedByString:@":"];
-    //
-    //    if(currentHour > [tempTime[0] intValue] || (currentHour == [tempTime[0] intValue] && currentMinute == [tempTime[1] intValue] && currentSecond > 0) || (currentHour == [tempTime[0] intValue] && currentMinute > [tempTime[1] intValue]))
-    //    {
-    //        return YES;
-    //    }
-    //    return NO;
-    
     NSDate * limitDate = [[NSString stringWithFormat:@"%@ %@", [[NSDate date] stringWithFormat:@"dd/MM/yyyy"], time] dateWithFormat:@"dd/MM/yyyy HH:mm:ss"];
     
     return ([[NSDate date] timeIntervalSince1970] > [limitDate timeIntervalSince1970]) ? YES : NO;
@@ -189,10 +176,6 @@ CLLocationManager * locationManager;
     NSDate * start = [[NSString stringWithFormat:@"%@ %@",[[[NSDate date] stringWithFormat:@"dd/MM/yyyy HH:mm:ss"] componentsSeparatedByString:@" "][0], ranges[@"start"]] dateWithFormat:@"dd/MM/yyyy HH:mm:ss"];
     
     NSDate * end = [[NSString stringWithFormat:@"%@ %@",[[[NSDate date] stringWithFormat:@"dd/MM/yyyy HH:mm:ss"] componentsSeparatedByString:@" "][0], ranges[@"end"]] dateWithFormat:@"dd/MM/yyyy HH:mm:ss"];
-    
-    //    NSLog(@"%@",start);
-    //
-    //    NSLog(@"%@",end);
     
     if([[NSDate date] timeIntervalSince1970] > [start timeIntervalSince1970] && [[NSDate date] timeIntervalSince1970] < [end timeIntervalSince1970])
     {
@@ -327,7 +310,8 @@ CLLocationManager * locationManager;
     {
         case 0:
         {
-            [SVProgressHUD showWithStatus:string maskType:SVProgressHUDMaskTypeGradient];
+            [SVProgressHUD showWithStatus:string]; //maskType:SVProgressHUDMaskTypeGradient];
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
         }
             break;
         case 1:

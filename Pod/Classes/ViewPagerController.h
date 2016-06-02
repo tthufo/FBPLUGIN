@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, ViewPagerComponent) {
  */
 @property (weak) id <ViewPagerDelegate> delegate;
 
-@property (nonatomic, retain) NSArray* arr;
+@property (nonatomic, retain) NSArray * arr;
 
 @property (nonatomic, retain) NSString * indexSelected, * topHeight;
 
