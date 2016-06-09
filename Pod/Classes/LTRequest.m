@@ -199,7 +199,7 @@ static LTRequest *__sharedLTRequest = nil;
     
     if(!dict)
     {
-        [host alert:self.lang ? @"Attention" : @"Thông báo" message: self.lang ? @"Server error" :  @"Hệ thống đang bận"];
+        [self showToast:self.lang ? @"Server error" :  @"Hệ thống đang bận" andPos:0];
         
         return NO;
     }
@@ -223,7 +223,10 @@ static LTRequest *__sharedLTRequest = nil;
     }
     else
     {
-        [self showToast:[dict responseForKey:@"ERR_CODE"] ? dict[@"ERR_MSG"] : self.lang ? @"Server error, please try again" : @"Lỗi hệ thống xảy ra, xin hãy thử lại" andPos:0];
+        if(![dict responseForKey:@"overrideAlert"])
+        {
+            [self showToast:[dict responseForKey:@"ERR_CODE"] ? dict[@"ERR_MSG"] : self.lang ? @"Server error, please try again" : @"Lỗi hệ thống xảy ra, xin hãy thử lại" andPos:0];
+        }
     }
     
     return NO;
@@ -322,7 +325,6 @@ static LTRequest *__sharedLTRequest = nil;
         {
             if([dict responseForKey:@"host"])
             {
-//                [self alert: self.lang ? @"Attention" : @"Thông báo" message: self.lang ? @"Please check your Internet connection" : @"Vui lòng kiểm tra lại kết nối Internet"];
                 [self showToast:self.lang ? @"Please check your Internet connection" : @"Vui lòng kiểm tra lại kết nối Internet" andPos:0];
                 
                 [dict[@"host"] hideSVHUD];

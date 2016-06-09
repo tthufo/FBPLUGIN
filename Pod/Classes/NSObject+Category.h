@@ -219,6 +219,8 @@
 
 - (void)reloadDataWithAnimation:(BOOL)animate;
 
+//@property(nonatomic, assign) NSString* borderUIColor;
+
 @end
 
 @interface NSDate (extension)
