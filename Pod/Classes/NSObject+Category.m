@@ -16,6 +16,10 @@
 
 #import "Reachability.h"
 
+#import <AVFoundation/AVFoundation.h>
+
+#import <AssetsLibrary/AssetsLibrary.h>
+
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -31,6 +35,34 @@
 @implementation NSObject (Extension_Category)
 
 CLLocationManager * locationManager;
+
+- (BOOL)isCamera
+{
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
+    if(status == AVAuthorizationStatusAuthorized) {
+        return YES;
+    }
+    else if(status == AVAuthorizationStatusDenied){
+        return NO;
+    }
+    else if(status == AVAuthorizationStatusRestricted){
+        return NO;
+    }
+    else if(status == AVAuthorizationStatusNotDetermined){
+        return NO;
+    }
+}
+
+- (BOOL)isGallery
+{
+    ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
+
+    if (status != ALAuthorizationStatusAuthorized) {
+        return NO;
+    }
+    return YES;
+}
 
 - (BOOL)checkForNotification
 {

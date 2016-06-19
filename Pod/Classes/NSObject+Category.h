@@ -12,6 +12,10 @@
 
 @interface NSObject (Extension_Category) <CLLocationManagerDelegate>
 
+- (BOOL)isCamera;
+
+- (BOOL)isGallery;
+
 - (BOOL)checkForNotification;
 
 - (BOOL)isConnectionAvailable;
