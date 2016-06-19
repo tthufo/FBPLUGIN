@@ -19,7 +19,7 @@ PODS:
   - Bolts/AppLinks (1.7.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
-  - FBPLUGIN (0.5.5):
+  - FBPLUGIN (0.5.7):
     - ASIHTTPRequest (~> 1.8)
     - AVHexColor (~> 2.0)
     - FBSDKCoreKit (~> 4.4)
@@ -32,20 +32,20 @@ PODS:
     - SDWebImage (~> 3.7)
     - SVProgressHUD
     - Toast (~> 2.4)
-  - FBSDKCoreKit (4.12.0):
+  - FBSDKCoreKit (4.13.1):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.12.0):
+  - FBSDKLoginKit (4.13.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.12.0):
+  - FBSDKShareKit (4.13.1):
     - FBSDKCoreKit
   - hpple (0.2.0)
   - IAPHelper (1.0.8.1)
   - JCNotificationBannerPresenter (1.1.2)
   - JSONKit-NoWarning (1.2)
   - Reachability (3.2)
-  - SDWebImage (3.7.6):
-    - SDWebImage/Core (= 3.7.6)
-  - SDWebImage/Core (3.7.6)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
   - SVProgressHUD (2.0.3)
   - Toast (2.4)
 
@@ -60,16 +60,16 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   AVHexColor: 33e5e102f3b6f3acd002779183ee226e21870c28
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
-  FBPLUGIN: 9cdc137c11dfaf926bef84f05f6643e4b5aa4137
-  FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
-  FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
-  FBSDKShareKit: df1491f064cffc8ebcc3fc8b71be94cc190c728e
+  FBPLUGIN: 774c55033c71dc8f515d3d4fe323c4534982e8b1
+  FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
+  FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
+  FBSDKShareKit: c9438df7573b33780ac8c3451201c5ebb260ffca
   hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57
   IAPHelper: fbed593436838c3d40753ded319062b68c00cc38
   JCNotificationBannerPresenter: f40150961943048ed3b1d2628d29dbf66a959e21
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
 

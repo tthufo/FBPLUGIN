@@ -34,5 +34,6 @@
 
 #import "CustomIOS7AlertView.h"
 
+#import "UIImageView+MHFacebookImageViewer.h"
 
 //#endif /* FBPlugInHeader_h */

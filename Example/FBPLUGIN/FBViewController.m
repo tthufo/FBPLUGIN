@@ -340,7 +340,7 @@
 
 - (void)didPressSecond
 {
-    //[self.navigationController pushViewController:[SecondViewController new] animated:YES];
+    [self.navigationController pushViewController:[SecondViewController new] animated:YES];
 //    [[Ads sharedInstance] didShowFullAdsWithInfor:@{@"host":self,@"adsId":fullBannerAPI,@"device":@""} andCompletion:^(BannerEvent event, NSError *error, id banner) {
 //        
 //        switch (event)

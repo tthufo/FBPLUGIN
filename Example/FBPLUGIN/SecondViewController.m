@@ -10,7 +10,7 @@
 
 #import "DropButton.h"
 
-@interface SecondViewController ()
+@interface SecondViewController () <MHFacebookImageViewerDatasource>
 {
     IBOutlet UITableView * tableView;
 }
@@ -48,6 +48,22 @@
         cell = [[NSBundle mainBundle] loadNibNamed:@"Cells" owner:self options:nil][1];
     }
   
+    ((UIImageView*)[self withView:cell tag:99]).image = [UIImage imageNamed:@"info"];
+    
+    UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
+    
+    [button setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
+    
+    UIButton * b = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
+    
+    [b setImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
+    
+    [((UIImageView*)[self withView:cell tag:99]) setupImageViewerWithDatasource:self andInfo:@{@"done":button,@"check":NSStringFromCGRect(CGRectMake(100, 100, 50, 50)),@"image":@"menu"} initialIndex:indexPath.row onOpen:^{
+        
+    } onClose:^{
+        
+    }];
+    
     DropButton * drop = (DropButton*)[self withView:self.view tag:1];
     
     drop.pList = @"format";
@@ -55,6 +71,18 @@
     [drop addTarget:self action:@selector(didPressButtonAt:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
+}
+
+- (NSInteger) numberImagesForImageViewer:(MHFacebookImageViewer *)imageViewer {
+    return 11;
+}
+
+-  (NSURL*) imageURLAtIndex:(NSInteger)index imageViewer:(MHFacebookImageViewer *)imageViewer {
+    return [NSURL URLWithString:@"https://pbs.twimg.com/profile_images/638751551457103872/KN-NzuRl.png"];
+}
+
+- (UIImage*) imageDefaultAtIndex:(NSInteger)index imageViewer:(MHFacebookImageViewer *)imageViewer{
+    return [UIImage imageNamed:@"info"];
 }
 
 - (void)didPressButtonAt:(DropButton*)sender
