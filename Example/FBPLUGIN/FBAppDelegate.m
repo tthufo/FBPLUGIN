@@ -18,6 +18,8 @@
     
     [[LTRequest sharedInstance] initRequest];
     
+    [[LTRequest sharedInstance] registerPush];
+
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:[FBViewController new]];
     
     self.window.rootViewController = nav;

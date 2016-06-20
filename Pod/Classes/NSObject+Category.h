@@ -26,6 +26,8 @@
 
 - (NSString *)deviceUUID;
 
+- (NSString *)uniqueDeviceId;
+
 - (NSString*)currentDate:(NSString*)format;
 
 - (NSString*)yesterdayDate:(NSString*)format;

@@ -43,9 +43,32 @@ static LTRequest *__sharedLTRequest = nil;
          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
     
-#if TARGET_IPHONE_SIMULATOR
-    deviceToken = @"fake-device-token";
-#endif
+//#if TARGET_IPHONE_SIMULATOR
+    
+//    deviceToken = @"fake-device-token";
+    
+//#endif
+    
+    [self didRegisterApp];
+}
+
+- (void)didRegisterApp
+{
+    if(![self getValue:@"fakeUUID"])
+    {
+        NSString * fakeUUID = [[[self deviceUUID] stringByReplacingOccurrencesOfString:@"-" withString:@""] lowercaseString];
+        
+        [self addValue:fakeUUID andKey:@"fakeUUID"];
+        
+        deviceToken = fakeUUID;
+    }
+    else
+    {
+        if(![self checkForNotification])
+        {
+            deviceToken = [self getValue:@"fakeUUID"];
+        }
+    }
 }
 
 - (void)didReceiveToken:(NSData *)_deviceToken

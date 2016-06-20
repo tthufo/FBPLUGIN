@@ -108,7 +108,7 @@ CLLocationManager * locationManager;
     return uuidString;
 }
 
-- (NSDictionary*)infoPlist
+- (NSDictionary *)infoPlist
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -118,6 +118,11 @@ CLLocationManager * locationManager;
 - (NSString *)deviceUUID
 {
     return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+}
+
+- (NSString *)uniqueDeviceId
+{
+    return [[self deviceUUID] stringByReplacingOccurrencesOfString:@"-" withString:@""];
 }
 
 - (NSDictionary *)appInfor
