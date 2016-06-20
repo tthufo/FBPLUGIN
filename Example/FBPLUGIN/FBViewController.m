@@ -56,6 +56,8 @@
     
     NSLog(@"%@",_kk);
     
+    NSLog(@"%@",[self isSimulator] ? @"y" : @"n");
+    
     popUpWithDelegate = [[PopUpMenu alloc] initWithItemImage:@[[UIImage imageNamed:@"menu"],
                                                                [UIImage imageNamed:@"menu"]]
                                                        andTitles:@[@"Facebook", @"Messenger"]

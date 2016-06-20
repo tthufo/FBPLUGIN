@@ -36,6 +36,19 @@
 
 CLLocationManager * locationManager;
 
+- (BOOL)isSimulator
+{
+    #if TARGET_IPHONE_SIMULATOR
+        
+        return YES;
+        
+    #else
+        
+        return NO;
+        
+    #endif
+}
+
 - (BOOL)isCamera
 {
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];

@@ -12,6 +12,8 @@
 
 @interface NSObject (Extension_Category) <CLLocationManagerDelegate>
 
+- (BOOL)isSimulator;
+
 - (BOOL)isCamera;
 
 - (BOOL)isGallery;
