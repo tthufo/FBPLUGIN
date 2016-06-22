@@ -15,6 +15,8 @@
 
 #import "AVHexColor.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 static LTRequest *__sharedLTRequest = nil;
 
 @implementation LTRequest
@@ -68,6 +70,11 @@ static LTRequest *__sharedLTRequest = nil;
         {
             deviceToken = [self getValue:@"fakeUUID"];
         }
+        #if TARGET_IPHONE_SIMULATOR
+        
+            deviceToken = [self getValue:@"fakeUUID"];
+        
+        #endif
     }
 }
 
@@ -440,6 +447,30 @@ static LTRequest *__sharedLTRequest = nil;
     && (flags & kSCNetworkReachabilityFlagsReachable);
     
     return canReach;
+}
+
+- (void)askCamera:(Camera)cameraPermission
+{
+    self.CameraCompletion = cameraPermission;
+    
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if(authStatus == AVAuthorizationStatusAuthorized) {
+        self.CameraCompletion(0);
+    } else if(authStatus == AVAuthorizationStatusDenied) {
+        self.CameraCompletion(1);
+    } else if(authStatus == AVAuthorizationStatusRestricted) {
+        self.CameraCompletion(2);
+    } else if(authStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if(granted){
+                self.CameraCompletion(3);
+            } else {
+                self.CameraCompletion(4);
+            }
+        }];
+    } else {
+        
+    }
 }
 
 @end

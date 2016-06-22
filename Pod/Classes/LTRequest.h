@@ -9,11 +9,26 @@
 
 #import "ASIFormDataRequest.h"
 
+typedef NS_ENUM(NSInteger, PermisionType) {
+    authorized = 0,
+    denied,
+    restricted,
+    per_granted,
+    per_denied
+};
+
+typedef void (^Camera)(PermisionType type);
+
 typedef void (^RequestCompletion)(NSString * responseString, NSError * error, BOOL isValidated);
 
 typedef void (^RequestCache)(NSString * cacheString);
 
 @interface LTRequest : NSObject
+{
+    PermisionType camType;
+}
+
+@property(nonatomic,copy) Camera CameraCompletion;
 
 @property(nonatomic,copy) RequestCompletion completion;
 
@@ -44,5 +59,7 @@ typedef void (^RequestCache)(NSString * cacheString);
 - (void)didClearBadge;
 
 - (BOOL)isConnectionAvailable;
+
+- (void)askCamera:(Camera)cameraPermission;
 
 @end
