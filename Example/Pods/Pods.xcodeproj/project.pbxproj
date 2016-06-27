@@ -563,6 +563,8 @@
 		F8EC50BE50E074989E7610EE1A5236E1 /* FBSDKViewImpressionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD718EC18E691FA8031A29500C92FC9 /* FBSDKViewImpressionTracker.m */; };
 		F9DC357E0BDB8201AD843C7AFBC74F9A /* ASIS3ServiceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B1D42D6A9E8AFC854058D95CA6E1BA97 /* ASIS3ServiceRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC74FC8BDE1B8D68217F9606A81F85B4 /* UIImage+GIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 46A7F230907C83817065E675535A0CF0 /* UIImage+GIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC94E1801D1BE33A00013414 /* MarqueeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = FC94E17E1D1BE33A00013414 /* MarqueeLabel.h */; };
+		FC94E1811D1BE33A00013414 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC94E17F1D1BE33A00013414 /* MarqueeLabel.m */; };
 		FCB568D2BF9C367ACF7B61C7B9CE82F8 /* FBSDKLikeBoxView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B44B2FD1713CD4E615BB091FE2A4C67 /* FBSDKLikeBoxView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FD3576584571DC1EFD9A38A883F6B736 /* AVHexColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9BB09B437200432F2B05DD7EE7E4BF /* AVHexColor.framework */; };
 		FE1CD5F97120247FB0434FD2AC69ACEE /* FBSDKAudioResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C16C44BF15B3E8079D5AE38A1A351AEE /* FBSDKAudioResourceLoader.m */; };
@@ -1531,6 +1533,8 @@
 		FBB9C5959E97265119E15723584396B8 /* JCNotificationBanner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCNotificationBanner.m; path = Library/JCNotificationBanner.m; sourceTree = "<group>"; };
 		FC12CFFAFF0ABA563A54A6F3B7A63436 /* hpple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = hpple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7D2DC87D020A7A78C1C7A2468FF65E /* FBPLUGIN.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FBPLUGIN.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC94E17E1D1BE33A00013414 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
+		FC94E17F1D1BE33A00013414 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		FCD718EC18E691FA8031A29500C92FC9 /* FBSDKViewImpressionTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKViewImpressionTracker.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKViewImpressionTracker.m; sourceTree = "<group>"; };
 		FCFA26A7281B10EC95A5109BAC71C2D0 /* ASIHTTPRequest-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest-prefix.pch"; sourceTree = "<group>"; };
 		FD11D75025916FE289BF9D012104B9C9 /* FBSDKLikeButtonPopWAV.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLikeButtonPopWAV.m; path = FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeButtonPopWAV.m; sourceTree = "<group>"; };
@@ -2123,6 +2127,8 @@
 		4821A6503EBECE14D4FFDE84D7E303DC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FC94E17E1D1BE33A00013414 /* MarqueeLabel.h */,
+				FC94E17F1D1BE33A00013414 /* MarqueeLabel.m */,
 				7D5601D1D2E6A04DDD3D38EC60AB3B24 /* CustomIOS7AlertView.h */,
 				01E9C94BED924AABAECE997C9F165EA1 /* CustomIOS7AlertView.m */,
 				39175FDFCB87ED2FC8B56D7DED99E994 /* DropAlert.h */,
@@ -2933,6 +2939,7 @@
 			files = (
 				CACBC1AB63CCBA2723864ECF23B00253 /* ASIAuthenticationDialog.h in Headers */,
 				A4CAEE3F02F8C470B88DDE7D6EE1050D /* ASICacheDelegate.h in Headers */,
+				FC94E1801D1BE33A00013414 /* MarqueeLabel.h in Headers */,
 				8BFCCC2A9775247FCE6ED296055C88FA /* ASICloudFilesCDNRequest.h in Headers */,
 				6B47B1B4F593D4929551C09EDA71D5E8 /* ASICloudFilesContainer.h in Headers */,
 				0ABBA971508CFE2E3A131752061A6AC1 /* ASICloudFilesContainerRequest.h in Headers */,
@@ -3636,6 +3643,7 @@
 				F7D9128F0CA0127EEDA62A859ABF6C3B /* ASIInputStream.m in Sources */,
 				785BF5B87492A84F27FD03FB9825089E /* ASINetworkQueue.m in Sources */,
 				E0EFD2048EE27C12508160A4C30E06C3 /* ASIS3Bucket.m in Sources */,
+				FC94E1811D1BE33A00013414 /* MarqueeLabel.m in Sources */,
 				BFFBEE8D129D9EA3FB6C712777345F7C /* ASIS3BucketObject.m in Sources */,
 				4D8346434C5C0233B97864F45DBDF9C2 /* ASIS3BucketRequest.m in Sources */,
 				F51AC3ABF6E41B9E63260709B8C5D650 /* ASIS3ObjectRequest.m in Sources */,

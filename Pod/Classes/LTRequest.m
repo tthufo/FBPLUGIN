@@ -45,11 +45,11 @@ static LTRequest *__sharedLTRequest = nil;
          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
     
-//#if TARGET_IPHONE_SIMULATOR
+    //#if TARGET_IPHONE_SIMULATOR
     
-//    deviceToken = @"fake-device-token";
+    //    deviceToken = @"fake-device-token";
     
-//#endif
+    //#endif
     
     [self didRegisterApp];
 }
@@ -70,11 +70,11 @@ static LTRequest *__sharedLTRequest = nil;
         {
             deviceToken = [self getValue:@"fakeUUID"];
         }
-        #if TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
         
-            deviceToken = [self getValue:@"fakeUUID"];
+        deviceToken = [self getValue:@"fakeUUID"];
         
-        #endif
+#endif
     }
 }
 
@@ -113,41 +113,6 @@ static LTRequest *__sharedLTRequest = nil;
         self.address = dictionary[@"host"];
     }
     self.lang = [dictionary responseForKey:@"lang"];
-    
-//    if([UINavigationBar conformsToProtocol:@protocol(UIAppearanceContainer)])
-//    {
-//        if([dictionary responseForKey:@"tintColor"])
-//        {
-//            [UINavigationBar appearance].tintColor = [AVHexColor colorWithHexString:dictionary[@"tintColor"]];
-//        }
-//    }
-//    
-//    if([[[[UIApplication sharedApplication] delegate] window].rootViewController isKindOfClass:[UINavigationController class]])
-//    {
-//        UINavigationController * nav = (UINavigationController*)[[[UIApplication sharedApplication] delegate] window].rootViewController;
-//        
-//        if([dictionary responseForKey:@"titleColor"])
-//        {
-//            [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[AVHexColor colorWithHexString:dictionary[@"titleColor"]]}];
-//        }
-//        
-//        NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
-//        if ([[ver objectAtIndex:0] intValue] >= 7)
-//        {
-//            if([dictionary responseForKey:@"barTintColor"])
-//            {
-//                nav.navigationBar.barTintColor = [AVHexColor colorWithHexString:dictionary[@"barTintColor"]];
-//                nav.navigationBar.translucent = NO;
-//            }
-//        }
-//        else
-//        {
-//            if([dictionary responseForKey:@"barTintColor"])
-//            {
-//                nav.navigationBar.tintColor = [AVHexColor colorWithHexString:dictionary[@"barTintColor"]];
-//            }
-//        }
-//    }
 }
 
 - (void)didInitWithUrl:(NSDictionary*)dict withCache:(RequestCache)cache andCompletion:(RequestCompletion)completion
@@ -172,22 +137,22 @@ static LTRequest *__sharedLTRequest = nil;
     }
     
     NSURL * requestUrl = [NSURL URLWithString:dict[@"absoluteLink"]];
-
+    
     NSError* error = nil;
-
+    
     NSData* htmlData = [NSData dataWithContentsOfURL:requestUrl options:NSDataReadingUncached error:&error];
-
+    
     if(error)
     {
-        completion(nil,error,NO);
+        completion(nil, @"1", error, NO);
     }
     else
     {
-        completion([NSString stringWithUTF8String:[htmlData bytes]],nil,YES);
+        completion([NSString stringWithUTF8String:[htmlData bytes]], @"0", nil, YES);
         
         [self addValue:[NSString stringWithUTF8String:[htmlData bytes]] andKey:dict[@"absoluteLink"]];
     }
-
+    
     [self hideSVHUD];
 }
 
@@ -220,7 +185,7 @@ static LTRequest *__sharedLTRequest = nil;
 
 - (BOOL)didRespond:(NSMutableDictionary*)dict andHost:(UIViewController*)host
 {
-    //NSLog(@"+___+%@",dict);
+    NSLog(@"+___+%@",dict);
     
     if(host)
     {
@@ -360,7 +325,7 @@ static LTRequest *__sharedLTRequest = nil;
                 [dict[@"host"] hideSVHUD];
             }
             
-            ((RequestCompletion)dict[@"completion"])(nil, request.error, NO);
+            ((RequestCompletion)dict[@"completion"])(nil, @"-1", request.error, NO);
         }
         else
         {
@@ -371,7 +336,7 @@ static LTRequest *__sharedLTRequest = nil;
                 [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
             }
             
-            ((RequestCompletion)dict[@"completion"])(nil, request.error, [self didRespond:result andHost:dict[@"host"]]);
+            ((RequestCompletion)dict[@"completion"])(nil, @"-1", request.error, [self didRespond:result andHost:dict[@"host"]]);
         }
         
     }];
@@ -386,7 +351,7 @@ static LTRequest *__sharedLTRequest = nil;
         }
         else
         {
-//            if([result responseForKindOfClass:@"ERR_CODE" andTarget:@"0"] && [[request.responseString objectFromJSONString] responseForKey:@"RESULT"])
+            //            if([result responseForKindOfClass:@"ERR_CODE" andTarget:@"0"] && [[request.responseString objectFromJSONString] responseForKey:@"RESULT"])
             {
                 [self addValue:request.responseString andKey:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [post bv_jsonStringWithPrettyPrint:NO]];
             }
@@ -401,7 +366,7 @@ static LTRequest *__sharedLTRequest = nil;
             [self hideSVHUD];
         }
         
-        ((RequestCompletion)dict[@"completion"])(request.responseString , nil,[dict responseForKey:@"overrideError"] ? YES : [self didRespond:result andHost:dict[@"host"]]);
+        ((RequestCompletion)dict[@"completion"])(request.responseString, [result responseForKey:@"ERR_CODE"] ? [result getValueFromKey:@"ERR_CODE"] : @"-10", nil,[dict responseForKey:@"overrideError"] ? YES : [self didRespond:result andHost:dict[@"host"]]);
     }];
     
     [request startAsynchronous];

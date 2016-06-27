@@ -189,7 +189,7 @@
         
 //        NSLog(@"%@",cacheString);
         
-    } andCompletion:^(NSString *responseString, NSError *error, BOOL isValidated) {
+    } andCompletion:^(NSString *responseString, NSString * errorCode , NSError *error, BOOL isValidated) {
         
        // NSLog(@"%@",responseString);
         

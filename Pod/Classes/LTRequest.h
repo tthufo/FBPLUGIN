@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, PermisionType) {
 
 typedef void (^Camera)(PermisionType type);
 
-typedef void (^RequestCompletion)(NSString * responseString, NSError * error, BOOL isValidated);
+typedef void (^RequestCompletion)(NSString * responseString, NSString * errorCode, NSError * error, BOOL isValidated);
 
 typedef void (^RequestCache)(NSString * cacheString);
 
