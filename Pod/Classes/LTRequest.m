@@ -333,9 +333,9 @@ static LTRequest *__sharedLTRequest = nil;
         {
             NSMutableDictionary * result = [NSMutableDictionary dictionaryWithDictionary:[request.responseString objectFromJSONString]];
             
-            if([dict responseForKey:@"overrrideAlert"])
+            if([dict responseForKey:@"overrideAlert"])
             {
-                [result addEntriesFromDictionary:@{@"overrrideAlert":dict[@"overrrideAlert"]}];
+                [result addEntriesFromDictionary:@{@"overrideAlert":dict[@"overrideAlert"]}];
             }
             
             if([dict responseForKey:@"checkmark"])
@@ -364,9 +364,9 @@ static LTRequest *__sharedLTRequest = nil;
             }
         }
         
-        if([dict responseForKey:@"overrrideAlert"])
+        if([dict responseForKey:@"overrideAlert"])
         {
-            [result addEntriesFromDictionary:@{@"overrrideAlert":dict[@"overrrideAlert"]}];
+            [result addEntriesFromDictionary:@{@"overrideAlert":dict[@"overrideAlert"]}];
         }
         
         if([dict responseForKey:@"checkmark"])
