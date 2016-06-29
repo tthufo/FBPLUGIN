@@ -194,8 +194,10 @@ static LTRequest *__sharedLTRequest = nil;
     
     if(!dict)
     {
-        [self showToast:self.lang ? @"Server error" :  @"Hệ thống đang bận" andPos:0];
-        
+//        if(![dict responseForKey:@"overrideAlert"])
+        {
+            [self showToast:self.lang ? @"Server error" :  @"Hệ thống đang bận" andPos:0];
+        }
         return NO;
     }
     
@@ -325,18 +327,23 @@ static LTRequest *__sharedLTRequest = nil;
                 [dict[@"host"] hideSVHUD];
             }
             
-            ((RequestCompletion)dict[@"completion"])(nil, @"-1", request.error, NO);
+            ((RequestCompletion)dict[@"completion"])(nil, @"404", request.error, NO);
         }
         else
         {
             NSMutableDictionary * result = [NSMutableDictionary dictionaryWithDictionary:[request.responseString objectFromJSONString]];
+            
+            if([dict responseForKey:@"overrrideAlert"])
+            {
+                [result addEntriesFromDictionary:@{@"overrrideAlert":dict[@"overrrideAlert"]}];
+            }
             
             if([dict responseForKey:@"checkmark"])
             {
                 [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
             }
             
-            ((RequestCompletion)dict[@"completion"])(nil, @"-1", request.error, [self didRespond:result andHost:dict[@"host"]]);
+            ((RequestCompletion)dict[@"completion"])(nil, @"503", request.error, [self didRespond:result andHost:dict[@"host"]]);
         }
         
     }];
@@ -356,6 +363,12 @@ static LTRequest *__sharedLTRequest = nil;
                 [self addValue:request.responseString andKey:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [post bv_jsonStringWithPrettyPrint:NO]];
             }
         }
+        
+        if([dict responseForKey:@"overrrideAlert"])
+        {
+            [result addEntriesFromDictionary:@{@"overrrideAlert":dict[@"overrrideAlert"]}];
+        }
+        
         if([dict responseForKey:@"checkmark"])
         {
             [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
@@ -366,7 +379,7 @@ static LTRequest *__sharedLTRequest = nil;
             [self hideSVHUD];
         }
         
-        ((RequestCompletion)dict[@"completion"])(request.responseString, [result responseForKey:@"ERR_CODE"] ? [result getValueFromKey:@"ERR_CODE"] : @"-10", nil,[dict responseForKey:@"overrideError"] ? YES : [self didRespond:result andHost:dict[@"host"]]);
+        ((RequestCompletion)dict[@"completion"])(request.responseString, [result responseForKey:@"ERR_CODE"] ? [result getValueFromKey:@"ERR_CODE"] : @"500", nil,[dict responseForKey:@"overrideError"] ? YES : [self didRespond:result andHost:dict[@"host"]]);
     }];
     
     [request startAsynchronous];
