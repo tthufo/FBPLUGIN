@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^KeyBoardEvents)(float kbHeight, BOOL isOn);
+typedef void (^KeyBoardEvents)(CGFloat kbHeight, BOOL isOn);
 
 @interface KeyBoard : NSObject
 
