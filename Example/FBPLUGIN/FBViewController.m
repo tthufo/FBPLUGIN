@@ -35,11 +35,38 @@
     IBOutlet UIWebView * webView;
     
     PopUpMenu * popUpWithDelegate;
+    
+    KeyBoard * kb;
 }
 
 @end
 
 @implementation FBViewController
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+        
+    kb = [[KeyBoard shareInstance] keyboardOn:^(float kbHeight, BOOL isOn) {
+        
+        if(isOn)
+        {
+            NSLog(@"on");
+        }
+        else
+        {
+            NSLog(@"off");
+        }
+        
+    }];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [kb keyboardOff];
+}
 
 - (void)didPressButtonAt:(DropButton*)sender
 {

@@ -80,6 +80,8 @@
 
 - (int)inDexOf:(UIView*)view andCollection:(UICollectionView*)collectionView;
 
+- (void)registerForKeyboardNotifications:(BOOL)isRegister andSelector:(NSArray*)selectors;
+
 @end
 
 @interface NSDictionary (name)

@@ -401,6 +401,20 @@ CLLocationManager * locationManager;
     return (int)indexPath.row;
 }
 
+- (void)registerForKeyboardNotifications:(BOOL)isRegister andSelector:(NSArray*)selectors
+{
+    if(isRegister)
+    {
+        [[NSNotificationCenter defaultCenter] addUniqueObserver:self selector:NSSelectorFromString(selectors[0]) name:UIKeyboardDidShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addUniqueObserver:self selector:NSSelectorFromString(selectors[1]) name:UIKeyboardWillHideNotification object:nil];
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    }
+}
+
 @end
 
 @implementation NSDictionary (name)

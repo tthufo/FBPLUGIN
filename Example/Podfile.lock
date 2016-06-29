@@ -19,7 +19,7 @@ PODS:
   - Bolts/AppLinks (1.7.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
-  - FBPLUGIN (0.5.7):
+  - FBPLUGIN (0.6.8):
     - ASIHTTPRequest (~> 1.8)
     - AVHexColor (~> 2.0)
     - FBSDKCoreKit (~> 4.4)
@@ -60,7 +60,7 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   AVHexColor: 33e5e102f3b6f3acd002779183ee226e21870c28
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
-  FBPLUGIN: 774c55033c71dc8f515d3d4fe323c4534982e8b1
+  FBPLUGIN: 9e5ef5d3c8e95fb71fd6f11371f5a209b9ae21b6
   FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
   FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
   FBSDKShareKit: c9438df7573b33780ac8c3451201c5ebb260ffca

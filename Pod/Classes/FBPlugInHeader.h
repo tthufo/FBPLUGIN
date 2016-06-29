@@ -36,4 +36,6 @@
 
 #import "UIImageView+MHFacebookImageViewer.h"
 
+#import "KeyBoard.h"
+
 //#endif /* FBPlugInHeader_h */
