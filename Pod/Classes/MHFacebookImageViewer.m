@@ -606,7 +606,7 @@ static const CGFloat kMinImageScale = 1.0f;
     _doneButton.frame = CGRectFromString(information[@"done"][@"rect"]);
     if(information[@"done"][@"round"])
     {
-        [_doneButton withBorder:information[@"image"][@"round"]];
+        [_doneButton withBorder:information[@"done"][@"round"]];
     }
 }
 
