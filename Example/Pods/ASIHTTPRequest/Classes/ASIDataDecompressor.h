@@ -11,7 +11,7 @@
 // Most of the zlib stuff is based on the sample code by Mark Adler available at http://zlib.net
 
 #import <Foundation/Foundation.h>
-#import "zlib.h"
+#import <zlib.h>
 
 @interface ASIDataDecompressor : NSObject {
 	BOOL streamReady;

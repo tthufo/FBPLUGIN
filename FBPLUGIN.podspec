@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
-  s.version          = "0.7.2"
+  s.version          = "0.7.3"
   s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/tthufo/FBPLUGIN.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/tthufo'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
 
 #  s.ios.deployment_target = '7.0'
 
