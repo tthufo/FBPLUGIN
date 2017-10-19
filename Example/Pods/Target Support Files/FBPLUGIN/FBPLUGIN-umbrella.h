@@ -5,7 +5,6 @@
 #import "CustomIOS7AlertView.h"
 #import "DropAlert.h"
 #import "DropButton.h"
-#import "FB.h"
 #import "FBPlugInHeader.h"
 #import "HPGrowingTextView.h"
 #import "HPTextViewInternal.h"
