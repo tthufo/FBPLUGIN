@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "FBPLUGIN"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Plugin for Facebook intergration"
 
 # This description is used to generate tags and improve search results.
@@ -47,17 +47,20 @@ Pod::Spec.new do |s|
 
   s.public_header_files = 'Pod/Classes/*.h'
 
-s.dependency 'FBSDKCoreKit', '~> 4.4'
-s.dependency 'FBSDKLoginKit', '~> 4.4'
-s.dependency 'FBSDKShareKit', '~> 4.4'
+#s.dependency 'FBSDKCoreKit', '~> 4.4'
+#s.dependency 'FBSDKLoginKit', '~> 4.4'
+#s.dependency 'FBSDKShareKit', '~> 4.4'
 s.dependency 'AVHexColor', '~> 2.0'
 s.dependency 'SVProgressHUD'
 s.dependency 'Toast', '~> 2.4'
-s.dependency 'ASIHTTPRequest', '~> 1.8'
+#s.dependency 'ASIHTTPRequest', '~> 1.8'
+s.dependency 'Reachability', '~> 3.2'
+s.dependency 'AFNetworking', '~> 3.1'
+
 s.dependency 'JSONKit-NoWarning', '~> 1.2'
 s.dependency 'SDWebImage', '~> 3.7'
 s.dependency 'hpple', '~> 0.2'
-s.dependency 'IAPHelper'
-s.dependency 'JCNotificationBannerPresenter', '~> 1.1'
+#s.dependency 'IAPHelper'
+#s.dependency 'JCNotificationBannerPresenter', '~> 1.1'
 
 end

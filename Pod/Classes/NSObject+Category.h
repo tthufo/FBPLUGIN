@@ -18,6 +18,8 @@
 
 - (BOOL)isGallery;
 
+- (NSDictionary*)dictWithPlist:(NSString*)pList;
+
 - (BOOL)checkForNotification;
 
 - (BOOL)isConnectionAvailable;

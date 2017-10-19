@@ -17,9 +17,9 @@
 
 //#import "FBPLUGIN_Example-Swift.h"
 
-#import "IAPHelper.h"
-
-#import "IAPShare.h"
+//#import "IAPHelper.h"
+//
+//#import "IAPShare.h"
 
 #import "FBPlugInHeader.h"
 

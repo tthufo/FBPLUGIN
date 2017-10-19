@@ -22,7 +22,7 @@
 
 #import "System.h"
 
-#import "FB.h"
+//#import "FB.h"
 
 #import "XMLReader.h"
 

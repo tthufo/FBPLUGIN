@@ -17,6 +17,8 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+#import "AFNetworking.h"
+
 static LTRequest *__sharedLTRequest = nil;
 
 @implementation LTRequest
@@ -45,12 +47,6 @@ static LTRequest *__sharedLTRequest = nil;
          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
     
-    //#if TARGET_IPHONE_SIMULATOR
-    
-    //    deviceToken = @"fake-device-token";
-    
-    //#endif
-    
     [self didRegisterApp];
 }
 
@@ -70,17 +66,19 @@ static LTRequest *__sharedLTRequest = nil;
         {
             deviceToken = [self getValue:@"fakeUUID"];
         }
-#if TARGET_IPHONE_SIMULATOR
+//#if TARGET_IPHONE_SIMULATOR
         
         deviceToken = [self getValue:@"fakeUUID"];
         
-#endif
+//#endif
     }
 }
 
 - (void)didReceiveToken:(NSData *)_deviceToken
 {
     deviceToken = [[[[_deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""] stringByReplacingOccurrencesOfString: @">" withString: @""] stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    NSLog(@"TokenPushInfor----->%@", deviceToken);
 }
 
 - (void)didFailToRegisterForRemoteNotification:(NSError *)error
@@ -90,7 +88,21 @@ static LTRequest *__sharedLTRequest = nil;
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    NSLog(@"%@", userInfo);
+    NSLog(@"UserPushInfor----->%@", userInfo);
+}
+
+- (NSString*)requestURL:(NSMutableDictionary*)dict
+{
+    NSDictionary * info = [self dictWithPlist:@"Info"];
+    
+    if([dict responseForKey:@"method"])
+    {
+        return [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [NSString stringWithFormat:@"%@/%@%@%@", self.address, dict[[info responseForKey:@"cCode"] ? info[@"cCode"] : @"CMD_CODE"], [dict responseForKey:@"overrideOrder"] ? @"/" : @"?" ,[self returnGetUrl:dict]];
+    }
+    else
+    {
+        return [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [dict responseForKey:@"postFix"] ? [NSString stringWithFormat:@"%@/%@",self.address,dict[@"postFix"]] : self.address;
+    }
 }
 
 - (void)initRequest
@@ -112,6 +124,7 @@ static LTRequest *__sharedLTRequest = nil;
     {
         self.address = dictionary[@"host"];
     }
+    
     self.lang = [dictionary responseForKey:@"lang"];
 }
 
@@ -153,26 +166,19 @@ static LTRequest *__sharedLTRequest = nil;
         [self addValue:[NSString stringWithUTF8String:[htmlData bytes]] andKey:dict[@"absoluteLink"]];
     }
     
-    [self hideSVHUD];
+    if([dict responseForKey:@"host"])
+    {
+        [self hideSVHUD];
+    }
 }
 
-- (ASIFormDataRequest*)REQUEST
-{
-    return [ASIFormDataRequest requestWithURL:[NSURL URLWithString:self.address]];
-}
-
-- (ASIFormDataRequest*)SERVICE:(NSString*)X
-{
-    return [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", self.address, X]]];
-}
-
-- (ASIFormDataRequest*)didRequestInfo:(NSDictionary*)dict withCache:(RequestCache)cacheData andCompletion:(RequestCompletion)completion
+- (void)didRequestInfo:(NSDictionary*)dict withCache:(RequestCache)cacheData andCompletion:(RequestCompletion)completion
 {
     if(!self.address)
     {
         NSLog(@"Please setup request url in Plist");
         
-        return nil;
+        return ;
     }
     NSMutableDictionary * data = [dict mutableCopy];
     
@@ -180,12 +186,14 @@ static LTRequest *__sharedLTRequest = nil;
     
     data[@"cache"] = cacheData;
     
-    return [self didInitRequest:data];
+    [self didInitRequest:data];
 }
 
 - (BOOL)didRespond:(NSMutableDictionary*)dict andHost:(UIViewController*)host
 {
-    NSLog(@"+___+%@",dict);
+//    NSLog(@"+___+%@",dict);
+    
+    NSDictionary * info = [self dictWithPlist:@"Info"];
     
     if(host)
     {
@@ -194,20 +202,32 @@ static LTRequest *__sharedLTRequest = nil;
     
     if(!dict)
     {
-//        if(![dict responseForKey:@"overrideAlert"])
-        {
-            [self showToast:self.lang ? @"Server error" :  @"Hệ thống đang bận" andPos:0];
-        }
+        [self showToast:self.lang ? @"Server error" :  @"Hệ thống đang bận" andPos:0];
+        
         return NO;
     }
     
-    if([dict responseForKindOfClass:@"ERR_CODE" andTarget:@"0"])
+    if([info responseForKey:@"eCode"] && !dict[info[@"eCode"]])
+    {
+        [self showToast:@"Check for Plist/eCode" andPos:0];
+        
+        return NO;
+    }
+    
+    if([dict responseForKindOfClass:[info responseForKey:@"eCode"] ? info[@"eCode"] : @"ERR_CODE" andTarget:[info responseForKey:@"sCode"] ? info[@"sCode"] : @"0"])
     {
         if([dict responseForKey:@"checkmark"] && host)
         {
             dict[@"status"] = @(1);
             
             [self didAddCheckMark:dict andHost:host];
+        }
+        else
+        {
+            if(![dict responseForKey:@"overrideAlert"])
+            {
+                [self showToast:[dict responseForKey: [info responseForKey:@"eCode"] ? info[@"eCode"] : @"ERR_CODE"] ? dict[[info responseForKey:@"eMessage"] ? info[@"eMessage"] : @"ERR_MSG"] ? dict[[info responseForKey:@"eMessage"] ? info[@"eMessage"] : @"ERR_MSG"] : @"Check for Plist/eMessage" : self.lang ? @"Server error, please try again" : @"Lỗi hệ thống xảy ra, xin hãy thử lại" andPos:0];
+            }
         }
         return YES;
     }
@@ -222,39 +242,36 @@ static LTRequest *__sharedLTRequest = nil;
     {
         if(![dict responseForKey:@"overrideAlert"])
         {
-            [self showToast:[dict responseForKey:@"ERR_CODE"] ? dict[@"ERR_MSG"] : self.lang ? @"Server error, please try again" : @"Lỗi hệ thống xảy ra, xin hãy thử lại" andPos:0];
+            [self showToast:[dict responseForKey: [info responseForKey:@"eCode"] ? info[@"eCode"] : @"ERR_CODE"] ? dict[[info responseForKey:@"eMessage"] ? info[@"eMessage"] : @"ERR_MSG"] ? dict[[info responseForKey:@"eMessage"] ? info[@"eMessage"] : @"ERR_MSG"] : @"Check for Plist/eMessage" : self.lang ? @"Server error, please try again" : @"Lỗi hệ thống xảy ra, xin hãy thử lại" andPos:0];
         }
     }
     
     return NO;
 }
 
-- (ASIFormDataRequest*)didInitRequest:(NSMutableDictionary*)dict
+- (void)didInitRequest:(NSMutableDictionary*)dict
 {
+    NSDictionary * info = [self dictWithPlist:@"Info"];
+    
     NSMutableDictionary * post = nil;
     
-    ASIFormDataRequest * request;
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSString * url;
     
     if([dict responseForKey:@"method"])
     {
-        if([dict responseForKey:@"absoluteLink"])
-        {
-            request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:dict[@"absoluteLink"]]];
-        }
-        else
-        {
-            url = [NSString stringWithFormat:@"%@?%@",dict[@"CMD_CODE"],[self returnGetUrl:dict]];
-            
-            request = [self SERVICE:url];
-        }
+        url = [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [NSString stringWithFormat:@"%@/%@%@%@", self.address, dict[[info responseForKey:@"cCode"] ? info[@"cCode"] : @"CMD_CODE"], [dict responseForKey:@"overrideOrder"] ? @"/" : @"?" ,[self returnGetUrl:dict]];
         
-        [request setRequestMethod:dict[@"method"]];
+        NSLog(@"%@",url);
         
-        if([self getValue: [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : url])
+        if([self getValue: url])
         {
-            ((RequestCache)dict[@"cache"])([self getValue: [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : url]);
+            ((RequestCache)dict[@"cache"])([self getValue: url]);
         }
         else
         {
@@ -270,29 +287,30 @@ static LTRequest *__sharedLTRequest = nil;
                 [(UIViewController*)dict[@"host"] showSVHUD: self.lang ? @"Loading" : @"Đang tải" andOption:0];
             }
         }
+        
+        [manager GET:url parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+            
+            [self didSuccessResult:dict andResult:[responseObject objectFromJSONData] ? [responseObject objectFromJSONData] : [NSString stringWithUTF8String:[responseObject bytes]] andUrl:url andPostData:post];
+            
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            
+            [self didFailedResult:dict andError:error];
+            
+        }];
     }
     else
     {
-        if([dict responseForKey:@"absoluteLink"])
-        {
-            request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:dict[@"absoluteLink"]]];
-        }
-        else
-        {
-            request = [self REQUEST];
-        }
+        url = [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [dict responseForKey:@"postFix"] ? [NSString stringWithFormat:@"%@/%@",self.address,dict[@"postFix"]] : self.address;
         
         post = [[NSMutableDictionary alloc] initWithDictionary:dict];
         
         for(NSString * key in post.allKeys)
         {
-            if([key isEqualToString:@"host"] || [key isEqualToString:@"completion"] || [key isEqualToString:@"method"] || [key isEqualToString:@"checkmark"] || [key isEqualToString:@"cache"])
+            if([key isEqualToString:@"host"] || [key isEqualToString:@"completion"] || [key isEqualToString:@"method"] || [key isEqualToString:@"checkmark"] || [key isEqualToString:@"cache"] || [key isEqualToString:@"absoluteLink"] || [key isEqualToString:@"overrideLoading"] || [key isEqualToString:@"overrideAlert"] || [key isEqualToString:@"overrideOrder"])
             {
                 [post removeObjectForKey:key];
             }
         }
-        
-        [request setPostBody:(NSMutableData*)[[post bv_jsonStringWithPrettyPrint:NO] dataUsingEncoding:NSUTF8StringEncoding]];
         
         if([self getValue: [dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [post bv_jsonStringWithPrettyPrint:NO]])
         {
@@ -312,57 +330,36 @@ static LTRequest *__sharedLTRequest = nil;
                 [dict[@"host"] showSVHUD: self.lang ? @"Loading" : @"Đang tải" andOption:0];
             }
         }
+        
+        [manager POST:url parameters:post success:^(NSURLSessionTask *task, id responseObject) {
+            
+            [self didSuccessResult:dict andResult:[responseObject objectFromJSONData] ? [responseObject objectFromJSONData] : [NSString stringWithUTF8String:[responseObject bytes]] andUrl:url andPostData:post];
+                        
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            
+            [self didFailedResult:dict andError:error];
+            
+            NSLog(@"%@", [error description]);
+        }];
     }
-    
-    __block ASIFormDataRequest *_request = request;
-    
-    [_request setFailedBlock:^{
+}
+
+- (void)didFailedResult:(NSDictionary*)dict andError:(NSError*)error
+{
+    if(![self isConnectionAvailable])
+    {
+        [self showToast:self.lang ? @"Please check your Internet connection" : @"Vui lòng kiểm tra lại kết nối Internet" andPos:0];
         
-        if(![self isConnectionAvailable])
+        if([dict responseForKey:@"host"])
         {
-            if([dict responseForKey:@"host"])
-            {
-                [self showToast:self.lang ? @"Please check your Internet connection" : @"Vui lòng kiểm tra lại kết nối Internet" andPos:0];
-                
-                [dict[@"host"] hideSVHUD];
-            }
-            
-            ((RequestCompletion)dict[@"completion"])(nil, @"404", request.error, NO);
-        }
-        else
-        {
-            NSMutableDictionary * result = [NSMutableDictionary dictionaryWithDictionary:[request.responseString objectFromJSONString]];
-            
-            if([dict responseForKey:@"overrideAlert"])
-            {
-                [result addEntriesFromDictionary:@{@"overrideAlert":dict[@"overrideAlert"]}];
-            }
-            
-            if([dict responseForKey:@"checkmark"])
-            {
-                [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
-            }
-            
-            ((RequestCompletion)dict[@"completion"])(nil, @"503", request.error, [self didRespond:result andHost:dict[@"host"]]);
+            [dict[@"host"] hideSVHUD];
         }
         
-    }];
-    
-    [_request setCompletionBlock:^{
-        
-        NSMutableDictionary * result = [NSMutableDictionary dictionaryWithDictionary:[request.responseString objectFromJSONString]];
-        
-        if([dict responseForKey:@"method"])
-        {
-            [self addValue:request.responseString andKey:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : url];
-        }
-        else
-        {
-            //            if([result responseForKindOfClass:@"ERR_CODE" andTarget:@"0"] && [[request.responseString objectFromJSONString] responseForKey:@"RESULT"])
-            {
-                [self addValue:request.responseString andKey:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [post bv_jsonStringWithPrettyPrint:NO]];
-            }
-        }
+        ((RequestCompletion)dict[@"completion"])(nil, @"404", error, NO);
+    }
+    else
+    {
+        NSMutableDictionary * result = [NSMutableDictionary new];
         
         if([dict responseForKey:@"overrideAlert"])
         {
@@ -374,29 +371,80 @@ static LTRequest *__sharedLTRequest = nil;
             [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
         }
         
-        if([dict responseForKey:@"overrideError"] && dict[@"host"])
+        ((RequestCompletion)dict[@"completion"])(nil, @"503", error, [self didRespond:result andHost:dict[@"host"]]);
+    }
+}
+
+- (void)didSuccessResult:(NSDictionary*)dict andResult:(id)response andUrl:(NSString*)url andPostData:(NSDictionary*)post
+{
+    NSDictionary * info = [self dictWithPlist:@"Info"];
+    
+    NSMutableDictionary * result = [response isKindOfClass:[NSDictionary class]] ? [NSMutableDictionary dictionaryWithDictionary:response] : [response isKindOfClass:[NSArray class]] ? [NSMutableDictionary dictionaryWithDictionary:@{@"array":response}] : [NSMutableDictionary new];
+    
+    if([dict responseForKey:@"method"])
+    {
+        if(response)
         {
-            [self hideSVHUD];
+            [self addValue:[response isKindOfClass:[NSDictionary class]] ? [response bv_jsonStringWithPrettyPrint:NO] : [response isKindOfClass:[NSArray class]] ? [@{@"array":response} bv_jsonStringWithPrettyPrint:NO] : response andKey:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : url];
         }
+    }
+    else
+    {
+        if(response)
+        {
+            [self addValue:[response isKindOfClass:[NSDictionary class]] ? [response bv_jsonStringWithPrettyPrint:NO] : [response isKindOfClass:[NSArray class]] ? [@{@"array":response} bv_jsonStringWithPrettyPrint:NO] : response andKey:[dict responseForKey:@"absoluteLink"] ? dict[@"absoluteLink"] : [post bv_jsonStringWithPrettyPrint:NO]];
+        }
+    }
+    
+    if([dict responseForKey:@"overrideAlert"])
+    {
+        [result addEntriesFromDictionary:@{@"overrideAlert":dict[@"overrideAlert"]}];
+    }
+    
+    if([dict responseForKey:@"checkmark"])
+    {
+        [result addEntriesFromDictionary:@{@"checkmark":dict[@"checkmark"]}];
+    }
+    
+    if([dict responseForKey:@"overrideError"] && dict[@"host"])
+    {
+        [self hideSVHUD];
+    }
+    
+    if([info responseForKey:@"eCode"] && !response[info[@"eCode"]])
+    {
+        [self showToast:@"Check for Plist/eCode" andPos:0];
+    }
         
-        ((RequestCompletion)dict[@"completion"])(request.responseString, [result responseForKey:@"ERR_CODE"] ? [result getValueFromKey:@"ERR_CODE"] : @"500", nil,[dict responseForKey:@"overrideError"] ? YES : [self didRespond:result andHost:dict[@"host"]]);
-    }];
-    
-    [request startAsynchronous];
-    
-    return request;
+    ((RequestCompletion)dict[@"completion"])([response isKindOfClass:[NSDictionary class]] ? [response bv_jsonStringWithPrettyPrint:NO] : [response isKindOfClass:[NSArray class]] ? [@{@"array":response} bv_jsonStringWithPrettyPrint:NO] : response, [result responseForKey:[info responseForKey:@"eCode"] ? info[@"eCode"] : @"ERR_CODE"] ? [result getValueFromKey:[info responseForKey:@"eCode"] ? info[@"eCode"] : @"ERR_CODE"] : @"500", nil,[dict responseForKey:@"overrideError"] ? YES : [self didRespond:result andHost:dict[@"host"]]);
 }
 
 - (NSString*)returnGetUrl:(NSDictionary*)dict
 {
-    NSString * getUrl = @"";
-    for(NSString * key in dict.allKeys)
+    NSDictionary * info = [self dictWithPlist:@"Info"][@"eCode"];
+    
+    NSMutableString * getUrl = [NSMutableString new];
+    
+    NSMutableArray *sortedArray = [NSMutableArray arrayWithArray:[dict allKeys]];
+    
+    [sortedArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    for(NSString * key in sortedArray)
     {
-        if([key isEqualToString:@"host"] || [key isEqualToString:@"CMD_CODE"] || [key isEqualToString:@"completion"] || [key isEqualToString:@"method"])
+        if([key isEqualToString:@"host"] || [key isEqualToString:[info responseForKey:@"cCode"] ? info[@"cCode"] : @"CMD_CODE"] || [key isEqualToString:@"completion"] || [key isEqualToString:@"method"] || [key isEqualToString:@"overrideLoading"] || [key isEqualToString:@"overrideAlert"] || [key isEqualToString:@"overrideError"] || [key isEqualToString:@"checkMark"] || [key isEqualToString:@"cache"] || [key isEqualToString:@"host"] || [key isEqualToString:@"overrideOrder"])
         {
             continue;
         }
-        getUrl = [NSString stringWithFormat:@"%@%@=%@&",getUrl,key,dict[key]];
+        
+        
+        if([dict responseForKey:@"overrideOrder"])
+        {
+            [getUrl appendString:[NSString stringWithFormat:@"%@/",dict[key]]];
+        }
+        else
+        {
+            [getUrl appendString:[NSString stringWithFormat:@"%@=%@&",key,dict[key]]];
+        }
     }
     
     return [getUrl substringToIndex:getUrl.length-(getUrl.length>0)];
@@ -425,30 +473,6 @@ static LTRequest *__sharedLTRequest = nil;
     && (flags & kSCNetworkReachabilityFlagsReachable);
     
     return canReach;
-}
-
-- (void)askCamera:(Camera)cameraPermission
-{
-    self.CameraCompletion = cameraPermission;
-    
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if(authStatus == AVAuthorizationStatusAuthorized) {
-        self.CameraCompletion(0);
-    } else if(authStatus == AVAuthorizationStatusDenied) {
-        self.CameraCompletion(1);
-    } else if(authStatus == AVAuthorizationStatusRestricted) {
-        self.CameraCompletion(2);
-    } else if(authStatus == AVAuthorizationStatusNotDetermined) {
-        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-            if(granted){
-                self.CameraCompletion(3);
-            } else {
-                self.CameraCompletion(4);
-            }
-        }];
-    } else {
-        
-    }
 }
 
 @end

@@ -77,6 +77,12 @@ CLLocationManager * locationManager;
     return YES;
 }
 
+- (NSDictionary*)dictWithPlist:(NSString*)pList
+{
+    NSString* plistPath = [[NSBundle mainBundle] pathForResource:pList ofType:@"plist"];
+    return [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+}
+
 - (BOOL)checkForNotification
 {
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))

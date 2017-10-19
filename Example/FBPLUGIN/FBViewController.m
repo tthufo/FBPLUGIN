@@ -12,17 +12,17 @@
 
 #import "SecondViewController.h"
 
-#import "DropButton.h"
+//#import "DropButton.h"
 
 #import "TFHpple.h"
 
-#import "JCNotificationCenter.h"
+//#import "JCNotificationCenter.h"
 
-#import "JCNotificationBannerPresenterSmokeStyle.h"
-
-#import "JCNotificationBannerPresenterIOSStyle.h"
-
-#import "JCNotificationBannerPresenterIOS7Style.h"
+//#import "JCNotificationBannerPresenterSmokeStyle.h"
+//
+//#import "JCNotificationBannerPresenterIOSStyle.h"
+//
+//#import "JCNotificationBannerPresenterIOS7Style.h"
 
 //#define bannerAPI @"ca-app-pub-9549102114287819/3623332283"
 
@@ -30,13 +30,13 @@
 
 #define fullBannerAPI @"ca-app-pub-9549102114287819/8164609882"
 
-@interface FBViewController ()<PopUpMenuDelegate>
+@interface FBViewController ()//<PopUpMenuDelegate>
 {
     IBOutlet UIWebView * webView;
     
-    PopUpMenu * popUpWithDelegate;
-    
-    KeyBoard * kb;
+//    PopUpMenu * popUpWithDelegate;
+//    
+//    KeyBoard * kb;
 }
 
 @end
@@ -46,36 +46,44 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-        
-    kb = [[KeyBoard shareInstance] keyboardOn:^(float kbHeight, BOOL isOn) {
-        
-        if(isOn)
-        {
-            NSLog(@"on");
-        }
-        else
-        {
-            NSLog(@"off");
-        }
-        
+    
+    [[LTRequest sharedInstance] didRequestInfo:@{@"overrideError":@(1),@"host":self,@"absoluteLink":[NSString stringWithFormat:@"http://pns.ising.vn/api/register?id=%@&appid=1", [LTRequest sharedInstance].deviceToken]} withCache:^(NSString *cacheString) {
+
+    } andCompletion:^(NSString *responseString, NSString * errorCode, NSError *error, BOOL isValidated) {
+
+        NSLog(@"%@",responseString);
+
     }];
+    
+//    kb = [[KeyBoard shareInstance] keyboardOn:^(float kbHeight, BOOL isOn) {
+//        
+//        if(isOn)
+//        {
+//            NSLog(@"on");
+//        }
+//        else
+//        {
+//            NSLog(@"off");
+//        }
+//        
+//    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     
-    [kb keyboardOff];
+//    [kb keyboardOff];
 }
 
-- (void)didPressButtonAt:(DropButton*)sender
-{
-    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andCompletion:^(id object) {
-        NSLog(@"%@",object);
-    }];
-    
-    [popUpWithDelegate show:BTPopUPAnimateNone];
-}
+//- (void)didPressButtonAt:(DropButton*)sender
+//{
+////    [sender didDropDownWithData:@[@{@"1":@"33"},@{@"1":@"44"}] andCompletion:^(id object) {
+////        NSLog(@"%@",object);
+////    }];
+////    
+////    [popUpWithDelegate show:BTPopUPAnimateNone];
+//}
 
 - (void)viewDidLoad
 {
@@ -83,18 +91,18 @@
     
     NSLog(@"%@",_kk);
     
-    NSLog(@"%@",[self isSimulator] ? @"y" : @"n");
-    
-    popUpWithDelegate = [[PopUpMenu alloc] initWithItemImage:@[[UIImage imageNamed:@"menu"],
-                                                               [UIImage imageNamed:@"menu"]]
-                                                       andTitles:@[@"Facebook", @"Messenger"]
-                                                  andActionArray:nil addToViewController:self];
-    popUpWithDelegate.delegate = self;
-    [self.view addSubview:popUpWithDelegate];
-    [popUpWithDelegate setPopUpStyle:BTPopUpStyleDefault];
-    [popUpWithDelegate setPopUpBorderStyle:BTPopUpBorderStyleDefaultNone];
-
-    DropButton * drop = (DropButton*)[self withView:self.view tag:111];
+//    NSLog(@"%@",[self isSimulator] ? @"y" : @"n");
+//    
+//    popUpWithDelegate = [[PopUpMenu alloc] initWithItemImage:@[[UIImage imageNamed:@"menu"],
+//                                                               [UIImage imageNamed:@"menu"]]
+//                                                       andTitles:@[@"Facebook", @"Messenger"]
+//                                                  andActionArray:nil addToViewController:self];
+//    popUpWithDelegate.delegate = self;
+//    [self.view addSubview:popUpWithDelegate];
+//    [popUpWithDelegate setPopUpStyle:BTPopUpStyleDefault];
+//    [popUpWithDelegate setPopUpBorderStyle:BTPopUpBorderStyleDefaultNone];
+//
+//    DropButton * drop = (DropButton*)[self withView:self.view tag:111];
     
 //    drop.pList = @"format";
     
@@ -102,7 +110,7 @@
 //    
 //    NSLog(@"%@",[System getValue:@"dd"]);
     
-    [drop addTarget:self action:@selector(didPressButtonAt:) forControlEvents:UIControlEventTouchUpInside];
+//    [drop addTarget:self action:@selector(didPressButtonAt:) forControlEvents:UIControlEventTouchUpInside];
     
 //    [drop didDropDownWithCompletion:^(id object) {
 //        
@@ -212,49 +220,49 @@
     
     NSString * url6 = @"http://www.vatgia.com/home/quicksearch.php?keyword=iphone";
     
-    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":url6,@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
-        
-//        NSLog(@"%@",cacheString);
-        
-    } andCompletion:^(NSString *responseString, NSString * errorCode , NSError *error, BOOL isValidated) {
-        
-       // NSLog(@"%@",responseString);
-        
-        TFHpple *parser = [TFHpple hppleWithHTMLData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];
-        
-//        NSString *pathQuery = @"//img[@class='imgemoji']";
-        //NSLog(@"%@",[element objectForKey:@"src"]);
-
-//        NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
-        
-//        NSString *pathQuery1 = @"//div[@class='emote fl']";
-
-        NSString *pathQuery1 = @"//div[@class='block']";
-
-        NSArray *nodes = [parser searchWithXPathQuery:pathQuery1];
-        
-        NSMutableArray * arr = [NSMutableArray new];
-        
-        for (TFHppleElement *element in nodes)
-        {
-            //NSLog(@"%@",element);
-
-            for(TFHppleElement *first in element.children)
-            {
-                if(first.content)
-                    [arr addObject:first.content];
-                
-                for(TFHppleElement *second in first.children)
-                {
-                    for(TFHppleElement *third in second.children)
-                    {
-                        //if([third objectForKey:@"src"])
-                            //NSLog(@"%@",[third objectForKey:@"src"]);
-                    }
-                }
-            }
-        }
-        
+//    [[LTRequest sharedInstance] didInitWithUrl:@{@"absoluteLink":url6,@"host":self,@"overrideLoading":@(1)} withCache:^(NSString *cacheString) {
+//        
+////        NSLog(@"%@",cacheString);
+//        
+//    } andCompletion:^(NSString *responseString, NSString * errorCode , NSError *error, BOOL isValidated) {
+//        
+//       // NSLog(@"%@",responseString);
+//        
+//        TFHpple *parser = [TFHpple hppleWithHTMLData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];
+//        
+////        NSString *pathQuery = @"//img[@class='imgemoji']";
+//        //NSLog(@"%@",[element objectForKey:@"src"]);
+//
+////        NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
+//        
+////        NSString *pathQuery1 = @"//div[@class='emote fl']";
+//
+//        NSString *pathQuery1 = @"//div[@class='block']";
+//
+//        NSArray *nodes = [parser searchWithXPathQuery:pathQuery1];
+//        
+//        NSMutableArray * arr = [NSMutableArray new];
+//        
+//        for (TFHppleElement *element in nodes)
+//        {
+//            //NSLog(@"%@",element);
+//
+//            for(TFHppleElement *first in element.children)
+//            {
+//                if(first.content)
+//                    [arr addObject:first.content];
+//                
+//                for(TFHppleElement *second in first.children)
+//                {
+//                    for(TFHppleElement *third in second.children)
+//                    {
+//                        //if([third objectForKey:@"src"])
+//                            //NSLog(@"%@",[third objectForKey:@"src"]);
+//                    }
+//                }
+//            }
+//        }
+    
 //        NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //        NSString *documentFolder = [path objectAtIndex:0];
 //        NSString *filePath = [documentFolder stringByAppendingFormat:@"myfile.plist"];
@@ -262,51 +270,51 @@
 //        [arr writeToFile:filePath atomically:YES];
 //        
 //        NSLog(@"file Stored at %@",filePath);
-    }];
+//    }];
     
-    [[DropAlert shareInstance] alertWithInfor:@{/*@"option":@(0),@"text":@"wwww",*/@"cancel":@"Close",@"buttons":@[@"Download now"],@"title":@"Attention",@"message":@"sdfsddsf"} andCompletion:^(int indexButton, id object) {
-        switch (indexButton)
-        {
-            case 0:
-            {
-//                if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:dict[@"url"]]])
-//                {
-//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:dict[@"url"]]];
-//                }
-            }
-                break;
-            case 1:
-                
-                break;
-            default:
-                break;
-        }
-    }];
-    
-    if(![IAPShare sharedHelper].iap)
-    {
-        NSSet* dataSet = [[NSSet alloc] initWithObjects:@"am.casino.barahatayo", nil];
-        
-        [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
-        
-    }
-    
-    [IAPShare sharedHelper].iap.production = NO;
-    
-    [[IAPShare sharedHelper].iap requestProductsWithCompletion:^(SKProductsRequest* request,SKProductsResponse* response)
-     {
-         
-         
-         NSLog(@"__%@",response.products);
-         
-         
-     }];
-    
-    [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterIOS7Style new];
-    
-    [JCNotificationCenter enqueueNotificationWithTitle:@"Thể Thao Số" message:@"kkkkkk" tapHandler:^{
-        
-    }];
+//    [[DropAlert shareInstance] alertWithInfor:@{/*@"option":@(0),@"text":@"wwww",*/@"cancel":@"Close",@"buttons":@[@"Download now"],@"title":@"Attention",@"message":@"sdfsddsf"} andCompletion:^(int indexButton, id object) {
+//        switch (indexButton)
+//        {
+//            case 0:
+//            {
+////                if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:dict[@"url"]]])
+////                {
+////                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:dict[@"url"]]];
+////                }
+//            }
+//                break;
+//            case 1:
+//                
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
+//    
+//    if(![IAPShare sharedHelper].iap)
+//    {
+//        NSSet* dataSet = [[NSSet alloc] initWithObjects:@"am.casino.barahatayo", nil];
+//        
+//        [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
+//        
+//    }
+//    
+//    [IAPShare sharedHelper].iap.production = NO;
+//    
+//    [[IAPShare sharedHelper].iap requestProductsWithCompletion:^(SKProductsRequest* request,SKProductsResponse* response)
+//     {
+//         
+//         
+//         NSLog(@"__%@",response.products);
+//         
+//         
+//     }];
+//    
+//    [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterIOS7Style new];
+//    
+//    [JCNotificationCenter enqueueNotificationWithTitle:@"Thể Thao Số" message:@"kkkkkk" tapHandler:^{
+//        
+//    }];
 }
 
 //NSString *pathQuery1 = @"//ul[@class='emoji-grid']";
@@ -347,24 +355,24 @@
 //
 //    }];
     
-    [[[PopUpMenu shareInstance] didPopUpWithInfo:@{@"images":@[@"info",@"menu"],@"titles":@[@"a",@"b"],@"color":@"#FFFFFF",@"host":self} andCompletion:^(int indexButton, id object) {
-        switch (indexButton)
-        {
-            case 0:
-            {
-                NSLog(@"%@",@"0sdfdsfdsfdsfdsf");
-            }
-                break;
-            case 1:
-                NSLog(@"%@",@"1");
-                break;
-            default:
-                
-                NSLog(@"default");
-
-                break;
-        }
-    }] show:BTPopUPAnimateWithFade];
+//    [[[PopUpMenu shareInstance] didPopUpWithInfo:@{@"images":@[@"info",@"menu"],@"titles":@[@"a",@"b"],@"color":@"#FFFFFF",@"host":self} andCompletion:^(int indexButton, id object) {
+//        switch (indexButton)
+//        {
+//            case 0:
+//            {
+//                NSLog(@"%@",@"0sdfdsfdsfdsfdsf");
+//            }
+//                break;
+//            case 1:
+//                NSLog(@"%@",@"1");
+//                break;
+//            default:
+//                
+//                NSLog(@"default");
+//
+//                break;
+//        }
+//    }] show:BTPopUPAnimateWithFade];
 }
 
 - (void)didPressSecond
@@ -399,48 +407,48 @@
 
 - (IBAction)didPressCamera:(id)sender
 {
-    [[FB shareInstance] startPickImageWithOption:YES andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
-        
-        NSLog(@"%@",object);
-        
-    }];
+//    [[FB shareInstance] startPickImageWithOption:YES andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+//        
+//        NSLog(@"%@",object);
+//        
+//    }];
 }
 
 - (IBAction)didPressGallery:(id)sender
 {
-    [[FB shareInstance] startPickImageWithOption:NO andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
-        
-        NSLog(@"%@",object);
-        
-    }];
+//    [[FB shareInstance] startPickImageWithOption:NO andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+//        
+//        NSLog(@"%@",object);
+//        
+//    }];
 }
 
 - (IBAction)didPressShare:(id)sender
 {
     
-    [[FB shareInstance] startShareWithInfo:@[@"share this",@""] andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
-        
-        NSLog(@"%i",errorCode);
-        
-    }];
+//    [[FB shareInstance] startShareWithInfo:@[@"share this",@""] andBase:sender andRoot:self andCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+//        
+//        NSLog(@"%i",errorCode);
+//        
+//    }];
 
 }
 
 - (IBAction)didPressButton:(id)sender
 {
-    FB * fb = [FB shareInstance];
-    [fb startLoginFacebookWithCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
-        
-        NSLog(@"%@",object);
-        
-    }];
+//    FB * fb = [FB shareInstance];
+//    [fb startLoginFacebookWithCompletion:^(NSString *responseString, id object, int errorCode, NSString *description, NSError *error) {
+//        
+//        NSLog(@"%@",object);
+//        
+//    }];
 }
 
 - (IBAction)didPressLogout:(id)sender
 {
-    FB * fb = [FB shareInstance];
-    
-    [fb signoutFacebook];
+//    FB * fb = [FB shareInstance];
+//    
+//    [fb signoutFacebook];
 }
 
 - (void)didReceiveMemoryWarning

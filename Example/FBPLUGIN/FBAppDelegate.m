@@ -14,7 +14,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[FB shareInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+//    [[FB shareInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     [[LTRequest sharedInstance] initRequest];
     
@@ -56,13 +56,13 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
-    return [[FB shareInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-}
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation
+//{
+//    return [[FB shareInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+//}
 
 #pragma mark - Core Data stack
 
